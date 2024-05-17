@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Template/Scenes/Room.unity
+    path: Assets/Scenes/Room.unity
     guid: 3d97b014f52721147ba461f2a8133078
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: ebe85fe29ab7087449bc4c4e65e5c894,
+      type: 2}
