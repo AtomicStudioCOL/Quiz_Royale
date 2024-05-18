@@ -1,6 +1,7 @@
 --!Type(Client)
+
 -- serialized variables --
---!Header("Zoom Settings")
+    --!Header("Zoom Settings")
 --!SerializeField
 local zoom : number = 15
 --!SerializeField
@@ -9,16 +10,18 @@ local zoomMin : number = 10
 local zoomMax : number = 50
 --!SerializeField
 local fov : number = 30
---!Header("Defaults")
+    --!Header("Defaults")
 --!SerializeField
 local pitch : number = 30
 --!SerializeField
 local yaw : number = 45
 --!SerializeField
 local centerOnCharacterWhenSpawned : boolean = true
---!Header("Camera Points")
+    --!Header("Camera Points")
 --!SerializeField
 local lobbyCamera : GameObject = nil
+--!SerializeField
+local kPopCamera : GameObject = nil
 
 -- camera check --
 local camera = self.gameObject:GetComponent(Camera)
@@ -52,6 +55,7 @@ local cameraPoints = {}
 function self.ClientAwake()
     -- setting camera points
     cameraPoints["lobby"] = lobbyCamera
+    cameraPoints["kpop"] = kPopCamera
 
     client.localPlayer.CharacterChanged:Connect(function()
         -- setting camera's position

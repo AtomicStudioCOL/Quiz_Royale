@@ -5,6 +5,8 @@
 --!Header("Spawners")
 --!SerializeField
 local lobbySpawner : GameObject = nil
+--!SerializeField
+local kPopSpawner : GameObject = nil
 
 -- global variables --
 playersInGame = {}
@@ -16,6 +18,7 @@ spawnerPoints = {}
 function self.ClientAwake()
     -- setting spawner points
     spawnerPoints["lobby"] = lobbySpawner
+    spawnerPoints["kpop"] = kPopSpawner
 end
 
 -- events --
