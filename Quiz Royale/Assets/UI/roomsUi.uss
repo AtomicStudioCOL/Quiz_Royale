@@ -1,0 +1,4 @@
+.rooms-ui {
+    -unity-text-align: middle-center;
+    margin-top: auto;
+}

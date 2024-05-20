@@ -1,7 +1,7 @@
 --!Type(Client)
 
 -- serialized variables --
-    --!Header("Zoom Settings")
+--!Header("Zoom Settings")
 --!SerializeField
 local zoom : number = 15
 --!SerializeField
@@ -10,18 +10,24 @@ local zoomMin : number = 10
 local zoomMax : number = 50
 --!SerializeField
 local fov : number = 30
-    --!Header("Defaults")
+
+--!Header("Defaults")
 --!SerializeField
 local pitch : number = 30
 --!SerializeField
 local yaw : number = 45
 --!SerializeField
 local centerOnCharacterWhenSpawned : boolean = true
-    --!Header("Camera Points")
+
+--!Header("Camera Points")
 --!SerializeField
-local lobbyCamera : GameObject = nil
+local travelCamera : GameObject = nil
 --!SerializeField
 local kPopCamera : GameObject = nil
+
+--!Header("Managers")
+--!SerializeField
+local gameManagerGo : GameObject = nil
 
 -- camera check --
 local camera = self.gameObject:GetComponent(Camera)
@@ -49,17 +55,28 @@ local lastDirection : Vector2 = Vector2.zero     -- the direction of the last fr
 local target = Vector3.zero                      -- the point the camera is looking at
 local offset = Vector3.zero                      -- the offset from the Target
 
+local gameManager = nil                          -- variable to reference Game Manager on awake 
+
 local cameraPoints = {}
 
 -- functions --
+function setPosition(key : string)
+    print(`{key}`)
+    print(`{cameraPoints[key]}`)
+    --cameraRig.position = cameraPoints[key].position
+    --cameraRig.rotation = cameraPoints[key].rotation
+end
+
 function self.ClientAwake()
     -- setting camera points
-    cameraPoints["lobby"] = lobbyCamera
+    cameraPoints["travel"] = travelCamera
     cameraPoints["kpop"] = kPopCamera
 
     client.localPlayer.CharacterChanged:Connect(function()
-        -- setting camera's position
-        cameraRig.position = cameraPoints["lobby"].transform.position
-        cameraRig.rotation = cameraPoints["lobby"].transform.rotation
+        setPosition("travel")
     end)
+
+    gameManager = gameManagerGo:GetComponent("GameManager")
+
+    gameManager.changeRoomClient:Connect(function(destination : string) setPosition(destination) end)
 end

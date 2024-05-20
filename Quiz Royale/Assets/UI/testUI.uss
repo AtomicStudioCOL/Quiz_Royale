@@ -1,5 +1,12 @@
 .test-u-i {
+    -unity-text-align: middle-center;
+    margin-top: auto;
 }
 
-.my-ui {
+.my-ui{
+    font-size: 200%;
+}
+.my-ui #myLabel{
+    color: black;
+    -unity-text-align: middle-center;
 }

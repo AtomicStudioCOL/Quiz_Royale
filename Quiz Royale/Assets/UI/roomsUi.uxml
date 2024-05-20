@@ -7,9 +7,9 @@
     xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
 >
 
-<hr:UILuaView class="my-ui" >
-    <hr:UILabel name="myLabel"></hr:UILabel>
-    <hr:UILabel name="myQuestion"></hr:UILabel>
+<hr:UILuaView class="rooms-ui">
+  <hr:UILabel name="titleLabel"></hr:UILabel>
+  <hr:UILabel name="travelLabel"></hr:UILabel>
 </hr:UILuaView>
 
 </UXML>
