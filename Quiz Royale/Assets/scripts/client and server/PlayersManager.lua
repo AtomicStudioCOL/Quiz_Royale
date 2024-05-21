@@ -6,6 +6,7 @@ local gameManager = require("GameManager")
 local spawnerPoints = gameManager.spawnerPoints
 local tapHandlers = gameManager.tapHandlers
 local roomsUi = nil
+local questionsUI = nil
 
 -- events --
 local testEvent = Event.new("testEvent")
@@ -13,17 +14,28 @@ local testEvent = Event.new("testEvent")
 
 -- event functions --
 function self:ClientAwake()
-    -- set client's game
+    -- sets scripts
     roomsUi = gameManager.uiManager:GetComponent("roomsUi")
+    questionsUI = gameManager.uiManager:GetComponent("QuestionUi")
+    questionPool = gameManager.uiManager:GetComponent("QuestionPool")
 
-    -- sets events
+    -- sets tap handlers
     tapHandlers["travel"].Tapped:Connect(function()
         roomsUi.enabled = true
     end)
 
-    gameManager.changeRoomClient:Connect(function(destination : string)
-        print(`{spawnerPoints[destination]}`)
-        client.localPlayer.character:Teleport(spawnerPoints[destination].transform.position, function() end)
+    tapHandlers["kpop"].Tapped:Connect(function()
+        roomsUi.enabled = true
+    end)
+
+    tapHandlers["travelQuiz"].Tapped:Connect(function()
+        questionsUI.enabled = true
+        questionsUI.pickRandomQuestion(questionPool.testCategory.easy)
+    end)
+
+    -- sets other events
+    gameManager.changeRoomClient:Connect(function(player : Player, destination : string)
+        player.character:Teleport(spawnerPoints[destination].transform.position, function()end)
     end)
 
     -- spawns player in given position

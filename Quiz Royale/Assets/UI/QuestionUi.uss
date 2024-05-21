@@ -1,0 +1,10 @@
+.question-Ui {
+}
+
+.unChosen {
+    background-color: rgba(150, 0, 200, .5)
+}
+
+.chosen {
+    background-color: rgba(50, 50, 50, .5)
+}

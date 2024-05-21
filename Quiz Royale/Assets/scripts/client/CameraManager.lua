@@ -61,10 +61,8 @@ local cameraPoints = {}
 
 -- functions --
 function setPosition(key : string)
-    print(`{key}`)
-    print(`{cameraPoints[key]}`)
-    --cameraRig.position = cameraPoints[key].position
-    --cameraRig.rotation = cameraPoints[key].rotation
+    cameraRig.position = cameraPoints[key].transform.position
+    cameraRig.rotation = cameraPoints[key].transform.rotation
 end
 
 function self.ClientAwake()
@@ -78,5 +76,8 @@ function self.ClientAwake()
 
     gameManager = gameManagerGo:GetComponent("GameManager")
 
-    gameManager.changeRoomClient:Connect(function(destination : string) setPosition(destination) end)
+    gameManager.changeRoomClient:Connect(function(player : Player, destination : string)
+        if client.localPlayer.name ~= player.name then return end
+        setPosition(destination)
+    end)
 end

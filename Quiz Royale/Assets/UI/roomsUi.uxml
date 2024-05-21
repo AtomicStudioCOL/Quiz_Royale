@@ -10,6 +10,8 @@
 <hr:UILuaView class="rooms-ui">
   <hr:UILabel name="titleLabel"></hr:UILabel>
   <hr:UILabel name="travelLabel"></hr:UILabel>
+  <hr:UILabel name="catCafeLabel"></hr:UILabel>
+  <hr:UILabel name="kpopLabel"></hr:UILabel>
 </hr:UILuaView>
 
 </UXML>
