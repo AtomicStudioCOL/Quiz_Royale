@@ -24,6 +24,8 @@ local centerOnCharacterWhenSpawned : boolean = true
 local travelCamera : GameObject = nil
 --!SerializeField
 local kPopCamera : GameObject = nil
+--!SerializeField
+local catCoffeCamera : GameObject = nil
 
 --!Header("Managers")
 --!SerializeField
@@ -69,6 +71,7 @@ function self.ClientAwake()
     -- setting camera points
     cameraPoints["travel"] = travelCamera
     cameraPoints["kpop"] = kPopCamera
+    cameraPoints["catCoffe"] = catCoffeCamera
 
     client.localPlayer.CharacterChanged:Connect(function()
         setPosition("travel")

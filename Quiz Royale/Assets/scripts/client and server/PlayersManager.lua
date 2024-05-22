@@ -27,6 +27,10 @@ function self:ClientAwake()
     tapHandlers["kpop"].Tapped:Connect(function()
         roomsUi.enabled = true
     end)
+    
+    tapHandlers["catCoffe"].Tapped:Connect(function()
+        roomsUi.enabled = true
+    end)
 
     tapHandlers["travelQuiz"].Tapped:Connect(function()
         questionsUI.enabled = true

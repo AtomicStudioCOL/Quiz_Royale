@@ -22,7 +22,7 @@ local travelButton = UIButton.new()
 -- variables --
 local gameManager = nil
 
--- set texts --
+-- set tex ts --
 titleLabel:SetPrelocalizedText("Quiz Royale", true)
 travelLabel:SetPrelocalizedText("Travel Café", true)
 catCafeLabel:SetPrelocalizedText("Cat Café", true)
@@ -39,19 +39,20 @@ end
 
 -- buttons logic --
 function ActiveButton()
+    -- Teleport Travel
     travelButton:RegisterPressCallback(function()
         gameManager.changeRoomServer:FireServer("travel")
         disable()
     end)
     travelLabel:Add(travelButton)
-
+    -- teleport CatCoffe
     catCafeButton:RegisterPressCallback(function()
-        --gameManager.changeRoomServer:FireServer("catCafe")
+        gameManager.changeRoomServer:FireServer("catCoffe")
         print("Not there yet")
         disable()
     end)
     catCafeLabel:Add(catCafeButton)
-
+    -- Teleport Kpop
     kpopButton:RegisterPressCallback(function()
         gameManager.changeRoomServer:FireServer("kpop")
         disable()

@@ -11,16 +11,23 @@ local uiManagerGo : GameObject = nil
 local travelSpawner : GameObject = nil
 --!SerializeField
 local kpopSpawner : GameObject = nil
+--!SerializeField
+local catCoffeSpawner : GameObject = nil
 
 --!Header("Teleport Tap Handlers")
 --!SerializeField
 local travelTapH : TapHandler = nil
 --!SerializeField
 local kpopTapH : TapHandler = nil
+--!SerializeField
+local catCoffeTapH : TapHandler = nil
 
+-- Select Portal 
 --!Header("Activate Quizz Tap Handlers")
 --!SerializeField
 local travelQuizTapH : TapHandler = nil
+--!SerializeField
+local catCoffeQuizTapH : TapHandler = nil
 
 -- global variables --
 playersInGame = {}
@@ -39,12 +46,16 @@ function self:ClientAwake()
     -- setting spawner points
     spawnerPoints["travel"] = travelSpawner
     spawnerPoints["kpop"] = kpopSpawner
+    spawnerPoints["catCoffe"] = catCoffeSpawner
 
     -- setting tap handlers
     tapHandlers["travel"] = travelTapH
     tapHandlers["kpop"] = kpopTapH
+    tapHandlers["catCoffe"] = catCoffeTapH
 
+    -- tap handlers Quizz
     tapHandlers["travelQuiz"] = travelQuizTapH
+    tapHandlers["catCoffeQuiz"] = travelQuizTapH
 
     -- setting other managers
     uiManager = uiManagerGo
