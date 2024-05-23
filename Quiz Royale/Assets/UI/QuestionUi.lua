@@ -45,6 +45,39 @@ function tableLenght(table)
 	return lenght
 end
 
+function shuffleAnswers(answers)
+    local shuffled = {a = nil, b = nil, c = nil, d = nil}
+
+    local optionsToAssign = 4
+
+    local array = {"a", "b", "c", "d"}
+
+    for k, v in pairs(answers) do
+        local randomNumber = math.random(1, tableLenght(array))
+
+        shuffled[k] = answers[table.remove(array, randomNumber)]
+    end
+
+    --[[
+    for k, v in pairs(answers) do
+        local randomNumber = math.random(1, optionsToAssign)
+
+        if optionsToAssign == 4 then
+            shuffled.a = v
+        elseif optionsToAssign == 3 then
+            shuffled.b = v
+        elseif optionsToAssign == 2 then
+            shuffled.c = v
+        elseif optionsToAssign == 1 then
+            shuffled.d = v
+        end 
+        optionsToAssign -= 1
+    end
+    --]]
+
+    return shuffled
+end
+
 function pickRandomQuestion(categoryDifficulty)
     print("picking question")
 
@@ -141,12 +174,20 @@ function setQuestionLabelsText(question)
     -- set question label
     questionLabel:SetPrelocalizedText(question.questionTxt, false)
 
-    aLabel:SetPrelocalizedText(answers.a.txt, false)
-    bLabel:SetPrelocalizedText(answers.b.txt, false)
-    cLabel:SetPrelocalizedText(answers.c.txt, false)
-    dLabel:SetPrelocalizedText(answers.d.txt, false)   
+    local randomizedAnswers = shuffleAnswers(answers)
+
+    for k, v in pairs(randomizedAnswers) do
+        print(`Key: {k}, value: {v}`)
+    end
+
+---[[
+    aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
+    bLabel:SetPrelocalizedText(randomizedAnswers.b.txt, false)
+    cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
+    dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
     
-    activeAnswerButtons(answers)
+    activeAnswerButtons(randomizedAnswers)
+--]]
 end
 
 function setTimerLabel()

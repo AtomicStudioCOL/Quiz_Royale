@@ -48,7 +48,6 @@ function ActiveButton()
     -- teleport CatCoffe
     catCafeButton:RegisterPressCallback(function()
         gameManager.changeRoomServer:FireServer("catCoffe")
-        print("Not there yet")
         disable()
     end)
     catCafeLabel:Add(catCafeButton)
