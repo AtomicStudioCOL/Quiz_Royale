@@ -8,22 +8,23 @@
 >
 
   <hr:UILuaView name="questionUi" class="question-Ui" picking-mode="Ignore">
-    <!-- container -->
-    <hr:UILabel name="container" class="container" picking-mode="Ignore"></hr:UILabel>
-    <!-- images -->
-    <hr:UIImage name="baristaImage" picking-mode="Ignore"></hr:UIImage>
-
     <!-- labels -->
     <hr:UILabel name="questionLabel" picking-mode="Ignore"></hr:UILabel>
-
     <hr:UILabel name="timerLabel" picking-mode="Ignore"></hr:UILabel>
-
-    <hr:UILabel name="aLabel" picking-mode="Ignore"></hr:UILabel>
-    <hr:UILabel name="bLabel" picking-mode="Ignore"></hr:UILabel>
-    <hr:UILabel name="cLabel" picking-mode="Ignore"></hr:UILabel>
-    <hr:UILabel name="dLabel" picking-mode="Ignore"></hr:UILabel>
-
     <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
+
+    
+    <!-- Question labels -->
+    <hr:UIView name="questionsContainer" class="questionsContainer" picking-mode="Ignore">
+      <hr:UIButton name="aButton" class="inactive"/>
+      <hr:UIButton name="bButton" class="inactive"/>
+      <hr:UIButton name="cButton" class="inactive"/>
+      <hr:UIButton name="dButton" class="inactive"/>
+      <hr:UILabel name="aLabel" picking-mode="Ignore"></hr:UILabel>
+      <hr:UILabel name="bLabel" picking-mode="Ignore"></hr:UILabel>
+      <hr:UILabel name="cLabel" picking-mode="Ignore"></hr:UILabel>
+      <hr:UILabel name="dLabel" picking-mode="Ignore"></hr:UILabel>
+    </hr:UIView>
   </hr:UILuaView>
 
 </UXML>
