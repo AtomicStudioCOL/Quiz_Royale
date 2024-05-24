@@ -9,6 +9,7 @@
 testCategory = {
     easy = {
         meowQuestion = {
+            baristDialoge = "Cats cats cats cats!",
             questionTxt = "Which of the following is a cat sound?",
             answers = {
                 a = {txt = "qqqqqqqqq", truthValue = false},
@@ -18,15 +19,17 @@ testCategory = {
             },
         },
         giftQuestion = {
+            baristDialoge = "Free points for you!",
             questionTxt = "This is 4 u",
             answers = {
                 a = {txt = "nope", truthValue = false},
                 b = {txt = "sorry, nope", truthValue = false},
-                c = {txt = "This one!!!", truthValue = true},
+                c = {txt = "This one!!! :D", truthValue = true},
                 d = {txt = "Look for the happy one", truthValue = false},
             },
         },
         BarkQuestion = {
+            baristDialoge = "Doggo doggo doggo doggo!",
             questionTxt = "Which of the following is a dog sound?",
             answers = {
                 a = {txt = "qqqqqqqqq", truthValue = false},
@@ -37,6 +40,7 @@ testCategory = {
         },
         testQuestion = {
             questionTxt = "Testing",
+            baristDialoge = "Just testing!",
             answers = {
                 a = {txt = "a", truthValue = false},
                 b = {txt = "b", truthValue = false},

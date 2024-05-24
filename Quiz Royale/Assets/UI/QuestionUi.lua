@@ -7,6 +7,9 @@ local gameManagerGo : GameObject = nil
 -- modules
 questionPool = require("QuestionPool")
 
+--!Bind
+local questionUi : UILuaView = nil
+
 -- bind labels --
 --!Bind
 local questionLabel : UILabel = nil
@@ -20,6 +23,31 @@ local bLabel : UILabel = nil
 local cLabel : UILabel = nil
 --!Bind
 local dLabel : UILabel = nil
+--!Bind
+local dialogueLabel : UILabel = nil
+--!Bind
+local container : UILabel = nil
+
+-- Eptying labels --
+questionLabel:SetPrelocalizedText(" ", false)
+timerLabel:SetPrelocalizedText(" ", false)
+aLabel:SetPrelocalizedText(" ", false)
+bLabel:SetPrelocalizedText(" ", false)
+cLabel:SetPrelocalizedText(" ", false)
+dLabel:SetPrelocalizedText(" ", false)
+dialogueLabel:SetPrelocalizedText(" ", false)
+
+questionLabel:AddToClassList("inactive")
+timerLabel:AddToClassList("inactive")
+aLabel:AddToClassList("inactive")
+bLabel:AddToClassList("inactive")
+cLabel:AddToClassList("inactive")
+dLabel:AddToClassList("inactive")
+dialogueLabel:AddToClassList("inactive")
+
+-- bind images --
+--!Bind
+local baristaImage : UIImage = nil
 
 -- instantiate buttons --
 local aButton = UIButton.new()
@@ -28,9 +56,14 @@ local cButton = UIButton.new()
 local dButton = UIButton.new()
 
 -- variables --
-local questionTimer : Timer
-local questionTimeValue = 16
+local thisObject = self
+
+local barista : string
+
 local chosenAnswer = nil
+
+local questionTimer : Timer
+local questionTimeValue = 15
 
 -- functions --
 local function disable()
@@ -58,24 +91,33 @@ function shuffleAnswers(answers)
         shuffled[k] = answers[table.remove(array, randomNumber)]
     end
 
-    --[[
-    for k, v in pairs(answers) do
-        local randomNumber = math.random(1, optionsToAssign)
-
-        if optionsToAssign == 4 then
-            shuffled.a = v
-        elseif optionsToAssign == 3 then
-            shuffled.b = v
-        elseif optionsToAssign == 2 then
-            shuffled.c = v
-        elseif optionsToAssign == 1 then
-            shuffled.d = v
-        end 
-        optionsToAssign -= 1
-    end
-    --]]
-
     return shuffled
+end
+
+function welcomePlayer(category)
+    local totalWaitTime
+
+    if category == questionPool.testCategory then
+        totalWaitTime = 6
+
+        barista = "baristPlaceholder"
+        dialogueLabel:AddToClassList("dialogue")
+
+        dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
+        Timer.After(2, function()
+            dialogueLabel:SetPrelocalizedText("I'm PLACEHOLDER, your barista, and in today's entretainment menu...!", false)
+            Timer.After(2, function()
+                dialogueLabel:SetPrelocalizedText("We have test questions!", false)
+            end)
+        end)
+    end
+
+    container:Add(baristaImage)
+    baristaImage:AddToClassList(barista)
+
+    Timer.new(totalWaitTime, function()
+        --pickRandomQuestion(category.easy)
+    end, false)
 end
 
 function pickRandomQuestion(categoryDifficulty)
@@ -91,16 +133,61 @@ function pickRandomQuestion(categoryDifficulty)
         if randomNumber == 1 then
             pickedQuestion = v
             print(`Picked quesion is: {pickedQuestion.questionTxt}`)
-            setQuestionLabelsText(pickedQuestion)
+            preQuestionDialogue(pickedQuestion)
         end
         numberOfQuestions -= 1
     end
+end
+
+function preQuestionDialogue(question)
+    baristaImage:ClearClassList()
+    baristaImage:AddToClassList(barista)
+
+    dialogueLabel:ClearClassList()
+    dialogueLabel:AddToClassList("dialogue")
+    dialogueLabel:SetPrelocalizedText(question.baristDialoge, false)
+
+    Timer.After(3, function()
+
+        setQuestionLabelsText(question)
+    end)
+end
+
+function setQuestionLabelsText(question)
+    print("setting question labels")
+
+    dialogueLabel:ClearClassList()
+    dialogueLabel:AddToClassList("inactive")
+    baristaImage:ClearClassList()
+    
+    questionLabel:AddToClassList("active")
+    timerLabel:AddToClassList("active")
+    aLabel:AddToClassList("active")
+    bLabel:AddToClassList("active")
+    cLabel:AddToClassList("active")
+    dLabel:AddToClassList("active")
+
+    local answers = question.answers
+    -- set question label
+    questionLabel:SetPrelocalizedText(question.questionTxt, false)
+
+    local randomizedAnswers = shuffleAnswers(answers)
+
+---[[
+    aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
+    bLabel:SetPrelocalizedText(randomizedAnswers.b.txt, false)
+    cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
+    dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
+    
+    activeAnswerButtons(randomizedAnswers)
+--]]
 end
 
 function activeAnswerButtons(answers)               -- Assigns the callbacks and adds the buttons to the hierarchy
     print("activating buttons")
 
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
+    timerLabel:SetEmojiPrelocalizedText(questionTimeValue, false)
     
     aButton:RegisterPressCallback(function()
         chosenAnswer = answers.a
@@ -149,6 +236,17 @@ function deactivateAnswersButtons()                 -- Empties the callbacks
     dButton:RemoveFromClassList("unChosen")
 end
 
+function setTimerLabel()
+    questionTimeValue -= 1
+    timerLabel:SetPrelocalizedText(tostring(questionTimeValue), false)
+
+    if questionTimeValue == 0 then
+        hideAnswersButtons()
+        questionTimeValue = 16
+        questionTimer:Stop()
+    end
+end
+
 function hideAnswersButtons()                        -- removes the buttons from the hierarchies
     aLabel:Remove(aButton)
     bLabel:Remove(bButton)
@@ -167,42 +265,9 @@ function hideAnswersButtons()                        -- removes the buttons from
     end
 end
 
-function setQuestionLabelsText(question)
-    print("setting question labels")
-
-    local answers = question.answers
-    -- set question label
-    questionLabel:SetPrelocalizedText(question.questionTxt, false)
-
-    local randomizedAnswers = shuffleAnswers(answers)
-
-    for k, v in pairs(randomizedAnswers) do
-        print(`Key: {k}, value: {v}`)
-    end
-
----[[
-    aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
-    bLabel:SetPrelocalizedText(randomizedAnswers.b.txt, false)
-    cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
-    dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
-    
-    activeAnswerButtons(randomizedAnswers)
---]]
-end
-
-function setTimerLabel()
-    questionTimeValue -= 1
-    timerLabel:SetPrelocalizedText(tostring(questionTimeValue), false)
-
-    if questionTimeValue == 0 then
-        hideAnswersButtons()
-        questionTimeValue = 16
-        questionTimer:Stop()
-    end
-end
-
 -- events
 client.PlayerConnected:Connect(function()
+    print(`{questionUi.contentRect}`)
 
     gameManager = gameManagerGo:GetComponent("QuestionPool")
     disable()

@@ -34,7 +34,7 @@ function self:ClientAwake()
 
     tapHandlers["travelQuiz"].Tapped:Connect(function()
         questionsUI.enabled = true
-        questionsUI.pickRandomQuestion(questionPool.testCategory.easy)
+        questionsUI.welcomePlayer(questionPool.testCategory)
     end)
 
     -- sets other events

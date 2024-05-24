@@ -7,13 +7,23 @@
     xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
 >
 
-  <hr:UILuaView class="question-Ui">
-    <hr:UILabel name="questionLabel"></hr:UILabel>
-    <hr:UILabel name="timerLabel"></hr:UILabel>
-    <hr:UILabel name="aLabel"></hr:UILabel>
-    <hr:UILabel name="bLabel"></hr:UILabel>
-    <hr:UILabel name="cLabel"></hr:UILabel>
-    <hr:UILabel name="dLabel"></hr:UILabel>
+  <hr:UILuaView name="questionUi" class="question-Ui" picking-mode="Ignore">
+    <!-- container -->
+    <hr:UILabel name="container" class="container" picking-mode="Ignore"></hr:UILabel>
+    <!-- images -->
+    <hr:UIImage name="baristaImage" picking-mode="Ignore"></hr:UIImage>
+
+    <!-- labels -->
+    <hr:UILabel name="questionLabel" picking-mode="Ignore"></hr:UILabel>
+
+    <hr:UILabel name="timerLabel" picking-mode="Ignore"></hr:UILabel>
+
+    <hr:UILabel name="aLabel" picking-mode="Ignore"></hr:UILabel>
+    <hr:UILabel name="bLabel" picking-mode="Ignore"></hr:UILabel>
+    <hr:UILabel name="cLabel" picking-mode="Ignore"></hr:UILabel>
+    <hr:UILabel name="dLabel" picking-mode="Ignore"></hr:UILabel>
+
+    <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
   </hr:UILuaView>
 
 </UXML>
