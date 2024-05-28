@@ -8,7 +8,7 @@
 
 testCategory = {
     easy = {
-        meowQuestion = {
+        [1] = {
             baristDialoge = "Cats cats cats cats!",
             questionTxt = "Which of the following is a cat sound?",
             answers = {
@@ -19,7 +19,7 @@ testCategory = {
             },
             asked = false;
         },
-        giftQuestion = {
+        [2] = {
             baristDialoge = "Free points for you!",
             questionTxt = "This is 4 u",
             answers = {
@@ -30,7 +30,7 @@ testCategory = {
             },
             asked = false;
         },
-        BarkQuestion = {
+        [3] = {
             baristDialoge = "Doggo doggo doggo doggo!",
             questionTxt = "Which of the following is a dog sound?",
             answers = {
@@ -41,7 +41,7 @@ testCategory = {
             },
             asked = false;
         },
-        testQuestion = {
+        [4] = {
             questionTxt = "Testing",
             baristDialoge = "Just testing!",
             answers = {
@@ -52,7 +52,7 @@ testCategory = {
             },
             asked = false;
         },
-        waterWets = {
+        [5] = {
             questionTxt = "Is water wet?",
             baristDialoge = "Question about water",
             answers = {
@@ -63,7 +63,7 @@ testCategory = {
             },
             asked = false;
         },
-        allCorrect = {
+        [6] = {
             questionTxt = "Every answer is correct",
             baristDialoge = "There's only one way to get this wrong: not answering",
             answers = {
@@ -76,7 +76,7 @@ testCategory = {
         },
     },
     normal = {
-        coffeTemperature = {
+        [1] = {
             questionTxt = "How is coffe served?",
             baristDialoge = "This one is about here!",
             answers = {
@@ -87,7 +87,7 @@ testCategory = {
             },
             asked = false;
         },
-        ponyCuteness = {
+        [2] = {
             questionTxt = "Are ponies cute?",
             baristDialoge = "We're talking about small strong horses now.",
             answers = {
@@ -98,7 +98,7 @@ testCategory = {
             },
             asked = false;
         },
-        mayo = {
+        [3] = {
             questionTxt = "Is mayo an instrument?",
             baristDialoge = "Have you seen Squarepants Spongebob?",
             answers = {
@@ -109,7 +109,7 @@ testCategory = {
             },
             asked = false;
         },
-        goodBoy = {
+        [4] = {
             questionTxt = "Which animal is know for being a good boy?",
             baristDialoge = "Do you have a pet?",
             answers = {
@@ -120,7 +120,7 @@ testCategory = {
             },
             asked = false;
         },
-        whatAreYou = {
+        [5] = {
             questionTxt = "What are you?",
             baristDialoge = "I hope you like philosophy.",
             answers = {
@@ -133,7 +133,7 @@ testCategory = {
         },
     },
     hard = {
-        impossible = {
+        [1] = {
             questionTxt = "You can't get this right.",
             baristDialoge = "Sorry, it is part of the test.",
             answers = {
@@ -144,7 +144,7 @@ testCategory = {
             },
             asked = false;
         },
-        vyletPony = {
+        [2] = {
             questionTxt = "What is Vylet Pony?",
             baristDialoge = "I'd be glad if you knew this one.",
             answers = {
@@ -155,7 +155,7 @@ testCategory = {
             },
             asked = false;
         },
-        toriel = {
+        [3] = {
             questionTxt = "What is the main ingredient of Toriel's pie?",
             baristDialoge = "Have you played Undertale?",
             answers = {
@@ -166,7 +166,7 @@ testCategory = {
             },
             asked = false;
         },
-        cakeIsALie = {
+        [4] = {
             questionTxt = "Where comes the 'the cake is a lie' meme come from?",
             baristDialoge = "I hope you have played a lot of videogames.",
             answers = {
@@ -177,7 +177,7 @@ testCategory = {
             },
             asked = false;
         },
-        pianoC = {
+        [5] = {
             questionTxt = "Could you tell me how do you find a C note in a piano?",
             baristDialoge = "I took leasons once, but i forgot...",
             answers = {

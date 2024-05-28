@@ -41,6 +41,7 @@ playersInTravelQ = {}
 playersInKpopQ = {}
 playersInCatQ = {}
 
+testAsked = {}
 travelQAsked = {}
 kpopQAsked = {}
 catQAsked = {}
@@ -49,7 +50,7 @@ catQAsked = {}
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
 
-startGame = Event.new("startGame")
+finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
 nextQuestion = Event.new("nextQuestion")
 replicateChosenQuestion = Event.new("replicateRandomQuestion")
@@ -64,6 +65,18 @@ function tableLenght(table)
 		lenght += 1
 	end
 	return lenght
+end
+
+function normalizeTable(table)
+    local returnedTable = {}
+    local index = 0
+
+    for k, v in table do
+        index += 1
+        returnedTable[index] = v
+    end
+
+    return returnedTable
 end
 
 function shuffleAnswers(answers)
@@ -86,6 +99,8 @@ function pickRandomQuestion(questionsAsked, category)
     local categoryDifficulty = nil
     local numberAsked = tableLenght(questionsAsked)
     local tableOfPlayers
+    local pickedQuestion = nil
+    local diff
     
     if category == "testCategory" then
         tableOfPlayers = playersInTravelQ
@@ -93,43 +108,43 @@ function pickRandomQuestion(questionsAsked, category)
     
     if numberAsked < 6 then
         categoryDifficulty = questionPool[category].easy
+        diff = "e"
     elseif numberAsked < 11 then
-        print(`line 97 test {questionPool[category].easy}`)
         categoryDifficulty = questionPool[category].normal
+        diff = "n"
     elseif numberAsked < 16 then
         categoryDifficulty = questionPool[category].hard
+        diff = "h"
+    else
+        for k, player in pairs(tableOfPlayers) do
+            finishGame:FireClient(player)
+        end
+        return
     end
+
+    print(`{numberAsked}`)
 
     local numberOfQuestions = tableLenght(categoryDifficulty)
-    local pickedQuestion = nil
 
-    for k, v in pairs(categoryDifficulty) do
-        if v.asked == true then
-            numberOfQuestions -=1
-            if numberOfQuestions < 1 and pickedQuestion == nil then
-                pickRandomQuestion(categoryDifficulty)
-                return
-            end
-            continue
-        end
+    local randomNumber
+    local questionWasAsked = true
 
-        if pickedQuestion ~= nil then return end
-
+    while questionWasAsked == true do
         randomNumber = math.random(1, numberOfQuestions)
-        if randomNumber == 1 then
-            v.asked = true
-            pickedQuestion = v
-            questionsAsked[k] = v
-            print(`Picked quesion is: {pickedQuestion.questionTxt}`)
-
-            for k, v in pairs(tableOfPlayers) do
-                replicateChosenQuestion:FireClient(v, pickedQuestion)
-            end
-            Timer.After(15, function()
-            end)
-        end
-        numberOfQuestions -= 1
+        pickedQuestion = categoryDifficulty[randomNumber]
+        questionWasAsked = pickedQuestion.asked
     end
+
+    pickedQuestion.asked = true
+    questionsAsked[diff ..  `{randomNumber}`] = randomNumber 
+
+    for k, player in pairs(tableOfPlayers) do
+        replicateChosenQuestion:FireClient(player, pickedQuestion)
+    end
+
+    Timer.After(20, function()
+        pickRandomQuestion(questionsAsked, category)
+    end)
 end
 
 
@@ -163,9 +178,8 @@ function self:ServerAwake()
     newPlayerEnteredQuiz:Connect(function(player : Player, quiz : string)
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
-            print(`{tableLenght(playersInTravelQ)} players in travel quiz`)
             if tableLenght(playersInTravelQ) > 1 then
-                Timer.After(6, function() pickRandomQuestion(travelQAsked, "testCategory") end)
+                Timer.After(6, function() pickRandomQuestion(testAsked, "testCategory") end)
             end
         elseif quiz == "kpop" then
             playersInKpopQ[player.name] = player
@@ -174,7 +188,11 @@ function self:ServerAwake()
         end
     end)
 
-    nextQuestion:Connect(function(player, questionsAsked, category)
+    nextQuestion:Connect(function(player, category)
+        local questionsAsked
+        if category == "testCategory" then
+            questionsAsked = testAsked
+        end
         pickRandomQuestion(questionsAsked, category)
     end)
 end

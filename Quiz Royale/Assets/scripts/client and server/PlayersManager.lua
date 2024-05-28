@@ -47,7 +47,6 @@ function self:ClientAwake()
     client.PlayerConnected:Connect(function(player : Player)
         player.CharacterChanged:Connect(function()
             player.character:Teleport(spawnerPoints["travel"].transform.position, function() end)
-            print("Player " .. player.name .. " spawned in " .. tostring(spawnerPoints["travel"]))
         end)
     end)
 end

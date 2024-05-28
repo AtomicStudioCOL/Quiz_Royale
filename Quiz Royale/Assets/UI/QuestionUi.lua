@@ -94,7 +94,6 @@ local barista : GameObject
 local chosenAnswer = nil
 
 local currentCategory : string
-local currentDifficulty : string = "easy"
 
 local isButtonSelected = false
 local timerStarted = false
@@ -107,7 +106,6 @@ local howLongToAnser : number
 local difficultyMaxPoints = 2000
 
 local randomizedAnswers
-local questionsAsked = {}
 local questionTimer : Timer
 local originalQuestionTimeValue = 15
 local questionTimeValue = originalQuestionTimeValue
@@ -140,16 +138,8 @@ function welcomePlayer(category)
     end
 
     barista:SetActive(true)
-
-    Timer.new(totalWaitTime, function()
-        if gameManager.tableLenght(questionsAsked ) == 5 then
-            currentDifficulty = "normal"
-        elseif gameManager.tableLenght(questionsAsked) == 10 then
-            currentDifficulty = "hard"
-        end
-    end, false)
 end
-
+        
 function preQuestionDialogue(question)
     barista:SetActive(true)
 
@@ -164,8 +154,6 @@ function preQuestionDialogue(question)
 end
 
 function setQuestionLabelsText(question)
-    print("setting question labels")
-
     dialogueLabel:ClearClassList()
     dialogueLabel:AddToClassList("inactive")
 
@@ -226,13 +214,6 @@ function changeClassButtons(ClassButton, LabelButton, NameButton)
     ClassButton:AddToClassList("unChosen")
     ClassButton:Add(LabelButton)
 end
---[[
-     function FeedbackactiveAnswerButtons(button)
-     deactivateAnswersButtons()
-     button:AddToClassList("feedback")
-     button:RemoveFromClassList("unChosen")
- end
---]]
 
 function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOption : string)                 -- Empties the callbacks
     if isButtonSelected == true then return end
@@ -265,30 +246,6 @@ function setTimerLabel()
         questionTimeValue = originalQuestionTimeValue
         questionTimer:Stop()
         timerStarted = false
-
-        local numberOfQuestionsAsked = gameManager.tableLenght(questionsAsked)
-
-        if numberOfQuestionsAsked < 15 then
-            ---[[
-            Timer.After(1, function()
-                 gameManager.nextQuestion:FireServer(questionsAsked, currentCategory)
-            end)
-            --]]
-        else
-            for difficultyK, difficultyV in questionPool[currentCategory] do
-                for questionK, questionV in difficultyV do
-                    questionV.asked = false
-                end
-            end
-            for k, v in questionsAsked do
-                questionsAsked[k] = nil
-            end
-
-            gameManager.scorePlayer[namePlayer] = 0
-            difficultyMaxPoints = 2000
-            disable()
-        end
-        
     end
 end
 
@@ -309,15 +266,11 @@ function hideAnswersButtons()                        -- removes the buttons from
     dLabel:SetPrelocalizedText("", false)
 
     if chosenAnswer ~= nil then
-        print(`chonen answer is {chosenAnswer.txt} and it is {chosenAnswer.truthValue}`)
-
         questionLabel:SetPrelocalizedText(tostring(chosenAnswer.truthValue), false)
         if chosenAnswer.truthValue == true then
             gameManager.scorePlayer[namePlayer] += difficultyMaxPoints - (difficultyMaxPoints / 100 * howLongToAnser)
         end
     else
-        print(`chonen answer is nil`)
-
         questionLabel:SetPrelocalizedText("False", false)
     end
 
@@ -341,6 +294,10 @@ client.PlayerConnected:Connect(function()
 
     gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
+    end)
+
+    gameManager.finishGame:Connect(function()
+        disable()
     end)
 
     disable()
