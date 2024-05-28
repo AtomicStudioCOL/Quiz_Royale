@@ -21,6 +21,8 @@ local travelButton = UIButton.new()
 
 -- variables --
 local gameManager = nil
+local scoreLocalPlayer = 0
+local namePlayer = client.localPlayer.name
 
 -- set tex ts --
 titleLabel:SetPrelocalizedText("Quiz Royale", true)
@@ -34,14 +36,21 @@ local function disable()
 end
 
 function changePlayerRoom(destination : Vector3)
-    client.localPlayer.character:Teleport(destination, function() end)
+    client.localPlayer.character:Teleport(destination, function()  end)
 end
 
 -- buttons logic --
 function ActiveButton()
     -- Teleport Travel
     travelButton:RegisterPressCallback(function()
-        gameManager.changeRoomServer:FireServer("travel")
+
+        --[[
+        print("Testing Call for server_".. tostring(gameManager.scorePlayer[namePlayer]))
+        
+        gameManager.scorePlayer[namePlayer] = scoreLocalPlayer - 1;
+        --]]
+
+        gameManager.changeRoomServer:FireServer("travel")        
         disable()
     end)
     travelLabel:Add(travelButton)
@@ -62,6 +71,16 @@ end
 ActiveButton()
 
 client.PlayerConnected:Connect(function()
+
     gameManager = gameManagerGo:GetComponent("GameManager")
+
+    --[[
+    -- Set Maxime Point Player
+    gameManager.scorePlayer[namePlayer] = 5;
+
+    scoreLocalPlayer = gameManager.scorePlayer[namePlayer]
+    --]]
+
     disable()
 end)
+

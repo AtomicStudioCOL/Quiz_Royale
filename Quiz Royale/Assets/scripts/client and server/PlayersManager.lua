@@ -35,6 +35,7 @@ function self:ClientAwake()
     tapHandlers["travelQuiz"].Tapped:Connect(function()
         questionsUI.enabled = true
         questionsUI.welcomePlayer("testCategory")
+        gameManager.newPlayerEnteredQuiz:FireServer("travel")
     end)
 
     -- sets other events

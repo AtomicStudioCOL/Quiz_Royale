@@ -11,6 +11,8 @@ local gameManagerGo : GameObject = nil
 -- modules --
 questionPool = require("QuestionPool")
 
+print(`Testing Variables Point Playeres: {gameManagerGo}`)
+
 -- bind labels --
 --!Bind
 local questionLabel : UILabel = nil
@@ -27,14 +29,52 @@ local dLabel : UILabel = nil
 --!Bind
 local dialogueLabel : UILabel = nil
 
+--!Bind
+local firstLabel : UILabel = nil
+--!Bind
+local secondLabel : UILabel = nil
+--!Bind
+local thirdLabel : UILabel = nil
+--!Bind
+local fourthLabel : UILabel = nil
+--!Bind
+local fifthLabel : UILabel = nil
+--!Bind
+local sixthLabel : UILabel = nil
+--!Bind
+local seventhLabel : UILabel = nil
+--!Bind
+local eighthLabel : UILabel = nil
+
+-- Binding buttons --
+--!Bind
+local aButton : UIButton = nil
+--!Bind
+local bButton : UIButton = nil
+--!Bind
+local cButton : UIButton = nil
+--!Bind
+local dButton : UIButton = nil
+--!Bind
+local quitButton : UIButton = nil
+
 -- Eptying Items --
-questionLabel:SetPrelocalizedText(" ", false)
-timerLabel:SetPrelocalizedText(" ", false)
 aLabel:SetPrelocalizedText(" ", false)
 bLabel:SetPrelocalizedText(" ", false)
 cLabel:SetPrelocalizedText(" ", false)
 dLabel:SetPrelocalizedText(" ", false)
 dialogueLabel:SetPrelocalizedText(" ", false)
+questionLabel:SetPrelocalizedText(" ", false)
+timerLabel:SetPrelocalizedText(" ", false)
+
+firstLabel:SetPrelocalizedText(" ", false)
+secondLabel:SetPrelocalizedText(" ", false)
+thirdLabel:SetPrelocalizedText(" ", false)
+fourthLabel:SetPrelocalizedText(" ", false)
+fifthLabel:SetPrelocalizedText(" ", false)
+sixthLabel:SetPrelocalizedText(" ", false)
+seventhLabel:SetPrelocalizedText(" ", false)
+eighthLabel:SetPrelocalizedText(" ", false)
 
 questionLabel:AddToClassList("inactive")
 timerLabel:AddToClassList("inactive")
@@ -46,58 +86,35 @@ dialogueLabel:AddToClassList("inactive")
 
 baristaPlaceholder:SetActive(false)
 
--- Binding buttons --
---!Bind
-local aButton : UIButton = nil
---!Bind
-local bButton : UIButton = nil
---!Bind
-local cButton : UIButton = nil
---!Bind
-local dButton : UIButton = nil
+
 
 -- variables --
-local thisObject = self
-
 local barista : GameObject
 
 local chosenAnswer = nil
 
+local currentCategory : string
+local currentDifficulty : string = "easy"
+
+local isButtonSelected = false
+local timerStarted = false
+
+local gameManager = nil
+
+local namePlayer = client.localPlayer.name
+local scoreLocalPlayer = 0
+local howLongToAnser : number
+local difficultyMaxPoints = 2000
+
+local randomizedAnswers
 local questionsAsked = {}
 local questionTimer : Timer
 local originalQuestionTimeValue = 15
 local questionTimeValue = originalQuestionTimeValue
 
-local currentCategory : string
-local currentDifficulty : string = "easy"
-
 -- functions --
 local function disable()
     self.enabled = false
-end
-
-function tableLenght(table)
-    local lenght = 0
-	for k, v in pairs(table) do
-		lenght += 1
-	end
-	return lenght
-end
-
-function shuffleAnswers(answers)
-    local shuffled = {a = nil, b = nil, c = nil, d = nil}
-
-    local optionsToAssign = 4
-
-    local array = {"a", "b", "c", "d"}
-
-    for k, v in pairs(answers) do
-        local randomNumber = math.random(1, tableLenght(array))
-
-        shuffled[k] = answers[table.remove(array, randomNumber)]
-    end
-
-    return shuffled
 end
 
 function welcomePlayer(category)
@@ -115,6 +132,9 @@ function welcomePlayer(category)
             dialogueLabel:SetPrelocalizedText("I'm PLACEHOLDER, your barista, and in today's entretainment menu...!", false)
             Timer.After(2, function()
                 dialogueLabel:SetPrelocalizedText("We have test questions!", false)
+                Timer.After(2, function()
+                    dialogueLabel:SetPrelocalizedText("Currently waiting for players.", false)
+                end)
             end)
         end)
     end
@@ -122,44 +142,12 @@ function welcomePlayer(category)
     barista:SetActive(true)
 
     Timer.new(totalWaitTime, function()
-        if tableLenght(questionsAsked ) == 5 then
+        if gameManager.tableLenght(questionsAsked ) == 5 then
             currentDifficulty = "normal"
-        elseif tableLenght(questionsAsked) == 10 then
+        elseif gameManager.tableLenght(questionsAsked) == 10 then
             currentDifficulty = "hard"
         end
-
-        pickRandomQuestion(questionPool[currentCategory][currentDifficulty])
     end, false)
-end
-
-function pickRandomQuestion(categoryDifficulty)
-    print("picking question")
-
-    local numberOfQuestions = tableLenght(categoryDifficulty)
-    local pickedQuestion = nil
-
-    for k, v in pairs(categoryDifficulty) do
-        if v.asked == true then
-            numberOfQuestions -=1
-            if numberOfQuestions < 1 and pickedQuestion == nil then
-                pickRandomQuestion(categoryDifficulty)
-                return
-            end
-            continue
-        end
-
-        if pickedQuestion ~= nil then return end
-
-        randomNumber = math.random(1, numberOfQuestions)
-        if randomNumber == 1 then
-            v.asked = true
-            pickedQuestion = v
-            questionsAsked[k] = v
-            print(`Picked quesion is: {pickedQuestion.questionTxt}`)
-            preQuestionDialogue(pickedQuestion)
-        end
-        numberOfQuestions -= 1
-    end
 end
 
 function preQuestionDialogue(question)
@@ -195,7 +183,8 @@ function setQuestionLabelsText(question)
     -- set question label
     questionLabel:SetPrelocalizedText(question.questionTxt, false)
 
-    local randomizedAnswers = shuffleAnswers(answers)
+    randomizedAnswers = nil
+    randomizedAnswers = gameManager.shuffleAnswers(answers)
 
 ---[[
     aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
@@ -203,70 +192,68 @@ function setQuestionLabelsText(question)
     cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
     dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
     
-    activeAnswerButtons(randomizedAnswers)
+    activeAnswerButtons()
 --]]
 end
 
-function activeAnswerButtons(answers)               -- Assigns the callbacks and adds the buttons to the hierarchy
-    print("activating buttons")
+function activeAnswerButtons()               -- Assigns the callbacks and adds the buttons to the hierarchy
+    if timerStarted == true then return end
+    timerStarted = true
     chosenAnswer = nil
+    isButtonSelected = false
 
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
-    timerLabel:SetEmojiPrelocalizedText(questionTimeValue, false)
     
-    aButton:RegisterPressCallback(function()
-        chosenAnswer = answers.a
-        deactivateAnswersButtons()
-    end)
-    aButton:ClearClassList()
-    aButton:AddToClassList("a")
-    aButton:AddToClassList("unChosen")
-    aButton:Add(aLabel)
 
-    bButton:RegisterPressCallback(function()
-        chosenAnswer = answers.b
-        deactivateAnswersButtons()
-    end)
-    bButton:ClearClassList()
-    bButton:AddToClassList("b")
-    bButton:AddToClassList("unChosen")
-    bButton:Add(bLabel)
+    timerLabel:SetPrelocalizedText(questionTimeValue, false)
+    
+    aButton:RegisterPressCallback(function() deactivateAnswersButtons(aButton, questionTimeValue, "a") end)
+    changeClassButtons(aButton, aLabel, "a")
+    
+    bButton:RegisterPressCallback(function() deactivateAnswersButtons(bButton, questionTimeValue, "b") end)
+    changeClassButtons(bButton, bLabel, "b")
 
-    cButton:RegisterPressCallback(function()
-        chosenAnswer = answers.c
-        deactivateAnswersButtons()
-    end)
-    cButton:ClearClassList()
-    cButton:AddToClassList("c")
-    cButton:AddToClassList("unChosen")
-    cButton:Add(cLabel)
+    cButton:RegisterPressCallback(function() deactivateAnswersButtons(cButton, questionTimeValue, "c") end)
+    changeClassButtons(cButton, cLabel, "c")
 
-    dButton:RegisterPressCallback(function()
-        chosenAnswer = answers.d
-        deactivateAnswersButtons()
-   end)
-    dButton:ClearClassList()
-    dButton:AddToClassList("d")
-    dButton:AddToClassList("unChosen")
-    dButton:Add(dLabel)
+    dButton:RegisterPressCallback(function() deactivateAnswersButtons(dButton, questionTimeValue, "d") end)
+    changeClassButtons(dButton, dLabel, "d")    
 end
 
-function deactivateAnswersButtons()                 -- Empties the callbacks
-    aButton:RegisterPressCallback()
+function changeClassButtons(ClassButton, LabelButton, NameButton)
+    ClassButton:ClearClassList()
+    ClassButton:AddToClassList(NameButton)
+    ClassButton:AddToClassList("unChosen")
+    ClassButton:Add(LabelButton)
+end
+--[[
+     function FeedbackactiveAnswerButtons(button)
+     deactivateAnswersButtons()
+     button:AddToClassList("feedback")
+     button:RemoveFromClassList("unChosen")
+ end
+--]]
+
+function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOption : string)                 -- Empties the callbacks
+    if isButtonSelected == true then return end
+    isButtonSelected = true
+
     aButton:AddToClassList("chosen")
     aButton:RemoveFromClassList("unChosen")
 
-    bButton:RegisterPressCallback()
     bButton:AddToClassList("chosen")
     bButton:RemoveFromClassList("unChosen")
     
-    cButton:RegisterPressCallback()
     cButton:AddToClassList("chosen")
     cButton:RemoveFromClassList("unChosen")
 
-    dButton:RegisterPressCallback()
     dButton:AddToClassList("chosen")
     dButton:RemoveFromClassList("unChosen")
+
+    howLongToAnser = originalQuestionTimeValue - timeLeft
+    chosenAnswer = randomizedAnswers[chosenOption]
+
+    chosenButton:AddToClassList("feedback")
 end
 
 function setTimerLabel()
@@ -277,23 +264,17 @@ function setTimerLabel()
         hideAnswersButtons()
         questionTimeValue = originalQuestionTimeValue
         questionTimer:Stop()
+        timerStarted = false
 
-        local numberOfQuestionsAsked = tableLenght(questionsAsked)
-
-        print(`{numberOfQuestionsAsked}`)
+        local numberOfQuestionsAsked = gameManager.tableLenght(questionsAsked)
 
         if numberOfQuestionsAsked < 15 then
-            if numberOfQuestionsAsked == 5 then
-                currentDifficulty = "normal"
-            elseif numberOfQuestionsAsked == 10 then
-                currentDifficulty = "hard"
-            end
+            ---[[
             Timer.After(1, function()
-                pickRandomQuestion(questionPool[currentCategory][currentDifficulty])
+                 gameManager.nextQuestion:FireServer(questionsAsked, currentCategory)
             end)
+            --]]
         else
-            currentDifficulty = "easy"
-
             for difficultyK, difficultyV in questionPool[currentCategory] do
                 for questionK, questionV in difficultyV do
                     questionV.asked = false
@@ -303,6 +284,8 @@ function setTimerLabel()
                 questionsAsked[k] = nil
             end
 
+            gameManager.scorePlayer[namePlayer] = 0
+            difficultyMaxPoints = 2000
             disable()
         end
         
@@ -326,14 +309,39 @@ function hideAnswersButtons()                        -- removes the buttons from
     dLabel:SetPrelocalizedText("", false)
 
     if chosenAnswer ~= nil then
+        print(`chonen answer is {chosenAnswer.txt} and it is {chosenAnswer.truthValue}`)
+
         questionLabel:SetPrelocalizedText(tostring(chosenAnswer.truthValue), false)
+        if chosenAnswer.truthValue == true then
+            gameManager.scorePlayer[namePlayer] += difficultyMaxPoints - (difficultyMaxPoints / 100 * howLongToAnser)
+        end
     else
+        print(`chonen answer is nil`)
+
         questionLabel:SetPrelocalizedText("False", false)
     end
+
+    firstLabel:SetPrelocalizedText(`{namePlayer}: {tostring(gameManager.scorePlayer[namePlayer])}`, false)
 end
 
 -- events
+
+quitButton:RegisterPressCallback(function()
+    gameManager.playersInTravelQ[client.localPlayer.name] = nil
+
+    barista:SetActive(false)
+    disable()
+end)
+
 client.PlayerConnected:Connect(function()
-    gameManager = gameManagerGo:GetComponent("QuestionPool")
+    gameManager = gameManagerGo:GetComponent("GameManager")
+
+    gameManager.scorePlayer[namePlayer] = 0;
+    scoreLocalPlayer = gameManager.scorePlayer[namePlayer]
+
+    gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
+        preQuestionDialogue(pickedQuestion)
+    end)
+
     disable()
 end)
