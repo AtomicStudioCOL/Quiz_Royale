@@ -123,12 +123,10 @@ function updateLeaderboards(tableOfPlayers)
     for i, v in ipairs(scoresClone) do
         if v[2] > biggestNum then
             biggestNum = v[2]
-            print(`biggest: {smallestNum}`)
             table.insert(scores, 1, v)
             iSort += 1
         elseif v[2] < smallestNum then
             smallestNum = v[2]
-            print(`smallest: {smallestNum}`)
             table.insert(scores, #scores + 1, v)
         else
             table.insert(scores, iSort, v)
@@ -141,22 +139,8 @@ function updateLeaderboards(tableOfPlayers)
     for i, v in ipairs(scoresClone) do
         table.remove(scores, i)
         table.insert(scores, i, `{i}. {v[1]}'s score: {v[2]}`)
+        print(`{i}. {v[1]}'s score: {v[2]}`)
     end
-
-    --[[
-    for j = 1, tableL do
-        local playerName
-        for k, player in tableCopy do
-            if scorePlayer[player.name] >= biggestNum then
-                biggestNum = scorePlayer[player.name]
-                playerName = player.name
-                tableCopy[player.name] = nil
-                break
-            end
-        end
-        scores[j] = `{playerName}: {biggestNum}`
-    end
-    --]]
 
     for k, player in pairs(tableOfPlayers) do
         updateScoreEvent:FireClient(player, scores)
@@ -170,7 +154,7 @@ function pickRandomQuestion(questionsAsked, category)
     local pickedQuestion = nil
     local diff
     
-    if category == "testCategory" then
+    if category == "travel" then
         tableOfPlayers = playersInTravelQ
     end
     
@@ -189,8 +173,6 @@ function pickRandomQuestion(questionsAsked, category)
         end
         return
     end
-
-    print(`{numberAsked}`)
 
     local numberOfQuestions = tableLenght(categoryDifficulty)
 
@@ -212,7 +194,7 @@ function pickRandomQuestion(questionsAsked, category)
 
     Timer.After(19, function()
         updateLeaderboards(tableOfPlayers)
-        Timer.After(3, function()
+        Timer.After(2, function()
             pickRandomQuestion(questionsAsked, category)
         end)
     end)
@@ -252,7 +234,7 @@ function self:ServerAwake()
             scorePlayer[player.name] = 0
             if tableLenght(playersInTravelQ) > 1 and not travelQuizStarted then
                 travelQuizStarted = true
-                Timer.After(9, function() pickRandomQuestion(testAsked, "testCategory") end)
+                Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
         elseif quiz == "kpop" then
             playersInKpopQ[player.name] = player
@@ -269,6 +251,8 @@ function self:ServerAwake()
         local questionsAsked
         if category == "testCategory" then
             questionsAsked = testAsked
+        elseif category == "travel" then
+            questionsAsked = travelQAsked
         end
         pickRandomQuestion(questionsAsked, category)
     end)

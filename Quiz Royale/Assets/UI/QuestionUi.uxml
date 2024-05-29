@@ -16,6 +16,11 @@
     <!-- Quit button -->
     <hr:UIButton name="quitButton" class="quitButton"/>
 
+    <!-- lives elements -->
+    <hr:UIButton name="life1" class="life1"/>
+    <hr:UIButton name="life2" class="life2"/>
+    <hr:UIButton name="life3" class="life3"/>
+
     <!-- leaderboards labels -->
     <hr:UIView name="leaderBoards" class="leaderBoards" picking-mode="Ignore">
       <hr:UILabel name="firstLabel" picking-mode="Ignore"></hr:UILabel>

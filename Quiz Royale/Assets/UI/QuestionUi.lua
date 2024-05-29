@@ -46,6 +46,14 @@ local seventhLabel : UILabel = nil
 --!Bind
 local eighthLabel : UILabel = nil
 
+-- lives --
+--!Bind
+local life1 : UIButton = nil
+--!Bind
+local life2 : UIButton = nil
+--!Bind
+local life3 : UIButton = nil
+
 -- Binding buttons --
 --!Bind
 local aButton : UIButton = nil
@@ -86,8 +94,6 @@ dialogueLabel:AddToClassList("inactive")
 
 baristaPlaceholder:SetActive(false)
 
-
-
 -- variables --
 local barista : GameObject
 
@@ -100,10 +106,10 @@ local timerStarted = false
 
 local gameManager = nil
 
+local localScoreTable = {}
 local namePlayer = client.localPlayer.name
-local scoreLocalPlayer = 0
 local howLongToAnser : number
-local difficultyMaxPoints = 2000
+local lives = 3
 
 local randomizedAnswers
 local questionTimer : Timer
@@ -117,9 +123,14 @@ end
 
 function welcomePlayer(category)
     local totalWaitTime
+    life1:AddToClassList("life1")
+    life2:AddToClassList("life2")
+    life3:AddToClassList("life3")
+    lives = 3
+
     currentCategory = category
 
-    if questionPool[currentCategory] == questionPool.testCategory then
+    if questionPool[currentCategory] == questionPool.travel then
         totalWaitTime = 6
 
         barista = baristaPlaceholder
@@ -127,9 +138,9 @@ function welcomePlayer(category)
 
         dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
         Timer.After(2, function()
-            dialogueLabel:SetPrelocalizedText("I'm PLACEHOLDER, your barista, and in today's entretainment menu...!", false)
+            dialogueLabel:SetPrelocalizedText("I'm Hugo, your barista. Nice to meet you!", false)
             Timer.After(2, function()
-                dialogueLabel:SetPrelocalizedText("We have test questions!", false)
+                dialogueLabel:SetPrelocalizedText("Let's talk about places around the world!", false)
                 Timer.After(2, function()
                     dialogueLabel:SetPrelocalizedText("Currently waiting for players.", false)
                 end)
@@ -141,6 +152,8 @@ function welcomePlayer(category)
 end
         
 function preQuestionDialogue(question)
+    if lives == 0 then return end
+
     barista:SetActive(true)
 
     dialogueLabel:ClearClassList()
@@ -148,7 +161,6 @@ function preQuestionDialogue(question)
     dialogueLabel:SetPrelocalizedText(question.baristDialoge, false)
 
     Timer.After(3, function()
-
         setQuestionLabelsText(question)
     end)
 end
@@ -185,6 +197,7 @@ function setQuestionLabelsText(question)
 end
 
 function setLeaderboards(scoreTable)
+    localScoreTable = scoreTable
     for i, value in pairs(scoreTable) do
         if i == 1 then
             firstLabel:AddToClassList("active")            
@@ -296,12 +309,61 @@ function hideAnswersButtons()                        -- removes the buttons from
     dLabel:SetPrelocalizedText("", false)
 
     if chosenAnswer ~= nil then
-        questionLabel:SetPrelocalizedText(tostring(chosenAnswer.truthValue), false)
         if chosenAnswer.truthValue == true then
+            questionLabel:SetPrelocalizedText("Correct!", false)
             gameManager.saveScorePlayer:FireServer(howLongToAnser)
+        else
+            questionLabel:SetPrelocalizedText("Wrong!", false)
+            removeLife()
         end
     else
-        questionLabel:SetPrelocalizedText("False", false)
+        questionLabel:SetPrelocalizedText("Wrong!", false)
+        removeLife()
+    end
+end
+
+function removeLife()
+    lives -= 1
+    if lives == 2 then
+        life3:RemoveFromClassList("life3")
+        life3:AddToClassList("inactive")
+    elseif lives == 1 then
+        life2:RemoveFromClassList("life2")
+        life2:AddToClassList("inactive")
+    elseif lives == 0 then
+        life1:RemoveFromClassList("life1")
+        life1:AddToClassList("inactive")
+        finalScreen()
+    end
+end
+
+function finalScreen()
+    barista:SetActive(true)
+
+    dialogueLabel:ClearClassList()
+    dialogueLabel:AddToClassList("dialogue")
+
+    if lives > 0 then
+        dialogueLabel:SetPrelocalizedText(`That was all for now. Top three players are:`, false)
+        Timer.After(3, function()
+            dialogueLabel:SetPrelocalizedText(`3: {localScoreTable[3]}.`, false)
+            Timer.After(2, function()
+                dialogueLabel:SetPrelocalizedText(`2: {localScoreTable[2]}.`, false)
+                Timer.After(2, function()
+                    dialogueLabel:SetPrelocalizedText(`1: {localScoreTable[1]}.`, false)
+                    Timer.After(2, function()
+                        disable()
+                        barista:SetActive(false)
+                    end)
+                end)
+            end)
+        end)
+    else
+        dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
+        Timer.After(4, function()
+            disable()
+            barista:SetActive(false)
+        end)
     end
 end
 
@@ -318,19 +380,17 @@ client.PlayerConnected:Connect(function()
     gameManager = gameManagerGo:GetComponent("GameManager")
 
     gameManager.scorePlayer[namePlayer] = 0;
-    scoreLocalPlayer = gameManager.scorePlayer[namePlayer]
 
     gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
     end)
 
     gameManager.updateScoreEvent:Connect(function(scoreTable)
-        print(`update score event connected to client`)
         setLeaderboards(scoreTable)
     end)
 
     gameManager.finishGame:Connect(function()
-        disable()
+        finalScreen()
     end)
 
     disable()
