@@ -47,6 +47,9 @@
     border-width: 3px;
     border-color: rgb(70, 0, 20);
     border-radius: 10px;
+
+    white-space: normal;
+    -unity-text-overflow-position: left;
 }
 
 .inactive{

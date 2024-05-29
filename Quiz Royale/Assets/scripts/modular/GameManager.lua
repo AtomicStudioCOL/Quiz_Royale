@@ -46,6 +46,8 @@ travelQAsked = {}
 kpopQAsked = {}
 catQAsked = {}
 
+travelQuizStarted = false
+
 -- events --
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
@@ -55,6 +57,7 @@ newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
 nextQuestion = Event.new("nextQuestion")
 replicateChosenQuestion = Event.new("replicateRandomQuestion")
 saveScorePlayer = Event.new("saveScorePlayer")
+updateScoreEvent = Event.new("updateScoreEvent")
 
 -- local variables --
 
@@ -93,6 +96,43 @@ function shuffleAnswers(answers)
     end
 
     return shuffled
+end
+
+function updateScore(player, howLongToAnswer)
+    scorePlayer[player.name] += 2000 - (2000 / 100 * howLongToAnswer)
+end
+
+function updateLeaderboards(tableOfPlayers)
+    local tableCopy = table.clone(tableOfPlayers)
+    local scores = {}
+    local biggerNum = 0
+    local tableL = tableLenght(tableCopy)
+
+    for k, player in tableCopy do
+        print(`{player.name}'s score: {scorePlayer[player.name]}`)
+    end
+
+    ---[[
+    for j = 1, tableL do
+        for k, player in tableCopy do
+            if scorePlayer[player.name] > biggerNum then
+                biggerNum = scorePlayer[player.name]
+                tableCopy[player.name] = nil
+            end
+            print(`{k}`)
+            break
+        end
+        print(`{biggerNum}`)
+        scores[j] = biggerNum
+    end
+
+    for i, v in ipairs(scores) do
+        print(`score{i}: {v}`)
+    end
+
+    for k, player in pairs(tableOfPlayers) do
+        updateScoreEvent:FireClient(player, scores)
+    end
 end
 
 function pickRandomQuestion(questionsAsked, category)
@@ -142,8 +182,11 @@ function pickRandomQuestion(questionsAsked, category)
         replicateChosenQuestion:FireClient(player, pickedQuestion)
     end
 
-    Timer.After(20, function()
-        pickRandomQuestion(questionsAsked, category)
+    Timer.After(19, function()
+        updateLeaderboards(tableOfPlayers)
+        Timer.After(3, function()
+            pickRandomQuestion(questionsAsked, category)
+        end)
     end)
 end
 
@@ -178,14 +221,20 @@ function self:ServerAwake()
     newPlayerEnteredQuiz:Connect(function(player : Player, quiz : string)
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
-            if tableLenght(playersInTravelQ) > 1 then
-                Timer.After(6, function() pickRandomQuestion(testAsked, "testCategory") end)
+            scorePlayer[player.name] = 0
+            if tableLenght(playersInTravelQ) > 1 and not travelQuizStarted then
+                travelQuizStarted = true
+                Timer.After(9, function() pickRandomQuestion(testAsked, "testCategory") end)
             end
         elseif quiz == "kpop" then
             playersInKpopQ[player.name] = player
         elseif quiz == "cat" then
             playersInCatQ[player.name] = player
         end
+    end)
+
+    saveScorePlayer:Connect(function(player : Player, howLongToAnswer)
+        updateScore(player, howLongToAnswer)
     end)
 
     nextQuestion:Connect(function(player, category)

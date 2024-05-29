@@ -184,6 +184,13 @@ function setQuestionLabelsText(question)
 --]]
 end
 
+function setLeaderboards(scoreTable)
+    print(`{scoreTable}`)
+    for i, value in pairs(scoreTable) do
+        print(`Leaderboards from client: i: {i}, v: {value}`)
+    end
+end
+
 function activeAnswerButtons()               -- Assigns the callbacks and adds the buttons to the hierarchy
     if timerStarted == true then return end
     timerStarted = true
@@ -268,13 +275,14 @@ function hideAnswersButtons()                        -- removes the buttons from
     if chosenAnswer ~= nil then
         questionLabel:SetPrelocalizedText(tostring(chosenAnswer.truthValue), false)
         if chosenAnswer.truthValue == true then
-            gameManager.scorePlayer[namePlayer] += difficultyMaxPoints - (difficultyMaxPoints / 100 * howLongToAnser)
+            gameManager.saveScorePlayer:FireServer(howLongToAnser)
         end
     else
         questionLabel:SetPrelocalizedText("False", false)
     end
 
-    firstLabel:SetPrelocalizedText(`{namePlayer}: {tostring(gameManager.scorePlayer[namePlayer])}`, false)
+    -- firstLabel:SetPrelocalizedText(`{namePlayer}: {tostring(gameManager.scorePlayer[namePlayer])}`, false)
+    -- firstLabel:AddToClassList("active")
 end
 
 -- events
@@ -294,6 +302,11 @@ client.PlayerConnected:Connect(function()
 
     gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
+    end)
+
+    gameManager.updateScoreEvent:Connect(function(scoreTable)
+        print(`update score event connected to client`)
+        setLeaderboards(scoreTable)
     end)
 
     gameManager.finishGame:Connect(function()
