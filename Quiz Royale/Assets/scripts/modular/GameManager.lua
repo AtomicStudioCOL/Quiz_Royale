@@ -105,30 +105,58 @@ end
 function updateLeaderboards(tableOfPlayers)
     local tableCopy = table.clone(tableOfPlayers)
     local scores = {}
-    local biggerNum = 0
+    local biggestNum = 0
+    local smallestNum = math.huge
     local tableL = tableLenght(tableCopy)
+    local iSet = 1
+    local iSort = 1
 
-    for k, player in tableCopy do
-        print(`{player.name}'s score: {scorePlayer[player.name]}`)
+    -- setting scores array
+    for k, player in pairs(tableCopy) do
+        scores[iSet] = {player.name, scorePlayer[player.name]}
+        iSet += 1
     end
 
-    ---[[
-    for j = 1, tableL do
-        for k, player in tableCopy do
-            if scorePlayer[player.name] > biggerNum then
-                biggerNum = scorePlayer[player.name]
-                tableCopy[player.name] = nil
-            end
-            print(`{k}`)
-            break
+    -- sorting scores array
+    local scoresClone = table.clone(scores)
+    table.clear(scores)
+    for i, v in ipairs(scoresClone) do
+        if v[2] > biggestNum then
+            biggestNum = v[2]
+            print(`biggest: {smallestNum}`)
+            table.insert(scores, 1, v)
+            iSort += 1
+        elseif v[2] < smallestNum then
+            smallestNum = v[2]
+            print(`smallest: {smallestNum}`)
+            table.insert(scores, #scores + 1, v)
+        else
+            table.insert(scores, iSort, v)
+            iSort += 1
         end
-        print(`{biggerNum}`)
-        scores[j] = biggerNum
     end
 
-    for i, v in ipairs(scores) do
-        print(`score{i}: {v}`)
+    -- converting values to string
+    scoresClone = table.clone(scores)
+    for i, v in ipairs(scoresClone) do
+        table.remove(scores, i)
+        table.insert(scores, i, `{i}. {v[1]}'s score: {v[2]}`)
     end
+
+    --[[
+    for j = 1, tableL do
+        local playerName
+        for k, player in tableCopy do
+            if scorePlayer[player.name] >= biggestNum then
+                biggestNum = scorePlayer[player.name]
+                playerName = player.name
+                tableCopy[player.name] = nil
+                break
+            end
+        end
+        scores[j] = `{playerName}: {biggestNum}`
+    end
+    --]]
 
     for k, player in pairs(tableOfPlayers) do
         updateScoreEvent:FireClient(player, scores)

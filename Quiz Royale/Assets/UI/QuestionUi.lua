@@ -185,9 +185,32 @@ function setQuestionLabelsText(question)
 end
 
 function setLeaderboards(scoreTable)
-    print(`{scoreTable}`)
     for i, value in pairs(scoreTable) do
-        print(`Leaderboards from client: i: {i}, v: {value}`)
+        if i == 1 then
+            firstLabel:AddToClassList("active")            
+            firstLabel:SetPrelocalizedText(value, false)
+        elseif i == 2 then
+            secondLabel:AddToClassList("active")
+            secondLabel:SetPrelocalizedText(value, false)
+        elseif i == 3 then
+            thirdLabel:AddToClassList("active")
+            thirdLabel:SetPrelocalizedText(value, false)
+        elseif i == 4 then
+            fourthLabel:AddToClassList("active")
+            fourthLabel:SetPrelocalizedText(value, false)
+        elseif i == 5 then
+            fifthLabel:AddToClassList("active")
+            fifthLabel:SetPrelocalizedText(value, false)
+        elseif i== 6 then
+            sixthLabel:AddToClassList("active")
+            sixthLabel:SetPrelocalizedText(value, false)
+        elseif i == 7 then
+            seventhLabel:AddToClassList("active")
+            seventhLabel:SetPrelocalizedText(value, false)
+        elseif i == 8 then
+            eighthLabel:AddToClassList("active")
+            eighthLabel:SetPrelocalizedText(value, false)
+        end
     end
 end
 
@@ -280,9 +303,6 @@ function hideAnswersButtons()                        -- removes the buttons from
     else
         questionLabel:SetPrelocalizedText("False", false)
     end
-
-    -- firstLabel:SetPrelocalizedText(`{namePlayer}: {tostring(gameManager.scorePlayer[namePlayer])}`, false)
-    -- firstLabel:AddToClassList("active")
 end
 
 -- events
