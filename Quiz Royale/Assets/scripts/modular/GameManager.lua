@@ -25,7 +25,21 @@ local catCoffeTapH : TapHandler = nil
 -- Select Portal 
 --!Header("Activate Quizz Tap Handlers")
 --!SerializeField
-local travelQuizTapH : TapHandler = nil
+local travelQuizTapH1 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH2 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH3 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH4 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH5 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH6 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH7 : TapHandler = nil
+--!SerializeField
+local travelQuizTapH8 : TapHandler = nil
 --!SerializeField
 local catCoffeQuizTapH : TapHandler = nil
 
@@ -213,8 +227,8 @@ function self:ClientAwake()
     tapHandlers["catCoffe"] = catCoffeTapH
 
     -- tap handlers Quizz
-    tapHandlers["travelQuiz"] = travelQuizTapH
-    tapHandlers["catCoffeQuiz"] = travelQuizTapH
+    tapHandlers["travelQuiz"] = {travelQuizTapH1, travelQuizTapH2, travelQuizTapH3, travelQuizTapH4, travelQuizTapH5, travelQuizTapH6, travelQuizTapH7, travelQuizTapH8}
+    tapHandlers["catCoffeQuiz"] = catCoffeQuizTapH
 
     -- setting other managers and scripts
     uiManager = uiManagerGo

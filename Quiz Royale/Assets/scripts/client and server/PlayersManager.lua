@@ -32,11 +32,20 @@ function self:ClientAwake()
         roomsUi.enabled = true
     end)
 
+    for i, v in pairs(tapHandlers["travelQuiz"]) do
+        v.Tapped:Connect(function()
+            questionsUI.enabled = true
+            questionsUI.welcomePlayer("travel")
+            gameManager.newPlayerEnteredQuiz:FireServer("travel")
+        end)
+    end
+    --[[
     tapHandlers["travelQuiz"].Tapped:Connect(function()
         questionsUI.enabled = true
         questionsUI.welcomePlayer("travel")
         gameManager.newPlayerEnteredQuiz:FireServer("travel")
     end)
+    --]]
 
     -- sets other events
     gameManager.changeRoomClient:Connect(function(player : Player, destination : string)
