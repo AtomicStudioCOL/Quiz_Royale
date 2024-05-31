@@ -109,8 +109,36 @@
     -unity-text-overflow-position: middle;
 }
 
+.questionLabel{
+    background-color: rgba(243, 202, 93, .8);
+
+    width: 50%;
+    height: 20%;
+
+    left: 33%;
+
+    border-width: 3px;
+    border-color: rgb(30, 0, 50);
+    border-radius: 10px;
+}
+
+.timerLabel{
+    position: absolute;
+    background-color: rgba(230, 190, 93, .8);
+
+    width: 50px;
+    height: 50px;
+
+    left: 25.5%;
+    top: 2%;
+
+    border-width: 3px;
+    border-color: rgb(30, 0, 50);
+    border-radius: 10px;
+}
+
 .unChosen {
-    background-color: rgba(150, 0, 200, .5);
+    background-color: rgba(190, 100, 220, .5);
 
     height: 25%;
     width: 30%;

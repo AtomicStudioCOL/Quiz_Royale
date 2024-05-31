@@ -41,7 +41,21 @@ local travelQuizTapH7 : TapHandler = nil
 --!SerializeField
 local travelQuizTapH8 : TapHandler = nil
 --!SerializeField
-local catCoffeQuizTapH : TapHandler = nil
+local catQuizTapH1 : TapHandler = nil
+--!SerializeField
+local catQuizTapH2 : TapHandler = nil
+--!SerializeField
+local catQuizTapH3 : TapHandler = nil
+--!SerializeField
+local catQuizTapH4 : TapHandler = nil
+--!SerializeField
+local catQuizTapH5 : TapHandler = nil
+--!SerializeField
+local catQuizTapH6 : TapHandler = nil
+--!SerializeField
+local catQuizTapH7 : TapHandler = nil
+--!SerializeField
+local catQuizTapH8 : TapHandler = nil
 
 -- global variables --
 playersInGame = {}
@@ -219,16 +233,16 @@ function self:ClientAwake()
     -- setting spawner points
     spawnerPoints["travel"] = travelSpawner
     spawnerPoints["kpop"] = kpopSpawner
-    spawnerPoints["catCoffe"] = catCoffeSpawner
+    spawnerPoints["cat"] = catCoffeSpawner
 
     -- setting tap handlers
     tapHandlers["travel"] = travelTapH
     tapHandlers["kpop"] = kpopTapH
-    tapHandlers["catCoffe"] = catCoffeTapH
+    tapHandlers["cat"] = catCoffeTapH
 
     -- tap handlers Quizz
     tapHandlers["travelQuiz"] = {travelQuizTapH1, travelQuizTapH2, travelQuizTapH3, travelQuizTapH4, travelQuizTapH5, travelQuizTapH6, travelQuizTapH7, travelQuizTapH8}
-    tapHandlers["catCoffeQuiz"] = catCoffeQuizTapH
+    tapHandlers["catQuizz"] = {catQuizTapH1, catQuizTapH2, catQuizTapH3, catQuizTapH4, catQuizTapH5, catQuizTapH6, catQuizTapH7, catQuizTapH8}
 
     -- setting other managers and scripts
     uiManager = uiManagerGo

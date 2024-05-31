@@ -10,14 +10,17 @@ local titleLabel : UILabel = nil
 --!Bind
 local travelLabel : UILabel = nil
 --!Bind
-local catCafeLabel : UILabel = nil
+local catLabel : UILabel = nil
 --!Bind
-local kpopLabel : UILabel = nil
+--local kpopLabel : UILabel = nil
 
--- instantiate buttons --
-local catCafeButton = UIButton.new()
-local kpopButton = UIButton.new()
-local travelButton = UIButton.new()
+-- Bind buttons --
+--!Bind
+local catButton : UIButton = nil
+--!Bind
+local travelButton  : UIButton = nil
+-- --!Bind
+--local kpopButton : UIButton = nil
 
 -- variables --
 local gameManager = nil
@@ -26,9 +29,9 @@ local namePlayer = client.localPlayer.name
 
 -- set tex ts --
 titleLabel:SetPrelocalizedText("Quiz Royale", true)
-travelLabel:SetPrelocalizedText("Travel Café", true)
-catCafeLabel:SetPrelocalizedText("Cat Café", true)
-kpopLabel:SetPrelocalizedText("K-Pop Café", true)
+travelLabel:SetPrelocalizedText("Lobby 1", true)
+catLabel:SetPrelocalizedText("Lobby 2", true)
+--kpopLabel:SetPrelocalizedText("K-Pop Café", true)
 
 -- functions --
 local function disable()
@@ -43,29 +46,24 @@ end
 function ActiveButton()
     -- Teleport Travel
     travelButton:RegisterPressCallback(function()
-
-        --[[
-        print("Testing Call for server_".. tostring(gameManager.scorePlayer[namePlayer]))
-        
-        gameManager.scorePlayer[namePlayer] = scoreLocalPlayer - 1;
-        --]]
-
         gameManager.changeRoomServer:FireServer("travel")        
         disable()
     end)
-    travelLabel:Add(travelButton)
+    travelButton:Add(travelLabel)
     -- teleport CatCoffe
-    catCafeButton:RegisterPressCallback(function()
-        gameManager.changeRoomServer:FireServer("catCoffe")
+    catButton:RegisterPressCallback(function()
+        gameManager.changeRoomServer:FireServer("cat")
         disable()
     end)
-    catCafeLabel:Add(catCafeButton)
+    catButton:Add(catLabel)
     -- Teleport Kpop
+    --[[
     kpopButton:RegisterPressCallback(function()
         gameManager.changeRoomServer:FireServer("kpop")
         disable()
     end)
-    kpopLabel:Add(kpopButton)
+    kpopButton:Add(kpopLabel)
+    --]]
 end
 
 ActiveButton()

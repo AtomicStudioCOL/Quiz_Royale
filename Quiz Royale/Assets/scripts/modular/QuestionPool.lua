@@ -282,7 +282,7 @@ travel = {
             asked = false;
         },
         [9] = {
-            baristDialoge = "I once visited a desert. I missed AC a lot.",
+            baristDialoge = "How many famous landmarks have you visited? I've visited a lot!.",
             questionTxt = "Which famous landmark is located in Rome, Italy?",
             answers = {
                 a = {txt = "Parthenon", truthValue = false},
@@ -293,7 +293,7 @@ travel = {
             asked = false;
         },
         [10] = {
-            baristDialoge = "I once visited a desert. I missed AC a lot.",
+            baristDialoge = "I might love traveling, I've learned a lot of words in different languages!.",
             questionTxt = "What is the primary language spoken in Brazil?",
             answers = {
                 a = {txt = "Spanish", truthValue = false},
@@ -304,7 +304,7 @@ travel = {
             asked = false;
         },
         [11] = {
-            baristDialoge = "I once visited a desert. I missed AC a lot.",
+            baristDialoge = "Someone asked me to add maple syrup to their coffe once.",
             questionTxt = "What is the capital city of Canada?",
             answers = {
                 a = {txt = "Toronto", truthValue = false},

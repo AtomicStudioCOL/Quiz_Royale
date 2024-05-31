@@ -28,7 +28,7 @@ function self:ClientAwake()
         roomsUi.enabled = true
     end)
     
-    tapHandlers["catCoffe"].Tapped:Connect(function()
+    tapHandlers["cat"].Tapped:Connect(function()
         roomsUi.enabled = true
     end)
 
@@ -39,13 +39,14 @@ function self:ClientAwake()
             gameManager.newPlayerEnteredQuiz:FireServer("travel")
         end)
     end
-    --[[
-    tapHandlers["travelQuiz"].Tapped:Connect(function()
-        questionsUI.enabled = true
-        questionsUI.welcomePlayer("travel")
-        gameManager.newPlayerEnteredQuiz:FireServer("travel")
-    end)
-    --]]
+
+    for i, v in pairs(tapHandlers["catQuizz"]) do
+        v.Tapped:Connect(function()
+            questionsUI.enabled = true
+            questionsUI.welcomePlayer("travel")
+            gameManager.newPlayerEnteredQuiz:FireServer("travel")
+        end)
+    end
 
     -- sets other events
     gameManager.changeRoomClient:Connect(function(player : Player, destination : string)

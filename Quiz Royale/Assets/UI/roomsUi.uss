@@ -1,4 +1,18 @@
 .rooms-ui {
+    height: 100%;
+    width: 100%;
     -unity-text-align: middle-center;
     margin-top: auto;
+}
+
+#titleLabel{
+    background-color: rgba(243, 202, 93, .8);
+}
+
+.button{
+    background-color: rgba(243, 202, 93, .8);
+
+    border-width: 3px;
+    border-color: rgb(30, 0, 50);
+    border-radius: 10px;
 }

@@ -8,10 +8,15 @@
 >
 
 <hr:UILuaView class="rooms-ui">
-  <hr:UILabel name="titleLabel"></hr:UILabel>
+  <hr:UILabel name="titleLabel"/>
+
+  <hr:UIButton name="travelButton" class="button" />
+  <hr:UIButton name="catButton" class="button" />
+  <!--hr:UIButton name="kpopButton" class="button" /-->
+
   <hr:UILabel name="travelLabel"></hr:UILabel>
-  <hr:UILabel name="catCafeLabel"></hr:UILabel>
-  <hr:UILabel name="kpopLabel"></hr:UILabel>
+  <hr:UILabel name="catLabel"></hr:UILabel>
+  <!-- <hr:UILabel name="kpopLabel"></hr:UILabel> -->
 </hr:UILuaView>
 
 </UXML>

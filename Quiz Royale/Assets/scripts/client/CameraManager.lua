@@ -71,7 +71,7 @@ function self.ClientAwake()
     -- setting camera points
     cameraPoints["travel"] = travelCamera
     cameraPoints["kpop"] = kPopCamera
-    cameraPoints["catCoffe"] = catCoffeCamera
+    cameraPoints["cat"] = catCoffeCamera
 
     client.localPlayer.CharacterChanged:Connect(function()
         setPosition("travel")
