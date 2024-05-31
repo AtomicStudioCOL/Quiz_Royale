@@ -1,7 +1,10 @@
 .question-Ui {
+    display: flex;
     height: 100%;
-    width: 245%;
-    left: -72%;
+    width: 100%;
+
+    padding: 5px;
+
     background-color: rgba(0, 0, 0, 0);
     position: relative;
 }
@@ -36,49 +39,55 @@
     top: 2%;
 }
 
-.life1{
+.life_active{
     position: absolute;
-    background-color: rgba(210, 140, 195, 1);
 
-    border-width: 1px;
-    border-color: rgb(155, 10, 10);
-    border-radius: 10px;
+    background-image: url("../UI/VisualElements/Mobile/Life_001.png");
 
-    width: 10px;
-    height: 10px;
+    width: 28.8px;
+    height: 22.0px;
 
+    scale: 1.4;
+}
+
+.life_lost{
+    position: absolute;
+
+    background-image: url("../UI/VisualElements/Mobile/Life_002.png");
+
+    width: 28.8px;
+    height: 22.0px;
+
+    scale: 1.4;
+}
+
+.life1{
     right: 60%;
-    top: -10%;
+    top: -3%;
 }
 
 .life2{
-    position: absolute;
-    background-color: rgba(210, 140, 195, 1);
-
-    border-width: 1px;
-    border-color: rgb(155, 10, 10);
-    border-radius: 10px;
-
-    width: 10px;
-    height: 10px;
-
     right: 45%;
-    top: -10%;
+    top: -3%;
 }
 
 .life3{
-    position: absolute;
-    background-color: rgba(210, 140, 195, 1);
-
-    border-width: 1px;
-    border-color: rgb(155, 10, 10);
-    border-radius: 10px;
-
-    width: 10px;
-    height: 10px;
-
     right: 30%;
-    top: -10%;
+    top: -3%;
+}
+
+.baristaM{
+    position: absolute;
+
+    width: 186.3;
+    height: 180.9;
+
+    scale: 2.5%;
+
+    bottom: 7%;
+    right: 1%;
+
+    background-image: url("../UI/VisualElements/Baristas/Barista_m_Color_01.png");
 }
 
 .leaderBoards{

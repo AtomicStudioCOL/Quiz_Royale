@@ -17,9 +17,9 @@
     <hr:UIButton name="quitButton" class="quitButton"/>
 
     <!-- lives elements -->
-    <hr:UIButton name="life1" class="life1"/>
-    <hr:UIButton name="life2" class="life2"/>
-    <hr:UIButton name="life3" class="life3"/>
+    <hr:UIImage name="life1" class="life1"/>
+    <hr:UIImage name="life2" class="life2"/>
+    <hr:UIImage name="life3" class="life3"/>
 
     <!-- leaderboards labels -->
     <hr:UIView name="leaderBoards" class="leaderBoards" picking-mode="Ignore">
@@ -44,6 +44,8 @@
       <hr:UILabel name="cLabel" picking-mode="Ignore"></hr:UILabel>
       <hr:UILabel name="dLabel" picking-mode="Ignore"></hr:UILabel>
     </hr:UIView>
+    <!-- barista -->
+    <hr:UIImage name="barista" class="inactive"/>
   </hr:UILuaView>
 
 </UXML>

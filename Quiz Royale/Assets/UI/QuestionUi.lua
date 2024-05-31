@@ -1,8 +1,5 @@
 --!Type(UI)
 
---!Header("Unity UI Objects")
---!SerializeField
-local baristaPlaceholder : GameObject = nil
 
 --!Header("Managers")
 --!SerializeField
@@ -48,11 +45,13 @@ local eighthLabel : UILabel = nil
 
 -- lives --
 --!Bind
-local life1 : UIButton = nil
+local life1 : UIImage = nil
 --!Bind
-local life2 : UIButton = nil
+local life2 : UIImage = nil
 --!Bind
-local life3 : UIButton = nil
+local life3 : UIImage = nil
+--!Bind
+local barista : UIImage = nil
 
 -- Binding buttons --
 --!Bind
@@ -92,10 +91,10 @@ cLabel:AddToClassList("inactive")
 dLabel:AddToClassList("inactive")
 dialogueLabel:AddToClassList("inactive")
 
-baristaPlaceholder:SetActive(false)
+barista:AddToClassList("inactive")
 
 -- variables --
-local barista : GameObject
+local baristaClass : string
 
 local chosenAnswer = nil
 
@@ -123,17 +122,24 @@ end
 
 function welcomePlayer(category)
     local totalWaitTime
+    life1:RemoveFromClassList("life_lost")
+    life2:RemoveFromClassList("life_lost")
+    life3:RemoveFromClassList("life_lost")
+
     life1:AddToClassList("life1")
     life2:AddToClassList("life2")
     life3:AddToClassList("life3")
-    lives = 3
+
+    life1:AddToClassList("life_active")
+    life2:AddToClassList("life_active")
+    life3:AddToClassList("life_active")    lives = 3
 
     currentCategory = category
 
     if questionPool[currentCategory] == questionPool.travel then
         totalWaitTime = 6
 
-        barista = baristaPlaceholder
+        baristaClass = "baristaM"
         dialogueLabel:AddToClassList("dialogue")
 
         dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
@@ -148,13 +154,17 @@ function welcomePlayer(category)
         end)
     end
 
-    barista:SetActive(true)
+    barista:ClearClassList()
+    barista:AddToClassList(baristaClass)
+    barista:SendToBack()
 end
         
 function preQuestionDialogue(question)
     if lives == 0 then return end
 
-    barista:SetActive(true)
+    barista:ClearClassList()
+    barista:AddToClassList(baristaClass)
+    barista:SendToBack()
 
     dialogueLabel:ClearClassList()
     dialogueLabel:AddToClassList("dialogue")
@@ -169,7 +179,8 @@ function setQuestionLabelsText(question)
     dialogueLabel:ClearClassList()
     dialogueLabel:AddToClassList("inactive")
 
-    barista:SetActive(false)
+    barista:ClearClassList()
+    barista:AddToClassList("inactive")
     
     questionLabel:AddToClassList("active")
     timerLabel:AddToClassList("active")
@@ -325,20 +336,22 @@ end
 function removeLife()
     lives -= 1
     if lives == 2 then
-        life3:RemoveFromClassList("life3")
-        life3:AddToClassList("inactive")
+        life3:RemoveFromClassList("life_active")
+        life3:AddToClassList("life_lost")
     elseif lives == 1 then
-        life2:RemoveFromClassList("life2")
-        life2:AddToClassList("inactive")
+        life2:RemoveFromClassList("life_active")
+        life2:AddToClassList("life_lost")
     elseif lives == 0 then
-        life1:RemoveFromClassList("life1")
-        life1:AddToClassList("inactive")
+        life1:RemoveFromClassList("life_active")
+        life1:AddToClassList("life_lost")
         finalScreen()
     end
 end
 
 function finalScreen()
-    barista:SetActive(true)
+    barista:ClearClassList()
+    barista:AddToClassList(baristaClass)
+    barista:SendToBack()
 
     dialogueLabel:ClearClassList()
     dialogueLabel:AddToClassList("dialogue")
@@ -353,7 +366,7 @@ function finalScreen()
                     dialogueLabel:SetPrelocalizedText(`1: {localScoreTable[1]}.`, false)
                     Timer.After(2, function()
                         disable()
-                        barista:SetActive(false)
+                        barista:AddToClassList("inactive")
                     end)
                 end)
             end)
@@ -362,7 +375,8 @@ function finalScreen()
         dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
         Timer.After(4, function()
             disable()
-            barista:SetActive(false)
+            barista:ClearClassList()
+            barista:AddToClassList("inactive")
         end)
     end
 end
@@ -372,7 +386,7 @@ end
 quitButton:RegisterPressCallback(function()
     gameManager.playersInTravelQ[client.localPlayer.name] = nil
 
-    barista:SetActive(false)
+    barista:AddToClassList("inactive")
     disable()
 end)
 
