@@ -39,6 +39,26 @@
     top: 2%;
 }
 
+.infoContainer{
+    position: absolute;
+    
+    background-image: url("../UI/VisualElements/Mobile/Box_Time_Lifes.png");
+    
+    left: 45%;
+    top: -2%;
+
+    width: 76.3;
+    height: 34.4;
+    scale: 3;
+}
+
+.timerLabel{
+    color: rgb(255, 235, 181);
+    left: 26%;
+    top: -4%;
+    scale: .8;
+}
+
 .life_active{
     position: absolute;
 
@@ -47,7 +67,10 @@
     width: 28.8px;
     height: 22.0px;
 
-    scale: 1.4;
+    top: 35%;
+
+
+    scale: .5;
 }
 
 .life_lost{
@@ -58,22 +81,21 @@
     width: 28.8px;
     height: 22.0px;
 
-    scale: 1.4;
+    top: 35%;
+
+    scale: .5;
 }
 
 .life1{
-    right: 60%;
-    top: -3%;
+    right: 0%;
 }
 
 .life2{
-    right: 45%;
-    top: -3%;
+    right: 30%;
 }
 
 .life3{
-    right: 30%;
-    top: -3%;
+    right: 60%;
 }
 
 .baristaM{
@@ -125,21 +147,6 @@
     height: 20%;
 
     left: 33%;
-
-    border-width: 3px;
-    border-color: rgb(30, 0, 50);
-    border-radius: 10px;
-}
-
-.timerLabel{
-    position: absolute;
-    background-color: rgba(230, 190, 93, .8);
-
-    width: 50px;
-    height: 50px;
-
-    left: 25.5%;
-    top: 2%;
 
     border-width: 3px;
     border-color: rgb(30, 0, 50);

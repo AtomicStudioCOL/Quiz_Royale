@@ -10,16 +10,18 @@
   <hr:UILuaView name="questionUi" class="question-Ui" picking-mode="Ignore">
     <!-- labels -->
     <hr:UILabel name="questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
-    <hr:UILabel name="timerLabel" class="timerLabel" picking-mode="Ignore"></hr:UILabel>
     <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
 
     <!-- Quit button -->
     <hr:UIButton name="quitButton" class="quitButton"/>
 
     <!-- lives elements -->
-    <hr:UIImage name="life1" class="life1"/>
-    <hr:UIImage name="life2" class="life2"/>
-    <hr:UIImage name="life3" class="life3"/>
+    <hr:UIView name="infoContainer" class="infoContainer" picking-mode="Ignore">
+      <hr:UIImage name="life1" class="life1"/>
+      <hr:UIImage name="life2" class="life2"/>
+      <hr:UIImage name="life3" class="life3"/>
+      <hr:UILabel name="timerLabel" class="timerLabel" picking-mode="Ignore"/>
+    </hr:UIView>
 
     <!-- leaderboards labels -->
     <hr:UIView name="leaderBoards" class="leaderBoards" picking-mode="Ignore">
@@ -44,6 +46,7 @@
       <hr:UILabel name="cLabel" picking-mode="Ignore"></hr:UILabel>
       <hr:UILabel name="dLabel" picking-mode="Ignore"></hr:UILabel>
     </hr:UIView>
+
     <!-- barista -->
     <hr:UIImage name="barista" class="inactive"/>
   </hr:UILuaView>
