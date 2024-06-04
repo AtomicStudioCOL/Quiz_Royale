@@ -63,10 +63,16 @@ function setItems()
     _quitLabel:SetPrelocalizedText("X", false)
 
     timerLabel:ClearClassList()
+    aLabel:ClearClassList()
+    bLabel:ClearClassList()
+    cLabel:ClearClassList()
+    dLabel:ClearClassList()
+    _questionLabel:ClearClassList()
     aLabel:AddToClassList("inactive")
     bLabel:AddToClassList("inactive")
     cLabel:AddToClassList("inactive")
     dLabel:AddToClassList("inactive")
+    _questionLabel:AddToClassList("inactive")
 
     barista:AddToClassList("inactive")
 
@@ -85,6 +91,7 @@ local currentCategory : string
 
 local isButtonSelected = false
 local timerStarted = false
+local enabled = true
 
 local gameManager = nil
 local _leaderBoardsUI = nil
@@ -103,15 +110,21 @@ local localScoreTable = {}
 
 -- functions --
 local function disable()
-    self.enabled = false
     setItems()
+    enabled = false
     _dialoguesUI.disableDialoguesUI()
     _leaderBoardsUI.disableLeadersBoardsUI()
     gameManager.playerLeftQuizz:FireServer(currentCategory)
+    self.enabled = false
 end
 
     function welcomePlayer(category)
         local totalWaitTime
+        setItems()
+        enabled = false
+        hideAnswersButtons()
+        enabled = true
+
         life1:RemoveFromClassList("life_lost")
         life2:RemoveFromClassList("life_lost")
         life3:RemoveFromClassList("life_lost")
@@ -152,6 +165,7 @@ function preQuestionDialogue(question)
     barista:SendToBack()
     
     Timer.After(3, function()
+        if enabled == false then return end
         setQuestionLabelsText(question)
         _dialoguesUI.showDialogueBox(false)
     end)
@@ -240,6 +254,13 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
 end
 
 function setTimerLabel()
+    if enabled == false then
+        timerStarted = false
+        questionTimer:Stop()
+        questionTimeValue = originalQuestionTimeValue
+        return
+    end
+
     questionTimeValue -= 1
     timerLabel:SetPrelocalizedText(tostring(questionTimeValue), false)
 
@@ -267,6 +288,8 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
     bLabel:SetPrelocalizedText("", false)
     cLabel:SetPrelocalizedText("", false)
     dLabel:SetPrelocalizedText("", false)
+
+    if enabled == false then return end
 
     if chosenAnswer ~= nil then
         if chosenAnswer.truthValue == true then
