@@ -52,24 +52,27 @@ local dButton : UIButton = nil
 local quitButton : UIButton = nil
 
 -- Eptying and setting items --
-aLabel:SetPrelocalizedText(" ", false)
-bLabel:SetPrelocalizedText(" ", false)
-cLabel:SetPrelocalizedText(" ", false)
-dLabel:SetPrelocalizedText(" ", false)
-_questionLabel:SetPrelocalizedText(" ", false)
-timerLabel:SetPrelocalizedText(" ", false)
-_quitLabel:SetPrelocalizedText("X", false)
 
-timerLabel:ClearClassList()
-aLabel:AddToClassList("inactive")
-bLabel:AddToClassList("inactive")
-cLabel:AddToClassList("inactive")
-dLabel:AddToClassList("inactive")
+function setItems()
+    aLabel:SetPrelocalizedText(" ", false)
+    bLabel:SetPrelocalizedText(" ", false)
+    cLabel:SetPrelocalizedText(" ", false)
+    dLabel:SetPrelocalizedText(" ", false)
+    _questionLabel:SetPrelocalizedText(" ", false)
+    timerLabel:SetPrelocalizedText(" ", false)
+    _quitLabel:SetPrelocalizedText("X", false)
 
-barista:AddToClassList("inactive")
+    timerLabel:ClearClassList()
+    aLabel:AddToClassList("inactive")
+    bLabel:AddToClassList("inactive")
+    cLabel:AddToClassList("inactive")
+    dLabel:AddToClassList("inactive")
 
--- setting quit button label child
-quitButton:Add(_quitLabel)
+    barista:AddToClassList("inactive")
+
+    -- setting quit button label child
+    quitButton:Add(_quitLabel)
+end
 
 -- variables --
 local baristaClass : string
@@ -101,6 +104,7 @@ local localScoreTable = {}
 -- functions --
 local function disable()
     self.enabled = false
+    setItems()
     _dialoguesUI.disableDialoguesUI()
     _leaderBoardsUI.disableLeadersBoardsUI()
     gameManager.playerLeftQuizz:FireServer(currentCategory)
