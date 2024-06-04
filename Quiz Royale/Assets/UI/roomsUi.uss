@@ -1,8 +1,19 @@
 .rooms-ui {
-    height: 100%;
-    width: 100%;
-    -unity-text-align: middle-center;
-    margin-top: auto;
+    position: relative;
+    background-color: rgba(243, 202, 93, .8);
+    width: 90%;
+    height: 90%;
+
+    top: 15%;
+    align-self: center;
+       
+    border: 40px;
+    border-width: 5px;
+    border-radius: 10px;
+    background-color: rgba(250, 230, 200, 1);
+    border-color: rgba(100, 60, 0, 1);
+    font-size: 110%;
+    color: rgb(100, 60, 0);
 }
 
 #titleLabel{
@@ -10,9 +21,19 @@
 }
 
 .button{
+    position: relative;
     background-color: rgba(243, 202, 93, .8);
-
-    border-width: 3px;
-    border-color: rgb(30, 0, 50);
+    width: 90%;
+    height: 15%;
+    left: 5%;
+    top: 17.5%;
+    margin-top: 5%;
+       
+    border: 40px;
+    border-width: 5px;
     border-radius: 10px;
+    background-color: rgba(250, 230, 200, 1);
+    border-color: rgba(100, 60, 0, 1);
+    font-size: 110%;
+    color: rgb(100, 60, 0);
 }

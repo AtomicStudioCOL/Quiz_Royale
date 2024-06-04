@@ -23,7 +23,6 @@ local _eighthLabel : UILabel = nil
 
 -- Variables for manager of data
 local _screenWidth
-local _localScoreTable = {}
 
 _firstLabel:SetPrelocalizedText(" ", false)
 _secondLabel:SetPrelocalizedText(" ", false)
@@ -54,7 +53,6 @@ end
 
 function setLeaderboards(scoreTable)
     self.enabled = true;
-    print("Testing from setLeadersBoardsUI")
 
     for i, value in pairs(scoreTable) do
         if i == 1 then

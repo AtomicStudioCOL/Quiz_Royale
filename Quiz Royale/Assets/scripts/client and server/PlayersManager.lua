@@ -21,7 +21,7 @@ local testEvent = Event.new("testEvent")
 -- event functions --
 function self:ClientAwake()
     -- sets scripts
-    _roomsUi = gameManager.uiManager:GetComponent("_roomsUi")
+    _roomsUi = gameManager.uiManager:GetComponent("roomsUi")
     
     _questionsUI = gameManager.uiManager:GetComponent("QuestionUi")
     _dialoguesUI = gameManager.uiManager:GetComponent("Dialogues")
@@ -43,6 +43,7 @@ function self:ClientAwake()
     for i, v in pairs(tapHandlers["travelQuiz"]) do
         v.Tapped:Connect(function()
             _questionsUI.enabled = true
+            _dialoguesUI.enabled = true
             _questionsUI.welcomePlayer("travel")
             _dialoguesUI.welcomePlayerDialogues("travel")
             gameManager.newPlayerEnteredQuiz:FireServer("travel")
@@ -52,9 +53,10 @@ function self:ClientAwake()
     for i, v in pairs(tapHandlers["catQuizz"]) do
         v.Tapped:Connect(function()
             _questionsUI.enabled = true
-            _questionsUI.welcomePlayer("travel")
-            _dialoguesUI.welcomePlayerDialogues("travel")
-            gameManager.newPlayerEnteredQuiz:FireServer("travel")
+            _dialoguesUI.enabled = true
+            _questionsUI.welcomePlayer("cat")
+            _dialoguesUI.welcomePlayerDialogues("cat")
+            gameManager.newPlayerEnteredQuiz:FireServer("cat")
         end)
     end
 

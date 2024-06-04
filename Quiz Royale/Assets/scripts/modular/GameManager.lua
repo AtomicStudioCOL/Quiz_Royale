@@ -75,6 +75,9 @@ kpopQAsked = {}
 catQAsked = {}
 
 travelQuizStarted = false
+catQuizStarted = false
+
+minOfPlayers = 0
 
 -- events --
 changeRoomServer = Event.new("changeRoomServer")
@@ -82,6 +85,8 @@ changeRoomClient = Event.new("changeRoomClient")
 
 finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
+playerLeftQuizz = Event.new("playerLeftQuizz")
+
 nextQuestion = Event.new("nextQuestion")
 replicateChosenQuestion = Event.new("replicateRandomQuestion")
 saveScorePlayer = Event.new("saveScorePlayer")
@@ -167,7 +172,6 @@ function updateLeaderboards(tableOfPlayers)
     for i, v in ipairs(scoresClone) do
         table.remove(scores, i)
         table.insert(scores, i, `{i}. {v[1]}'s score: {v[2]}`)
-        print(`{i}. {v[1]}'s score: {v[2]}`)
     end
 
     for k, player in pairs(tableOfPlayers) do
@@ -184,20 +188,29 @@ function pickRandomQuestion(questionsAsked, category)
     
     if category == "travel" then
         tableOfPlayers = playersInTravelQ
+    elseif category == "cat" then
+        tableOfPlayers = playersInCatQ
     end
     
     if numberAsked < 6 then
-        categoryDifficulty = questionPool[category].easy
+        categoryDifficulty = questionPool.travel.easy
         diff = "e"
     elseif numberAsked < 11 then
-        categoryDifficulty = questionPool[category].normal
+        categoryDifficulty = questionPool.travel.normal
         diff = "n"
     elseif numberAsked < 16 then
-        categoryDifficulty = questionPool[category].hard
+        categoryDifficulty = questionPool.travel.hard
         diff = "h"
     else
         for k, player in pairs(tableOfPlayers) do
             finishGame:FireClient(player)
+            if category == "travel" then
+                travelQuizStarted = false
+                travelQAsked = nil travelQAsked = {}
+            elseif category == "cat" then
+                catQuizStarted = false
+                catQAsked = nil catQAsked = {}
+            end
         end
         return
     end
@@ -253,15 +266,14 @@ function self:ServerAwake()
     -- events --
     changeRoomServer:Connect(function(player : Player, destination : string)
         changeRoomClient:FireAllClients(player, destination)
-        --saveScorePlayer:FireAllClients(scorePlayer)
     end)
 
     newPlayerEnteredQuiz:Connect(function(player : Player, quiz : string)
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
             scorePlayer[player.name] = 0
-            -- Change to testing without Players
-            if tableLenght(playersInTravelQ) >= 0 and not travelQuizStarted then
+            -- Change to 0 or 1 to testing without Players
+            if tableLenght(playersInTravelQ) >= minOfPlayers and not travelQuizStarted then
                 travelQuizStarted = true
                 Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
@@ -269,6 +281,27 @@ function self:ServerAwake()
             playersInKpopQ[player.name] = player
         elseif quiz == "cat" then
             playersInCatQ[player.name] = player
+            scorePlayer[player.name] = 0
+            if tableLenght(playersInTravelQ) >= minOfPlayers and not catQuizStarted then
+                catQuizStarted = true
+                Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
+            end
+        end
+    end)
+
+    playerLeftQuizz:Connect(function(player : Player, quiz : string)
+        if quiz == "travel" then
+            playersInTravelQ[player.name] = nil
+            scorePlayer[player.name] = 0
+            if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted then
+                travelQuizStarted = false
+            end
+        elseif quiz == "cat" then
+            playersInCatQ[player.name] = nil
+            scorePlayer[player.name] = 0
+            if tableLenght(playersInTravelQ) <= 0 and catQuizStarted then
+                catQuizStarted = false
+            end
         end
     end)
 
@@ -282,6 +315,8 @@ function self:ServerAwake()
             questionsAsked = testAsked
         elseif category == "travel" then
             questionsAsked = travelQAsked
+        elseif category == "cat" then
+            questionsAsked = catQAsked
         end
         pickRandomQuestion(questionsAsked, category)
     end)

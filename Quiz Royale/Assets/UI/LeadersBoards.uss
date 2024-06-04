@@ -9,16 +9,16 @@
 
 .leaders-boardsUI-Horizontal {
     position: absolute;
-    font-size: 20px;   
+    font-size: 100%;   
 
 
     background-color: var(--color-background_2);
 
     width: 80%;
-    height: 75%;
-    top: 25%;
+    height: 60%;
+    top: 35%;
 
-    left: 10%;
+    align-self: center;
 
     border-width: 3px;
     border-color: var(--color-border);
@@ -30,12 +30,12 @@
 
 .leaders-boardsUI-Vertical {
     position: absolute;
-    font-size: 20px;
+    font-size: 175%;
     background-color: var(--color-background_2);
 
     width: 80%;
-    height: 60%;
-    top: 25%;
+    height: 40%;
+    top: 45%;
 
     left: 10%;
 

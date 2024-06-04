@@ -23,21 +23,6 @@
       <hr:UILabel name="timerLabel" class="timerLabel" picking-mode="Ignore"/>
     </hr:UIView>
 
-<!-- testing for refactory Code 
- 
-    <!- !here fixed error leaderboards labels ->
-    <hr:UIView name="leaderBoards" class="leaderBoards" picking-mode="Ignore">
-      <hr:UILabel name="firstLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="secondLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="thirdLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="fourthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="fifthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="sixthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="seventhLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="eighthLabel" picking-mode="Ignore"></hr:UILabel>
-    </hr:UIView>
-    --> 
-
     <!-- Question labels -->
     <hr:UIView name="questionsContainer" class="questionsContainer" picking-mode="Ignore">
       <hr:UIButton name="aButton" class="inactive"/>
@@ -58,7 +43,7 @@
     <!-- Quit button -->
     <hr:UIButton name="quitButton" class="quitButton"/>
 
-    <hr:UILabel name="_quitLabel" picking-mode="Ignore"></hr:UILabel>
+    <hr:UILabel name="_quitLabel" class="quitLabel" picking-mode="Ignore"></hr:UILabel>
 
   </hr:UILuaView>
 

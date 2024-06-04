@@ -49,6 +49,6 @@
     border-color: var(--color-border);
     color: var(--color-font);
 
-    font-size: 20px;
+    font-size: 110%;
 
 }

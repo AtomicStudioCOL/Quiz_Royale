@@ -51,14 +51,14 @@ local dButton : UIButton = nil
 --!Bind
 local quitButton : UIButton = nil
 
--- Eptying Items --
+-- Eptying and setting items --
 aLabel:SetPrelocalizedText(" ", false)
 bLabel:SetPrelocalizedText(" ", false)
 cLabel:SetPrelocalizedText(" ", false)
 dLabel:SetPrelocalizedText(" ", false)
 _questionLabel:SetPrelocalizedText(" ", false)
 timerLabel:SetPrelocalizedText(" ", false)
-_quitLabel:SetPrelocalizedText(" ", false)
+_quitLabel:SetPrelocalizedText("X", false)
 
 timerLabel:ClearClassList()
 aLabel:AddToClassList("inactive")
@@ -67,6 +67,9 @@ cLabel:AddToClassList("inactive")
 dLabel:AddToClassList("inactive")
 
 barista:AddToClassList("inactive")
+
+-- setting quit button label child
+quitButton:Add(_quitLabel)
 
 -- variables --
 local baristaClass : string
@@ -93,9 +96,14 @@ local questionTimer : Timer
 local originalQuestionTimeValue = 15
 local questionTimeValue = originalQuestionTimeValue
 
+local localScoreTable = {}
+
 -- functions --
 local function disable()
     self.enabled = false
+    _dialoguesUI.disableDialoguesUI()
+    _leaderBoardsUI.disableLeadersBoardsUI()
+    gameManager.playerLeftQuizz:FireServer(currentCategory)
 end
 
     function welcomePlayer(category)
@@ -114,8 +122,11 @@ end
         lives = 3
         currentCategory = category
 
+        _questionLabel:ClearClassList()
+        _questionLabel:AddToClassList("inactive")
+
         _dialoguesUI.welcomePlayerDialogues()
-        if questionPool[currentCategory] == questionPool.travel then
+        if questionPool[currentCategory] == questionPool.travel or questionPool[currentCategory] == questionPool.cat then
             totalWaitTime = 6
             
             baristaClass = "baristaM"
@@ -129,8 +140,7 @@ end
 end
 
 function preQuestionDialogue(question)
-    if lives == 0 then return end
-    
+    if lives == 0 then return end    
     _leaderBoardsUI.disableLeadersBoardsUI();
     
     barista:ClearClassList()
@@ -139,6 +149,7 @@ function preQuestionDialogue(question)
     
     Timer.After(3, function()
         setQuestionLabelsText(question)
+        _dialoguesUI.showDialogueBox(false)
     end)
 end
 
@@ -148,7 +159,7 @@ function setQuestionLabelsText(question)
     barista:AddToClassList("inactive")
     
     _questionLabel:AddToClassList("active")
-    _quitLabel:AddToClassList("quitLabel")
+    _questionLabel:AddToClassList("questionLabel")
     timerLabel:AddToClassList("timerLabel")
     aLabel:AddToClassList("active")
     bLabel:AddToClassList("active")
@@ -159,7 +170,6 @@ function setQuestionLabelsText(question)
 
     -- set question label
     _questionLabel:SetPrelocalizedText(question.questionTxt, false)
-    _quitLabel:SetPrelocalizedText("X", false)
 
     randomizedAnswers = nil
     randomizedAnswers = gameManager.shuffleAnswers(answers)
@@ -289,20 +299,21 @@ function finalScreen()
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
-    _dialoguesUI.finalScreenDialogues(lives)
+    _dialoguesUI.finalScreenDialogues(lives, localScoreTable)
+
+    gameManager.playerLeftQuizz:FireServer(currentCategory)
 
     if lives > 0 then
         Timer.After(9, function()
-            disable()
             barista:AddToClassList("inactive")
+            disable()
         end)
 
     else
         Timer.After(4, function()
-            disable()
             barista:ClearClassList()
             barista:AddToClassList("inactive")
-            _dialoguesUI.finalScreenDialogues(lives)
+            disable()
         end)
     end
 
@@ -335,6 +346,7 @@ client.PlayerConnected:Connect(function()
 
     gameManager.updateScoreEvent:Connect(function(scoreTable)
         _leaderBoardsUI.setLeaderboards(scoreTable)
+        localScoreTable = scoreTable
     end)
 
     gameManager.finishGame:Connect(function()
