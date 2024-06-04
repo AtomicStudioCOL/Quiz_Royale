@@ -8,10 +8,11 @@
 >
 
   <hr:UILuaView name="questionUi" class="question-Ui" picking-mode="Ignore">
-    <!-- labels -->
-    <hr:UILabel name="questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
+    
+    
+    <!--  
     <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
-
+  -->
     <!-- Quit button -->
     <hr:UIButton name="quitButton" class="quitButton"/>
 
@@ -23,7 +24,9 @@
       <hr:UILabel name="timerLabel" class="timerLabel" picking-mode="Ignore"/>
     </hr:UIView>
 
-    <!-- leaderboards labels -->
+<!-- testing for refactory Code 
+ 
+    <!- !here fixed error leaderboards labels ->
     <hr:UIView name="leaderBoards" class="leaderBoards" picking-mode="Ignore">
       <hr:UILabel name="firstLabel" picking-mode="Ignore"></hr:UILabel>
       <hr:UILabel name="secondLabel" picking-mode="Ignore"></hr:UILabel>
@@ -34,6 +37,7 @@
       <hr:UILabel name="seventhLabel" picking-mode="Ignore"></hr:UILabel>
       <hr:UILabel name="eighthLabel" picking-mode="Ignore"></hr:UILabel>
     </hr:UIView>
+    --> 
 
     <!-- Question labels -->
     <hr:UIView name="questionsContainer" class="questionsContainer" picking-mode="Ignore">
@@ -49,6 +53,10 @@
 
     <!-- barista -->
     <hr:UIImage name="barista" class="inactive"/>
+
+    <!-- Question labels -->
+    <hr:UILabel name="_questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
+
   </hr:UILuaView>
 
 </UXML>

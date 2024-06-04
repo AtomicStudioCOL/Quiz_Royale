@@ -8,11 +8,15 @@ PluginImporter:
       type: 3}
     Highrise.Lua.Generated.CameraManager: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
+    Highrise.Lua.Generated.Dialogues: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
+      type: 3}
     Highrise.Lua.Generated.GameManager: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
     Highrise.Lua.Generated.GeneralChat: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
     Highrise.Lua.Generated.HighriseCameraController: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
+      type: 3}
+    Highrise.Lua.Generated.LeadersBoards: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
     Highrise.Lua.Generated.PlayerCharacterController: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
@@ -31,6 +35,8 @@ PluginImporter:
     Highrise.Lua.Generated.SceneLoader: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
     Highrise.Lua.Generated.TapDettector: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
+      type: 3}
+    Highrise.Lua.Generated.UILuaView: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}
     Highrise.Lua.Generated.roomsUi: {fileID: 2800000, guid: 7b17fa3987cfb1748a297e97f9214051,
       type: 3}

@@ -1,0 +1,45 @@
+.leaders-boardsUI-Horizontal {
+    position: absolute;
+    font-size: 20px;   
+
+    background-color: rgba(225, 200, 100, 0.8);
+
+    width: 80%;
+    height: 75%;
+    top: 20%;
+
+    left: 10%;
+
+    border-width: 3px;
+    border-color: rgb(70, 0, 20);
+    border-radius: 10px;
+
+    white-space: normal;
+    -unity-text-overflow-position: start;
+}
+
+.leaders-boardsUI-Vertical {
+    position: absolute;
+    font-size: 20px;
+    background-color: rgba(225, 200, 100, 0.8);
+
+    width: 80%;
+    height: 60%;
+    top: 20%;
+
+    left: 10%;
+
+    border-width: 3px;
+    border-color: rgb(70, 0, 20);
+    border-radius: 10px;
+
+    white-space: normal;
+    -unity-text-overflow-position: start;
+}
+
+.active{
+    color: rgb(0, 0, 0);
+    white-space: normal;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: middle;
+}

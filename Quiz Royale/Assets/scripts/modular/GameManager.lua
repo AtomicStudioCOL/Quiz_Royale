@@ -260,7 +260,8 @@ function self:ServerAwake()
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
             scorePlayer[player.name] = 0
-            if tableLenght(playersInTravelQ) > 1 and not travelQuizStarted then
+            -- Change to testing without Players
+            if tableLenght(playersInTravelQ) >= 0 and not travelQuizStarted then
                 travelQuizStarted = true
                 Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
             end

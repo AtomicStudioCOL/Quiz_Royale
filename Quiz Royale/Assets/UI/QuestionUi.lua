@@ -5,14 +5,15 @@
 --!SerializeField
 local gameManagerGo : GameObject = nil
 
+--!SerializeField
+local uImanager : GameObject = nil
+
 -- modules --
 questionPool = require("QuestionPool")
 
-print(`Testing Variables Point Playeres: {gameManagerGo}`)
-
 -- bind labels --
 --!Bind
-local questionLabel : UILabel = nil
+local _questionLabel : UILabel = nil
 --!Bind
 local timerLabel : UILabel = nil
 --!Bind
@@ -25,23 +26,6 @@ local cLabel : UILabel = nil
 local dLabel : UILabel = nil
 --!Bind
 local dialogueLabel : UILabel = nil
-
---!Bind
-local firstLabel : UILabel = nil
---!Bind
-local secondLabel : UILabel = nil
---!Bind
-local thirdLabel : UILabel = nil
---!Bind
-local fourthLabel : UILabel = nil
---!Bind
-local fifthLabel : UILabel = nil
---!Bind
-local sixthLabel : UILabel = nil
---!Bind
-local seventhLabel : UILabel = nil
---!Bind
-local eighthLabel : UILabel = nil
 
 -- lives --
 --!Bind
@@ -70,31 +54,25 @@ aLabel:SetPrelocalizedText(" ", false)
 bLabel:SetPrelocalizedText(" ", false)
 cLabel:SetPrelocalizedText(" ", false)
 dLabel:SetPrelocalizedText(" ", false)
-dialogueLabel:SetPrelocalizedText(" ", false)
-questionLabel:SetPrelocalizedText(" ", false)
+-- dialogueLabel:SetPrelocalizedText(" ", false)
+_questionLabel:SetPrelocalizedText(" ", false)
 timerLabel:SetPrelocalizedText(" ", false)
 
-firstLabel:SetPrelocalizedText(" ", false)
-secondLabel:SetPrelocalizedText(" ", false)
-thirdLabel:SetPrelocalizedText(" ", false)
-fourthLabel:SetPrelocalizedText(" ", false)
-fifthLabel:SetPrelocalizedText(" ", false)
-sixthLabel:SetPrelocalizedText(" ", false)
-seventhLabel:SetPrelocalizedText(" ", false)
-eighthLabel:SetPrelocalizedText(" ", false)
-
-questionLabel:AddToClassList("inactive")
+-- _questionLabel:ClearClassList()
+-- _questionLabel:AddToClassList("inactive")
 timerLabel:AddToClassList("inactive")
 aLabel:AddToClassList("inactive")
 bLabel:AddToClassList("inactive")
 cLabel:AddToClassList("inactive")
 dLabel:AddToClassList("inactive")
-dialogueLabel:AddToClassList("inactive")
+-- -- dialogueLabel:AddToClassList("inactive")
 
 barista:AddToClassList("inactive")
 
 -- variables --
 local baristaClass : string
+local _baristaClass_True : string
+local _baristaClass_False : string
 
 local chosenAnswer = nil
 
@@ -104,10 +82,11 @@ local isButtonSelected = false
 local timerStarted = false
 
 local gameManager = nil
+local _leaderBoardsUI = nil
+local _dialoguesUI = nil
 
-local localScoreTable = {}
 local namePlayer = client.localPlayer.name
-local howLongToAnser : number
+local howLongToAnswer : number
 local lives = 3
 
 local randomizedAnswers
@@ -119,70 +98,65 @@ local questionTimeValue = originalQuestionTimeValue
 local function disable()
     self.enabled = false
 end
+---[[
+    function welcomePlayer(category)
+        local totalWaitTime
+        life1:RemoveFromClassList("life_lost")
+        life2:RemoveFromClassList("life_lost")
+        life3:RemoveFromClassList("life_lost")
+        
+        life1:AddToClassList("life1")
+        life2:AddToClassList("life2")
+        life3:AddToClassList("life3")
+        
+        life1:AddToClassList("life_active")
+        life2:AddToClassList("life_active")
+        life3:AddToClassList("life_active")    
+        lives = 3
+        
+        currentCategory = category
 
-function welcomePlayer(category)
-    local totalWaitTime
-    life1:RemoveFromClassList("life_lost")
-    life2:RemoveFromClassList("life_lost")
-    life3:RemoveFromClassList("life_lost")
-
-    life1:AddToClassList("life1")
-    life2:AddToClassList("life2")
-    life3:AddToClassList("life3")
-
-    life1:AddToClassList("life_active")
-    life2:AddToClassList("life_active")
-    life3:AddToClassList("life_active")    lives = 3
-
-    currentCategory = category
-
-    if questionPool[currentCategory] == questionPool.travel then
-        totalWaitTime = 6
-
-        baristaClass = "baristaM"
-        dialogueLabel:AddToClassList("dialogue")
-
-        dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
-        Timer.After(2, function()
-            dialogueLabel:SetPrelocalizedText("I'm Hugo, your barista. Nice to meet you!", false)
-            Timer.After(2, function()
-                dialogueLabel:SetPrelocalizedText("Let's talk about places around the world!", false)
-                Timer.After(2, function()
-                    dialogueLabel:SetPrelocalizedText("Currently waiting for players.", false)
-                end)
-            end)
-        end)
+        _dialoguesUI.welcomePlayerDialogues()
+        if questionPool[currentCategory] == questionPool.travel then
+            totalWaitTime = 6
+            
+            baristaClass = "baristaM"
+            _baristaClass_True = "baristaM-True"
+            _baristaClass_False = "baristaM-False"
+            -- _questionLabel:AddToClassList("inactive")
+            -- _questionLabel:ClearClassList()
+            
     end
-
+    
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
 end
-        
+--]]
+
+
+---[[
 function preQuestionDialogue(question)
     if lives == 0 then return end
-
+    
+    _leaderBoardsUI.disableLeadersBoardsUI();
+    
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
-
-    dialogueLabel:ClearClassList()
-    dialogueLabel:AddToClassList("dialogue")
-    dialogueLabel:SetPrelocalizedText(question.baristDialoge, false)
-
+    
     Timer.After(3, function()
         setQuestionLabelsText(question)
     end)
 end
+--]]
 
 function setQuestionLabelsText(question)
-    dialogueLabel:ClearClassList()
-    dialogueLabel:AddToClassList("inactive")
-
+    
     barista:ClearClassList()
     barista:AddToClassList("inactive")
     
-    questionLabel:AddToClassList("active")
+    _questionLabel:AddToClassList("active")
     timerLabel:AddToClassList("active")
     aLabel:AddToClassList("active")
     bLabel:AddToClassList("active")
@@ -192,50 +166,17 @@ function setQuestionLabelsText(question)
     local answers = question.answers
 
     -- set question label
-    questionLabel:SetPrelocalizedText(question.questionTxt, false)
+    _questionLabel:SetPrelocalizedText(question.questionTxt, false)
 
     randomizedAnswers = nil
     randomizedAnswers = gameManager.shuffleAnswers(answers)
 
----[[
     aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
     bLabel:SetPrelocalizedText(randomizedAnswers.b.txt, false)
     cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
     dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
     
     activeAnswerButtons()
---]]
-end
-
-function setLeaderboards(scoreTable)
-    localScoreTable = scoreTable
-    for i, value in pairs(scoreTable) do
-        if i == 1 then
-            firstLabel:AddToClassList("active")            
-            firstLabel:SetPrelocalizedText(value, false)
-        elseif i == 2 then
-            secondLabel:AddToClassList("active")
-            secondLabel:SetPrelocalizedText(value, false)
-        elseif i == 3 then
-            thirdLabel:AddToClassList("active")
-            thirdLabel:SetPrelocalizedText(value, false)
-        elseif i == 4 then
-            fourthLabel:AddToClassList("active")
-            fourthLabel:SetPrelocalizedText(value, false)
-        elseif i == 5 then
-            fifthLabel:AddToClassList("active")
-            fifthLabel:SetPrelocalizedText(value, false)
-        elseif i== 6 then
-            sixthLabel:AddToClassList("active")
-            sixthLabel:SetPrelocalizedText(value, false)
-        elseif i == 7 then
-            seventhLabel:AddToClassList("active")
-            seventhLabel:SetPrelocalizedText(value, false)
-        elseif i == 8 then
-            eighthLabel:AddToClassList("active")
-            eighthLabel:SetPrelocalizedText(value, false)
-        end
-    end
 end
 
 function activeAnswerButtons()               -- Assigns the callbacks and adds the buttons to the hierarchy
@@ -284,10 +225,11 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
 
     dButton:AddToClassList("chosen")
     dButton:RemoveFromClassList("unChosen")
-
-    howLongToAnser = originalQuestionTimeValue - timeLeft
+    
+    howLongToAnswer = originalQuestionTimeValue - timeLeft
     chosenAnswer = randomizedAnswers[chosenOption]
-
+    
+    chosenButton:RemoveFromClassList("active")
     chosenButton:AddToClassList("feedback")
 end
 
@@ -303,11 +245,12 @@ function setTimerLabel()
     end
 end
 
-function hideAnswersButtons()                        -- removes the buttons from the hierarchies
+function hideAnswersButtons() -- removes the buttons from the hierarchies
     aButton:ClearClassList()
     bButton:ClearClassList()
     cButton:ClearClassList()
     dButton:ClearClassList()
+    barista:ClearClassList()
 
     aButton:AddToClassList("inactive")
     bButton:AddToClassList("inactive")
@@ -321,14 +264,16 @@ function hideAnswersButtons()                        -- removes the buttons from
 
     if chosenAnswer ~= nil then
         if chosenAnswer.truthValue == true then
-            questionLabel:SetPrelocalizedText("Correct!", false)
-            gameManager.saveScorePlayer:FireServer(howLongToAnser)
+            _questionLabel:SetPrelocalizedText("Correct!", false)
+            gameManager.saveScorePlayer:FireServer(howLongToAnswer)
+            barista:AddToClassList(_baristaClass_True)
         else
-            questionLabel:SetPrelocalizedText("Wrong!", false)
+            _questionLabel:SetPrelocalizedText("Wrong!", false)
             removeLife()
+            barista:AddToClassList(_baristaClass_False)
         end
     else
-        questionLabel:SetPrelocalizedText("Wrong!", false)
+        _questionLabel:SetPrelocalizedText("Wrong!", false)
         removeLife()
     end
 end
@@ -352,11 +297,14 @@ function finalScreen()
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
-
-    dialogueLabel:ClearClassList()
-    dialogueLabel:AddToClassList("dialogue")
+    _dialoguesUI.finalScreenDialogues(lives)
 
     if lives > 0 then
+        Timer.After(9, function()
+            disable()
+            barista:AddToClassList("inactive")
+        end)
+        --[[
         dialogueLabel:SetPrelocalizedText(`That was all for now. Top three players are:`, false)
         Timer.After(3, function()
             dialogueLabel:SetPrelocalizedText(`3: {localScoreTable[3]}.`, false)
@@ -364,21 +312,21 @@ function finalScreen()
                 dialogueLabel:SetPrelocalizedText(`2: {localScoreTable[2]}.`, false)
                 Timer.After(2, function()
                     dialogueLabel:SetPrelocalizedText(`1: {localScoreTable[1]}.`, false)
-                    Timer.After(2, function()
-                        disable()
-                        barista:AddToClassList("inactive")
-                    end)
                 end)
             end)
         end)
+        --]]
     else
-        dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
+        --[[
+            dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
+            --]]
         Timer.After(4, function()
             disable()
             barista:ClearClassList()
             barista:AddToClassList("inactive")
         end)
     end
+
 end
 
 -- events
@@ -393,19 +341,26 @@ end)
 client.PlayerConnected:Connect(function()
     gameManager = gameManagerGo:GetComponent("GameManager")
 
+    _leaderBoardsUI = uImanager:GetComponent("LeadersBoards")
+
+    _dialoguesUI = uImanager:GetComponent("Dialogues")
+
     gameManager.scorePlayer[namePlayer] = 0;
 
     gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
+        _dialoguesUI.preQuestionDialoguesUI(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
     end)
 
+    gameManager.scorePlayer[namePlayer] = 0
+
     gameManager.updateScoreEvent:Connect(function(scoreTable)
-        setLeaderboards(scoreTable)
+        _leaderBoardsUI.setLeaderboards(scoreTable)
     end)
 
     gameManager.finishGame:Connect(function()
         finalScreen()
     end)
-
     disable()
 end)
+

@@ -1,0 +1,46 @@
+.dialogues {
+    
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    padding: 5px;
+
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+}
+
+.inactive{
+    color: transparent;
+    background-color: transparent;
+}
+
+.active{
+    color: rgb(0, 0, 0);
+    white-space: normal;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: middle;
+}
+
+.dialogue{
+    position: absolute;
+
+    bottom: 0%;
+    height: 15%;
+    width: 90%;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: middle;
+    align-self: center;
+    white-space: normal;
+
+    border: 40px;
+    border-width: 5px;
+    border-radius: 10px;
+    background-color: rgba(250, 230, 200, 1);
+    border-color: rgba(100, 60, 0, 1);
+
+    font-size: 20px;
+    color: rgb(100, 60, 0);
+
+}
