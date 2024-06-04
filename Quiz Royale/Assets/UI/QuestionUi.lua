@@ -17,6 +17,8 @@ local _questionLabel : UILabel = nil
 --!Bind
 local timerLabel : UILabel = nil
 --!Bind
+local _quitLabel : UILabel = nil
+--!Bind
 local aLabel : UILabel = nil
 --!Bind
 local bLabel : UILabel = nil
@@ -54,18 +56,15 @@ aLabel:SetPrelocalizedText(" ", false)
 bLabel:SetPrelocalizedText(" ", false)
 cLabel:SetPrelocalizedText(" ", false)
 dLabel:SetPrelocalizedText(" ", false)
--- dialogueLabel:SetPrelocalizedText(" ", false)
 _questionLabel:SetPrelocalizedText(" ", false)
 timerLabel:SetPrelocalizedText(" ", false)
+_quitLabel:SetPrelocalizedText(" ", false)
 
--- _questionLabel:ClearClassList()
--- _questionLabel:AddToClassList("inactive")
-timerLabel:AddToClassList("inactive")
+timerLabel:ClearClassList()
 aLabel:AddToClassList("inactive")
 bLabel:AddToClassList("inactive")
 cLabel:AddToClassList("inactive")
 dLabel:AddToClassList("inactive")
--- -- dialogueLabel:AddToClassList("inactive")
 
 barista:AddToClassList("inactive")
 
@@ -98,7 +97,7 @@ local questionTimeValue = originalQuestionTimeValue
 local function disable()
     self.enabled = false
 end
----[[
+
     function welcomePlayer(category)
         local totalWaitTime
         life1:RemoveFromClassList("life_lost")
@@ -113,7 +112,6 @@ end
         life2:AddToClassList("life_active")
         life3:AddToClassList("life_active")    
         lives = 3
-        
         currentCategory = category
 
         _dialoguesUI.welcomePlayerDialogues()
@@ -122,20 +120,14 @@ end
             
             baristaClass = "baristaM"
             _baristaClass_True = "baristaM-True"
-            _baristaClass_False = "baristaM-False"
-            -- _questionLabel:AddToClassList("inactive")
-            -- _questionLabel:ClearClassList()
-            
-    end
-    
+            _baristaClass_False = "baristaM-False"    
+        end
+
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
 end
---]]
 
-
----[[
 function preQuestionDialogue(question)
     if lives == 0 then return end
     
@@ -149,7 +141,6 @@ function preQuestionDialogue(question)
         setQuestionLabelsText(question)
     end)
 end
---]]
 
 function setQuestionLabelsText(question)
     
@@ -157,7 +148,8 @@ function setQuestionLabelsText(question)
     barista:AddToClassList("inactive")
     
     _questionLabel:AddToClassList("active")
-    timerLabel:AddToClassList("active")
+    _quitLabel:AddToClassList("quitLabel")
+    timerLabel:AddToClassList("timerLabel")
     aLabel:AddToClassList("active")
     bLabel:AddToClassList("active")
     cLabel:AddToClassList("active")
@@ -167,6 +159,7 @@ function setQuestionLabelsText(question)
 
     -- set question label
     _questionLabel:SetPrelocalizedText(question.questionTxt, false)
+    _quitLabel:SetPrelocalizedText("X", false)
 
     randomizedAnswers = nil
     randomizedAnswers = gameManager.shuffleAnswers(answers)
@@ -187,7 +180,6 @@ function activeAnswerButtons()               -- Assigns the callbacks and adds t
 
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
     
-
     timerLabel:SetPrelocalizedText(questionTimeValue, false)
     
     aButton:RegisterPressCallback(function() deactivateAnswersButtons(aButton, questionTimeValue, "a") end)
@@ -304,26 +296,13 @@ function finalScreen()
             disable()
             barista:AddToClassList("inactive")
         end)
-        --[[
-        dialogueLabel:SetPrelocalizedText(`That was all for now. Top three players are:`, false)
-        Timer.After(3, function()
-            dialogueLabel:SetPrelocalizedText(`3: {localScoreTable[3]}.`, false)
-            Timer.After(2, function()
-                dialogueLabel:SetPrelocalizedText(`2: {localScoreTable[2]}.`, false)
-                Timer.After(2, function()
-                    dialogueLabel:SetPrelocalizedText(`1: {localScoreTable[1]}.`, false)
-                end)
-            end)
-        end)
-        --]]
+
     else
-        --[[
-            dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
-            --]]
         Timer.After(4, function()
             disable()
             barista:ClearClassList()
             barista:AddToClassList("inactive")
+            _dialoguesUI.finalScreenDialogues(lives)
         end)
     end
 

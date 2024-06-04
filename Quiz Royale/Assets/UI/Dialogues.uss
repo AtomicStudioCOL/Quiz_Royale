@@ -1,3 +1,11 @@
+:root{
+    --color-background_1: rgba(250, 230, 200, 1);
+    --color-background_2: #D9BA4E;
+    --color-background_3: #C6A83C;
+    --color-border: rgba(100, 60, 0, 1);
+    --color-font: rgb(100, 60, 0);
+}
+
 .dialogues {
     
     display: flex;
@@ -37,10 +45,10 @@
     border: 40px;
     border-width: 5px;
     border-radius: 10px;
-    background-color: rgba(250, 230, 200, 1);
-    border-color: rgba(100, 60, 0, 1);
+    background-color: var(--color-background_1);
+    border-color: var(--color-border);
+    color: var(--color-font);
 
     font-size: 20px;
-    color: rgb(100, 60, 0);
 
 }

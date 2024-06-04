@@ -1,3 +1,12 @@
+:root{
+    --color-background_1: rgba(250, 230, 200, 1);
+    --color-background_2: rgba(230, 210, 180, 1);
+    --color-background_3: rgba(210, 180, 160, 1);
+    --color-border: rgba(100, 60, 0, 1);
+    --color-font: rgb(100, 60, 0);
+    -unity-font-style: bold;
+}
+
 .question-Ui {
     display: flex;
     height: 100%;
@@ -8,9 +17,20 @@
     position: absolute;
 }
 
+.quitLabel{
+    
+    color: var(--color-background_1);
+    white-space: normal;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: middle;
+    font-size: 30px;
+
+
+}
+
 .quitButton{
     position: absolute;
-    background-color: rgba(200, 20, 20, .8);
+    background-color: var(--color-border);
 
     border-width: 1px;
     border-color: rgb(155, 10, 10);
@@ -21,6 +41,8 @@
 
     right: 1%;
     top: 2%;
+
+    font-size: 30px;
 }
 
 .infoContainer{
@@ -37,10 +59,16 @@
 }
 
 .timerLabel{
-    color: rgb(255, 235, 181);
-    left: 26%;
-    top: -4%;
+    
+    white-space: normal;
+    -unity-text-align: middle-right;
+    -unity-text-overflow-position: middle;
+    color: var(--color-background_1);
+    left: 10%;
+    top: -10%;
     scale: .8;
+    font-size: 15px;
+
 }
 
 .life_active{
@@ -96,7 +124,7 @@
     position: absolute;
     width: 50%;
     height: 35%;
-    scale: 2.5%;
+    scale: 1.5%;
     bottom: 10%;
     right: 25%;
     background-image: url("../UI/VisualElements/Baristas/QuizRoyale_happy_01.png");
@@ -106,7 +134,7 @@
     position: absolute;
     width: 50%;
     height: 35%;
-    scale: 2.5%;
+    scale: 1.5%;
     bottom: 10%;
     right: 25%;
     background-image: url("../UI/VisualElements/Baristas/QuizRoyale_Sad_01.png");
@@ -119,7 +147,7 @@
 
 .active{
     
-    color: rgb(100, 100, 0);
+    color: var(--color-font);
     white-space: normal;
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;
@@ -158,28 +186,27 @@
 }
 
 .unChosen {
-    background-color: rgba(190, 100, 220, .5);
 
     height: 13%;
     width: 100%;
     border-width: 3px;
     border-radius: 10px;
-    background-color: rgba(250, 230, 200, 1);
-    border-color: rgba(100, 60, 0, 1);
     font-size: 20px;
+    background-color: var(--color-background_2);
+    border-color: var(--color-border);
     color: rgb(250, 230, 200);
 }
 
 .chosen {
-    background-color: rgba(25, 25, 25, .5);
-    border-color: rgb(0, 0, 0);
+    /* background-color: rgba(25, 25, 25, .5); */
+    /* border-color: rgb(0, 0, 0); */
 
     height: 13%;
     width: 100%;
 
     border-width: 3px;
     border-radius: 10px;
-    background-color: rgba(250, 230, 200, 1);
+    background-color: var(--color-background_3);
     border-color: rgba(100, 60, 0, 1);
     font-size: 20px;
     
@@ -197,10 +224,10 @@
     border: 40px;
     border-width: 5px;
     border-radius: 10px;
-    background-color: rgba(100, 60, 0, 1);
-    border-color: rgba(250, 230, 200, 1);
+    background-color: var(--color-background_1);
+    border-color: var(--color-border);
     font-size: 30px;
-    color: rgb(255, 255, 255);
+    color: var(--color-font);
     -unity-font-style: bold;
 
 }

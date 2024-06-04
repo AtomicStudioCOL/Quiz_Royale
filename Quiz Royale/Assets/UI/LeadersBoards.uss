@@ -1,17 +1,27 @@
+:root{
+    --color-background_1: rgba(250, 230, 200, 1);
+    --color-background_2: rgba(230, 210, 180, 1);
+    --color-background_3: rgba(210, 180, 160, 1);
+    --color-border: rgba(100, 60, 0, 1);
+    --color-font: rgb(100, 60, 0);
+    -unity-font-style: bold;
+}
+
 .leaders-boardsUI-Horizontal {
     position: absolute;
     font-size: 20px;   
 
-    background-color: rgba(225, 200, 100, 0.8);
+
+    background-color: var(--color-background_2);
 
     width: 80%;
     height: 75%;
-    top: 20%;
+    top: 25%;
 
     left: 10%;
 
     border-width: 3px;
-    border-color: rgb(70, 0, 20);
+    border-color: var(--color-border);
     border-radius: 10px;
 
     white-space: normal;
@@ -21,16 +31,16 @@
 .leaders-boardsUI-Vertical {
     position: absolute;
     font-size: 20px;
-    background-color: rgba(225, 200, 100, 0.8);
+    background-color: var(--color-background_2);
 
     width: 80%;
     height: 60%;
-    top: 20%;
+    top: 25%;
 
     left: 10%;
 
     border-width: 3px;
-    border-color: rgb(70, 0, 20);
+    border-color: var(--color-border);
     border-radius: 10px;
 
     white-space: normal;
@@ -38,7 +48,7 @@
 }
 
 .active{
-    color: rgb(0, 0, 0);
+    color: var(--color-font);
     white-space: normal;
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;

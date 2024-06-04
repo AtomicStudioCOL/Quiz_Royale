@@ -4,8 +4,6 @@
 --!SerializeField
 local gameManagerGo : GameObject = nil
 
---!SerializeField
-local questionUI : GameObject = nil
 -- modules --
 questionPool = require("QuestionPool")
 
@@ -18,6 +16,11 @@ local _leaderBoardsUI = nil
 
 dialogueLabel:SetPrelocalizedText(" ", false)
 dialogueLabel:AddToClassList("inactive")
+
+-- functions --
+function disableDialoguesUI()
+    self.enabled = false
+end
 
 function welcomePlayerDialogues(category)
     local totalWaitTime
@@ -63,39 +66,15 @@ function finalScreenDialogues(lives)
     dialogueLabel:ClearClassList()
     dialogueLabel:AddToClassList("dialogue")
 
-    if lives > 0 then
-        --[[
-        dialogueLabel:SetPrelocalizedText(`That was all for now. Top three players are:`, false)
-        Timer.After(3, function()
-            dialogueLabel:SetPrelocalizedText(`3: {localScoreTable[3]}.`, false)
-            Timer.After(2, function()
-                dialogueLabel:SetPrelocalizedText(`2: {localScoreTable[2]}.`, false)
-                Timer.After(2, function()
-                    dialogueLabel:SetPrelocalizedText(`1: {localScoreTable[1]}.`, false)
-                    Timer.After(2, function()
-                        disable()
-                        barista:AddToClassList("inactive")
-                    end)
-                end)
-            end)
-        end)
-        --]]
-    else
+    if lives <= 0 then
         dialogueLabel:SetPrelocalizedText(`You seem a bit distracted. Maybe you should take a walk and clear your mind.`, false)
-        --[[
-        Timer.After(4, function()
-                disable()
-                barista:ClearClassList()
-                barista:AddToClassList("inactive")
-            end)
-            --]]
+        Timer.After(5, function()
+                disableDialoguesUI()
+        end)
     end
-
 end
-
 
 client.PlayerConnected:Connect(function()
     _gameManager = gameManagerGo:GetComponent("GameManager")
     _leaderBoardsUI = _gameManager.uiManager:GetComponent("LeadersBoards")
-
 end)

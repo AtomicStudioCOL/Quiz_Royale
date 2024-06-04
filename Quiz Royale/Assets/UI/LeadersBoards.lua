@@ -55,7 +55,7 @@ end
 function setLeaderboards(scoreTable)
     self.enabled = true;
     print("Testing from setLeadersBoardsUI")
--- _localScoreTable = scoreTable
+
     for i, value in pairs(scoreTable) do
         if i == 1 then
             _firstLabel:AddToClassList("active")            
