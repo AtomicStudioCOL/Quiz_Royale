@@ -209,13 +209,13 @@ function pickRandomQuestion(questionsAsked, category)
         tableOfPlayers = playersInCatQ
     end
     
-    if numberAsked < 1 then
+    if numberAsked < 6 then
         categoryDifficulty = questionPool.travel.easy
         diff = "e"
-    elseif numberAsked < 2 then
+    elseif numberAsked < 11 then
         categoryDifficulty = questionPool.travel.normal
         diff = "n"
-    elseif numberAsked < 3 then
+    elseif numberAsked < 16 then
         categoryDifficulty = questionPool.travel.hard
         diff = "h"
     else
@@ -228,7 +228,7 @@ function pickRandomQuestion(questionsAsked, category)
                 catQAsked = nil catQAsked = {}
             end
         end
-        
+
         Timer.After(10, function() pickRandomQuestion(questionsAsked, category) end)
         return
     end
