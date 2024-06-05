@@ -216,17 +216,6 @@ travel = {
             asked = false;
         },
         {
-            baristDialoge = "Would you like some wine and cheese for this lovely moment?.",
-            questionTxt = "Where is Eiffel Tower located?",
-            answers = {
-                a = {txt = "Prague", truthValue = false},
-                b = {txt = "Venice", truthValue = false},
-                c = {txt = "Lisboa", truthValue = false},
-                d = {txt = "Paris", truthValue = true},
-            },
-            asked = false;
-        },
-        {
             baristDialoge = "Do you think it'd be nice selling sushi here?",
             questionTxt = "What is the capital of Japan?",
             answers = {
