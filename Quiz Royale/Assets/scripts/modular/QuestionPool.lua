@@ -193,7 +193,7 @@ testCategory = {
 
 travel = {
     easy = {
-        [1] = {
+        {
             baristDialoge = "I've seen many wonders. I'd love to time travel so I could visit Ancient World ones.",
             questionTxt = "How many World Wonders are there for the Ancient World?",
             answers = {
@@ -204,7 +204,7 @@ travel = {
             },
             asked = false;
         },
-        [2] = {
+        {
             baristDialoge = "When it was built, it was the highest building in the world.",
             questionTxt = "Where is Eiffel Tower located?",
             answers = {
@@ -215,7 +215,7 @@ travel = {
             },
             asked = false;
         },
-        [3] = {
+        {
             baristDialoge = "Would you like some wine and cheese for this lovely moment?.",
             questionTxt = "Where is Eiffel Tower located?",
             answers = {
@@ -226,7 +226,7 @@ travel = {
             },
             asked = false;
         },
-        [4] = {
+        {
             baristDialoge = "Do you think it'd be nice selling sushi here?",
             questionTxt = "What is the capital of Japan?",
             answers = {
@@ -237,7 +237,7 @@ travel = {
             },
             asked = false;
         },
-        [5] = {
+        {
             baristDialoge = "Despite how cute they are, kangaroos are pretty dangerous.",
             questionTxt = "Where are kangaroos from?",
             answers = {
@@ -248,7 +248,7 @@ travel = {
             },
             asked = false;
         },
-        [6] = {
+        {
             baristDialoge = "Did you know there are over 7 500 varieties of apples around the world?",
             questionTxt = "Which city is known as the \"Big Apple\"?",
             answers = {
@@ -259,7 +259,7 @@ travel = {
             },
             asked = false;
         },
-        [7] = {
+        {
             baristDialoge = "I love the poems Pablo Neruda wrote after visiting Machu Picchu.",
             questionTxt = "In which country can you visit the ancient ruins of Machu Picchu?",
             answers = {
@@ -270,7 +270,7 @@ travel = {
             },
             asked = false;
         },
-        [8] = {
+        {
             baristDialoge = "I once visited a desert. I missed AC a lot.",
             questionTxt = "What is the world's largest desert?",
             answers = {
@@ -281,7 +281,7 @@ travel = {
             },
             asked = false;
         },
-        [9] = {
+        {
             baristDialoge = "How many famous landmarks have you visited? I've visited a lot!.",
             questionTxt = "Which famous landmark is located in Rome, Italy?",
             answers = {
@@ -292,7 +292,7 @@ travel = {
             },
             asked = false;
         },
-        [10] = {
+        {
             baristDialoge = "I might love traveling, I've learned a lot of words in different languages!.",
             questionTxt = "What is the primary language spoken in Brazil?",
             answers = {
@@ -303,7 +303,7 @@ travel = {
             },
             asked = false;
         },
-        [11] = {
+        {
             baristDialoge = "Someone asked me to add maple syrup to their coffe once.",
             questionTxt = "What is the capital city of Canada?",
             answers = {
@@ -316,7 +316,7 @@ travel = {
         },
     },
     normal = {
-        [1] = {
+        {
             baristDialoge = "I come from a kinda normal sized town. But it is bigger than some countries.",
             questionTxt = "Which is the smallest country in the world?",
             answers = {
@@ -327,7 +327,7 @@ travel = {
             },
             asked = false;
         },
-        [2] = {
+        {
             baristDialoge = "We don't sell them here, but French fries are amazing with burgers.",
             questionTxt = "Where are French fries from?",
             answers = {
@@ -338,7 +338,7 @@ travel = {
             },
             asked = false;
         },
-        [3] = {
+        {
             baristDialoge = "You learn some amazing things traveling. As an example, in 1937 there was an economic crisis because of the price of tulips",
             questionTxt = "Which European country is known for its canals and tulip fields?",
             answers = {
@@ -349,7 +349,7 @@ travel = {
             },
             asked = false;
         },
-        [4] = {
+        {
             baristDialoge = "I'd love to visit Alhambra someday",
             questionTxt = "In which city can you find the historic Alhambra palace?",
             answers = {
@@ -360,7 +360,7 @@ travel = {
             },
             asked = false;
         },
-        [5] = {
+        {
             baristDialoge = "I love archaeology so much. There are amazing buildings with amazing stories.",
             questionTxt = "Which country is home to the ancient city of Petra?",
             answers = {
@@ -371,7 +371,7 @@ travel = {
             },
             asked = false;
         },
-        [6] = {
+        {
             baristDialoge = "I'm not the best at climbing. But Madeline, a good friend of mine, is pretty good at it!.",
             questionTxt = "Which mountain is known as the \"Roof of Africa\"?",
             answers = {
@@ -382,7 +382,7 @@ travel = {
             },
             asked = false;
         },
-        [7] = {
+        {
             baristDialoge = "A tasty dark coffe for you.",
             questionTxt = "Which country is the world's largest producer of coffee?",
             answers = {
@@ -393,7 +393,7 @@ travel = {
             },
             asked = false;
         },
-        [8] = {
+        {
             baristDialoge = "Don't you love how mystical some places feel like?",
             questionTxt = "In which country can you visit the historic site of Angkor Wat?",
             answers = {
@@ -404,7 +404,7 @@ travel = {
             },
             asked = false;
         },
-        [9] = {
+        {
             baristDialoge = "Empires and kingdoms. Once great, now, written pages, parents of countries, and sometimes, broken buildings.",
             questionTxt = "Which ancient city, now in ruins, was once the capital of the Nabataean kingdom?",
             answers = {
@@ -415,7 +415,7 @@ travel = {
             },
             asked = false;
         },
-        [10] = {
+        {
             baristDialoge = "As humans, we can get to pretty high places. Literally.",
             questionTxt = "What is the highest capital city in the world by altitude?",
             answers = {
@@ -426,7 +426,7 @@ travel = {
             },
             asked = false;
         },
-        [11] = {
+        {
             baristDialoge = "Some people might not know this, but Mesoamerican empires could be as huge as European empires.",
             questionTxt = "Which country is home to the ancient Mayan city of Tikal?",
             answers = {
@@ -437,7 +437,7 @@ travel = {
             },
             asked = false;
         },
-        [12] = {
+        {
             baristDialoge = "Vanilla, delicious for anything!",
             questionTxt = "Which country is the world's largest producer of vanilla?",
             answers = {
@@ -451,7 +451,7 @@ travel = {
     },
 
     hard = {
-        [1] = {
+        {
             baristDialoge = "Did you know there was an European empire in South America?",
             questionTxt = "Which was the capital of the Empire of Brazil?",
             answers = {
@@ -462,7 +462,7 @@ travel = {
             },
             asked = false;
         },
-        [2] = {
+        {
             baristDialoge = "Something amazing about words is they change meaning with time.",
             questionTxt = "What did \"Barbarian\" mean for the Romans during the Roman Empire?",
             answers = {
@@ -473,7 +473,7 @@ travel = {
             },
             asked = false;
         },
-        [3] = {
+        {
             baristDialoge = "I love statues. They might have the most realistic or unrealistic expressions.",
             questionTxt = "Where are Moáis from?",
             answers = {
@@ -484,7 +484,7 @@ travel = {
             },
             asked = false;
         },
-        [4] = {
+        {
             baristDialoge = "Sometimes we can't see the actual scale of countries.",
             questionTxt = "In which of the following countries would Europe fit?",
             answers = {
@@ -495,7 +495,7 @@ travel = {
             },
             asked = false;
         },
-        [5] = {
+        {
             baristDialoge = "UNESCO stands for United Nations Educational, Scientific and Cultural Organization, in case you wondered.",
             questionTxt = "Which country has the most UNESCO World Heritage Sites?",
             answers = {
@@ -506,7 +506,7 @@ travel = {
             },
             asked = false;
         },
-        [6] = {
+        {
             baristDialoge = "Rivers, what a wonderful nature's gift.",
             questionTxt = "Which European capital city is divided by the River Danube?",
             answers = {
@@ -517,7 +517,7 @@ travel = {
             },
             asked = false;
         },
-        [7] = {
+        {
             baristDialoge = "Islands are amazing. They're like thematic floating worlds.",
             questionTxt = "Which country has the most islands in the world?",
             answers = {
@@ -528,7 +528,7 @@ travel = {
             },
             asked = false;
         },
-        [8] = {
+        {
             baristDialoge = "Countries, some big, some small.",
             questionTxt = "Which country is the smallest by land area in mainland Africa?",
             answers = {
@@ -539,7 +539,7 @@ travel = {
             },
             asked = false;
         },
-        [9] = {
+        {
             baristDialoge = "Venice, what a lovely place.",
             questionTxt = "Which city is known as the \"Venice of the North\"?",
             answers = {
@@ -550,7 +550,7 @@ travel = {
             },
             asked = false;
         },
-        [10] = {
+        {
             baristDialoge = "Names change sometimes, even for countries.",
             questionTxt = "Which African country was formerly known as Abyssinia?",
             answers = {
@@ -561,7 +561,7 @@ travel = {
             },
             asked = false;
         },
-        [11] = {
+        {
             baristDialoge = "I once went to a café in the southernmost city in the world. Could you guess the name?",
             questionTxt = "What is the southernmost city in the world?",
             answers = {

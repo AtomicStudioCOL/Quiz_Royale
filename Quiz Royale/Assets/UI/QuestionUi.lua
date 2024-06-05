@@ -16,8 +16,8 @@ questionPool = require("QuestionPool")
 local _questionLabel : UILabel = nil
 --!Bind
 local timerLabel : UILabel = nil
---!Bind
-local _quitLabel : UILabel = nil
+-- --!Bind
+-- local _quitLabel : UILabel = nil
 --!Bind
 local aLabel : UILabel = nil
 --!Bind
@@ -48,8 +48,8 @@ local bButton : UIButton = nil
 local cButton : UIButton = nil
 --!Bind
 local dButton : UIButton = nil
---!Bind
-local quitButton : UIButton = nil
+-- --!Bind
+-- local quitButton : UIButton = nil
 
 -- Eptying and setting items --
 
@@ -60,7 +60,7 @@ function setItems()
     dLabel:SetPrelocalizedText(" ", false)
     _questionLabel:SetPrelocalizedText(" ", false)
     timerLabel:SetPrelocalizedText(" ", false)
-    _quitLabel:SetPrelocalizedText("X", false)
+    -- _quitLabel:SetPrelocalizedText("X", false)
 
     timerLabel:ClearClassList()
     aLabel:ClearClassList()
@@ -77,8 +77,10 @@ function setItems()
     barista:AddToClassList("inactive")
 
     -- setting quit button label child
-    quitButton:Add(_quitLabel)
+    -- quitButton:Add(_quitLabel)
 end
+
+setItems()
 
 -- variables --
 local baristaClass : string
@@ -89,6 +91,7 @@ local chosenAnswer = nil
 
 local currentCategory : string
 
+local playerWelcomed = false
 local isButtonSelected = false
 local timerStarted = false
 local enabled = true
@@ -118,42 +121,42 @@ local function disable()
     self.enabled = false
 end
 
-    function welcomePlayer(category)
-        local totalWaitTime
-        setItems()
-        enabled = false
-        hideAnswersButtons()
-        enabled = true
+function welcomePlayer(category)
 
-        life1:RemoveFromClassList("life_lost")
-        life2:RemoveFromClassList("life_lost")
-        life3:RemoveFromClassList("life_lost")
-        
-        life1:AddToClassList("life1")
-        life2:AddToClassList("life2")
-        life3:AddToClassList("life3")
-        
-        life1:AddToClassList("life_active")
-        life2:AddToClassList("life_active")
-        life3:AddToClassList("life_active")    
-        lives = 3
-        currentCategory = category
+    setItems()
+    enabled = false
+    hideAnswersButtons()
+    enabled = true
 
-        _questionLabel:ClearClassList()
-        _questionLabel:AddToClassList("inactive")
+    life1:RemoveFromClassList("life_lost")
+    life2:RemoveFromClassList("life_lost")
+    life3:RemoveFromClassList("life_lost")
+    
+    life1:AddToClassList("life1")
+    life2:AddToClassList("life2")
+    life3:AddToClassList("life3")
+    
+    life1:AddToClassList("life_active")
+    life2:AddToClassList("life_active")
+    life3:AddToClassList("life_active")    
+    lives = 3
+    currentCategory = category
 
-        _dialoguesUI.welcomePlayerDialogues()
-        if questionPool[currentCategory] == questionPool.travel or questionPool[currentCategory] == questionPool.cat then
-            totalWaitTime = 6
-            
-            baristaClass = "baristaM"
-            _baristaClass_True = "baristaM-True"
-            _baristaClass_False = "baristaM-False"    
-        end
+    _questionLabel:ClearClassList()
+    _questionLabel:AddToClassList("inactive")
+
+    _dialoguesUI.welcomePlayerDialogues()
+    if questionPool[currentCategory] == questionPool.travel or questionPool[currentCategory] == questionPool.cat then
+        baristaClass = "baristaM"
+        _baristaClass_True = "baristaM-True"
+        _baristaClass_False = "baristaM-False"    
+    end
 
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
+
+    Timer.After(17, function() playerWelcomed = true end)
 end
 
 function preQuestionDialogue(question)
@@ -248,6 +251,11 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
     
     howLongToAnswer = originalQuestionTimeValue - timeLeft
     chosenAnswer = randomizedAnswers[chosenOption]
+
+    if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
+        gameManager.saveScorePlayer:FireServer(howLongToAnswer, false)
+    end
+
     
     chosenButton:RemoveFromClassList("active")
     chosenButton:AddToClassList("feedback")
@@ -291,18 +299,12 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
 
     if enabled == false then return end
 
-    if chosenAnswer ~= nil then
-        if chosenAnswer.truthValue == true then
-            _questionLabel:SetPrelocalizedText("Correct!", false)
-            gameManager.saveScorePlayer:FireServer(howLongToAnswer)
-            barista:AddToClassList(_baristaClass_True)
-        else
-            _questionLabel:SetPrelocalizedText("Wrong!", false)
-            removeLife()
-            barista:AddToClassList(_baristaClass_False)
-        end
+    if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
+        _questionLabel:SetPrelocalizedText("Correct!", false)
+        barista:AddToClassList(_baristaClass_True)
     else
         _questionLabel:SetPrelocalizedText("Wrong!", false)
+        barista:AddToClassList(_baristaClass_False)
         removeLife()
     end
 end
@@ -322,63 +324,67 @@ function removeLife()
     end
 end
 
+function resetLives()
+    life3:RemoveFromClassList("life_lost")
+    life3:AddToClassList("life_active")
+    life2:RemoveFromClassList("life_lost")
+    life2:AddToClassList("life_active")
+    life1:RemoveFromClassList("life_lost")
+    life1:AddToClassList("life_active")
+end
+
 function finalScreen()
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
     _dialoguesUI.finalScreenDialogues(lives, localScoreTable)
 
-    gameManager.playerLeftQuizz:FireServer(currentCategory)
-
-    if lives > 0 then
-        Timer.After(9, function()
-            barista:AddToClassList("inactive")
-            disable()
-        end)
-
-    else
-        Timer.After(4, function()
-            barista:ClearClassList()
-            barista:AddToClassList("inactive")
-            disable()
-        end)
+    if lives >= 0 then
+        gameManager.saveScorePlayer:FireServer(howLongToAnswer, true)
     end
-
+    Timer.After(3, function()
+        lives = 3
+        resetLives()
+    end)
 end
 
 -- events
 
-quitButton:RegisterPressCallback(function()
-    gameManager.playersInTravelQ[client.localPlayer.name] = nil
+-- quitButton:RegisterPressCallback(function()
+    -- gameManager.playersInTravelQ[client.localPlayer.name] = nil
 
-    barista:AddToClassList("inactive")
-    disable()
-end)
+    -- barista:AddToClassList("inactive")
+    -- disable()
+-- end)
 
-client.PlayerConnected:Connect(function()
+function self:ClientAwake()
     gameManager = gameManagerGo:GetComponent("GameManager")
-
+    
     _leaderBoardsUI = uImanager:GetComponent("LeadersBoards")
-
+    
     _dialoguesUI = uImanager:GetComponent("Dialogues")
 
-    gameManager.scorePlayer[namePlayer] = 0;
-
+    gameManager.scorePlayer[namePlayer] = 0
+    
     gameManager.replicateChosenQuestion:Connect(function(pickedQuestion)
+        if not playerWelcomed then return end
+
         _dialoguesUI.preQuestionDialoguesUI(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
     end)
-
+    
     gameManager.scorePlayer[namePlayer] = 0
-
+    
     gameManager.updateScoreEvent:Connect(function(scoreTable)
+        if not playerWelcomed then return end
+
         _leaderBoardsUI.setLeaderboards(scoreTable)
         localScoreTable = scoreTable
     end)
-
+    
     gameManager.finishGame:Connect(function()
         finalScreen()
     end)
-    disable()
-end)
+    
+end
 

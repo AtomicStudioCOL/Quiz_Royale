@@ -65,8 +65,8 @@ local cameraPoints = {}
 
 function setPosition(key : string)
     target = cameraPoints[key].transform.position
-    cameraRig.position = cameraPoints[key].transform.position
-    cameraRig.rotation = cameraPoints[key].transform.rotation
+    --cameraRig.position = cameraPoints[key].transform.position
+    --cameraRig.rotation = cameraPoints[key].transform.rotation
 end
 
 function self.ClientAwake()
@@ -87,6 +87,9 @@ function self.ClientAwake()
     end)
 end
 
+
+-- camera default functions --
+--[[
 local localCharacterInstantiatedEvent = nil
 if centerOnCharacterWhenSpawned then
     localCharacterInstantiatedEvent = client.localPlayer.CharacterChanged:Connect(function(player, character)
@@ -330,3 +333,4 @@ function self:Update()
     UpdateInertia()
     UpdatePosition()
 end
+--]]

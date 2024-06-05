@@ -41,9 +41,8 @@
     <!-- Question labels -->
     <hr:UILabel name="_questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
     <!-- Quit button -->
-    <hr:UIButton name="quitButton" class="quitButton"/>
-
-    <hr:UILabel name="_quitLabel" class="quitLabel" picking-mode="Ignore"></hr:UILabel>
+    <!-- <hr:UIButton name="quitButton" class="quitButton"/> -->
+    <!-- <hr:UILabel name="_quitLabel" class="quitLabel" picking-mode="Ignore"></hr:UILabel> -->
 
   </hr:UILuaView>
 

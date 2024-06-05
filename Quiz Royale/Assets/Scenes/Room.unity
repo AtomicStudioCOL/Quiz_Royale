@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101016579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1314271919, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: b65fb6abb9d09cd1738a41a07a1b6c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -1585,7 +1585,6 @@ MonoBehaviour:
   _uiOutput: 2
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   m_gameManagerGo: {fileID: 2053021388}
   references:
     version: 2
@@ -1601,7 +1600,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101016579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1353794413, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 59eb09723b87138182aac474fea120bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -1610,7 +1609,6 @@ MonoBehaviour:
   _uiOutput: 2
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   m_gameManagerGo: {fileID: 2053021388}
   m_uImanager: {fileID: 101016579}
   references:
@@ -1627,7 +1625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101016579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1585216073, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: e5d34186bb1572f1d2a23f1bb20ffe5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -1636,7 +1634,6 @@ MonoBehaviour:
   _uiOutput: 0
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   references:
     version: 2
     RefIds:
@@ -1651,7 +1648,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101016579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1221015543, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 1149c18adf8e6471f1257042b0b3f86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -1660,7 +1657,6 @@ MonoBehaviour:
   _uiOutput: 2
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   references:
     version: 2
     RefIds:
@@ -1675,7 +1671,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 101016579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1070267988, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 7da9e992c3a685919368146ca85e6d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -1684,7 +1680,6 @@ MonoBehaviour:
   _uiOutput: 2
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   m_gameManagerGo: {fileID: 2053021388}
   references:
     version: 2
@@ -1879,6 +1874,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1804211634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &106125878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106125879}
+  m_Layer: 0
+  m_Name: Travel Spawn 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &106125879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106125878}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.01, y: 1.1, z: -16.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &108831953
 GameObject:
@@ -2865,7 +2891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 181154750}
   m_Layer: 0
-  m_Name: Travel Spawn
+  m_Name: Travel Spawn 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2906,7 @@ Transform:
   m_GameObject: {fileID: 181154749}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6199994, y: 1.1, z: -8}
+  m_LocalPosition: {x: 0.72, y: 1.1, z: -13.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3178,7 +3204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &217429432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3582,7 +3608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &242282093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,7 +4359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &273447777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5255,7 +5281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &316851000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6165,6 +6191,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &385360569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385360570}
+  m_Layer: 0
+  m_Name: Travel Spawn 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385360570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385360569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.72, y: 1.1, z: -16.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398450368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,7 +6514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &412944116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6889,7 +6946,7 @@ Transform:
   m_GameObject: {fileID: 424919142}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38757142, y: 0.3224296, z: -0.14683767, w: 0.8510384}
-  m_LocalPosition: {x: 6.16, y: -0.09500003, z: 13.2}
+  m_LocalPosition: {x: 6.16, y: -0.09500003, z: 13}
   m_LocalScale: {x: 1.02, y: 1.02, z: 1.02}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -7239,7 +7296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450173565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7698,7 +7755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486940790
 Transform:
   m_ObjectHideFlags: 0
@@ -9470,7 +9527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &707391281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10116,7 +10173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &754055607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11110,6 +11167,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &854914831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854914832}
+  m_Layer: 0
+  m_Name: Travel Spawn 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854914832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854914831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.33, y: 1.1, z: -13.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867547716
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,7 +11504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 877443467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 928158636, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a7a3bd31b600e11230c0f7433e28ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -11425,7 +11513,6 @@ MonoBehaviour:
   _uiOutput: 0
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   m_zoom: 15
   m_zoomMin: 10
   m_zoomMax: 50
@@ -11545,7 +11632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &894109714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14902,6 +14989,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1100465967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1100465968}
+  m_Layer: 0
+  m_Name: Travel Spawn 8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1100465968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100465967}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1, y: 1.1, z: -13.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153884594
 GameObject:
   m_ObjectHideFlags: 0
@@ -15635,7 +15753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1196383251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20088,7 +20206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1486366575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20414,7 +20532,7 @@ Transform:
   m_GameObject: {fileID: 1493661287}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -12, y: 7, z: -19}
+  m_LocalPosition: {x: -10.67, y: 5.43, z: -16.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20439,7 +20557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1500673427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20644,7 +20762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1512624568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20880,7 +20998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1529072821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21228,7 +21346,7 @@ Transform:
   m_GameObject: {fileID: 1537162921}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3853504, y: 0.33501905, z: -0.15257102, w: 0.8461616}
-  m_LocalPosition: {x: 8.58, y: -0.09500003, z: 13.52}
+  m_LocalPosition: {x: 8.58, y: -0.09500003, z: 13.320001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24155,7 +24273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1757314090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24696,7 +24814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1769992349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25636,6 +25754,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1817937884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817937885}
+  m_Layer: 0
+  m_Name: Travel Spawn 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817937885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817937884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.35, y: 1.1, z: -17.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828744703
 GameObject:
   m_ObjectHideFlags: 0
@@ -25655,7 +25804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1828744704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26953,6 +27102,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042847253}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+--- !u!1 &1913719071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913719072}
+  m_Layer: 0
+  m_Name: Travel Spawn 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913719072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913719071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.32, y: 1.1, z: -14.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915419189
 GameObject:
   m_ObjectHideFlags: 0
@@ -27789,7 +27969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2003177743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28396,6 +28576,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1804211634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2038586220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038586221}
+  m_Layer: 0
+  m_Name: Travel Spawn 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038586221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038586220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.78, y: 1.1, z: -17.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038678965
 GameObject:
   m_ObjectHideFlags: 0
@@ -28780,7 +28991,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053021388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1080094097, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c6794648ccefa8182341b85f3a426fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -28789,7 +29000,6 @@ MonoBehaviour:
   _uiOutput: 0
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   references:
     version: 2
     RefIds:
@@ -28804,7 +29014,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053021388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1435629550, guid: 991a4badf00d28384a32b2c089782f03, type: 3}
+  m_Script: {fileID: 11500000, guid: a9ccd5e02e06e0e1a1e738b0c2aefaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _networkId: 0
@@ -28813,9 +29023,15 @@ MonoBehaviour:
   _uiOutput: 0
   _uiOutputSettings:
     rid: -2
-  _upconverted: 0
   m_uiManagerGo: {fileID: 101016579}
-  m_travelSpawner: {fileID: 181154749}
+  m_travelSpawner1: {fileID: 181154749}
+  m_travelSpawner2: {fileID: 385360569}
+  m_travelSpawner3: {fileID: 1817937884}
+  m_travelSpawner4: {fileID: 2038586220}
+  m_travelSpawner5: {fileID: 106125878}
+  m_travelSpawner6: {fileID: 1913719071}
+  m_travelSpawner7: {fileID: 854914831}
+  m_travelSpawner8: {fileID: 1100465967}
   m_kpopSpawner: {fileID: 1521891022}
   m_catCoffeSpawner: {fileID: 2017453563}
   m_travelTapH: {fileID: 486940794}
@@ -30108,7 +30324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2129385975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30313,6 +30529,13 @@ SceneRoots:
   - {fileID: 1209910433}
   - {fileID: 428332032}
   - {fileID: 181154750}
+  - {fileID: 385360570}
+  - {fileID: 1817937885}
+  - {fileID: 2038586221}
+  - {fileID: 106125879}
+  - {fileID: 1913719072}
+  - {fileID: 854914832}
+  - {fileID: 1100465968}
   - {fileID: 1521891023}
   - {fileID: 2017453564}
   - {fileID: 76285570}

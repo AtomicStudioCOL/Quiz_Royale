@@ -8,7 +8,21 @@ local uiManagerGo : GameObject = nil
 
 --!Header("Spawners")
 --!SerializeField
-local travelSpawner : GameObject = nil
+local travelSpawner1 : GameObject = nil
+--!SerializeField
+local travelSpawner2 : GameObject = nil
+--!SerializeField
+local travelSpawner3 : GameObject = nil
+--!SerializeField
+local travelSpawner4 : GameObject = nil
+--!SerializeField
+local travelSpawner5 : GameObject = nil
+--!SerializeField
+local travelSpawner6 : GameObject = nil
+--!SerializeField
+local travelSpawner7 : GameObject = nil
+--!SerializeField
+local travelSpawner8 : GameObject = nil
 --!SerializeField
 local kpopSpawner : GameObject = nil
 --!SerializeField
@@ -74,17 +88,19 @@ travelQAsked = {}
 kpopQAsked = {}
 catQAsked = {}
 
-travelQuizStarted = false
+travelQuizStarted = BoolValue.new("travelQuizStarted", false)
 catQuizStarted = false
 
-minOfPlayers = 0
+minOfPlayers = 2
 
 -- events --
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
 
+hasGameStarted = Event.new("hasGameStarted")
 finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
+setPlayersCurrentPos = Event.new("setPlayersCurrentPos")
 playerLeftQuizz = Event.new("playerLeftQuizz")
 
 nextQuestion = Event.new("nextQuestion")
@@ -182,6 +198,7 @@ end
 function pickRandomQuestion(questionsAsked, category)
     local categoryDifficulty = nil
     local numberAsked = tableLenght(questionsAsked)
+    print(`asked: {numberAsked}`)
     local tableOfPlayers
     local pickedQuestion = nil
     local diff
@@ -192,26 +209,27 @@ function pickRandomQuestion(questionsAsked, category)
         tableOfPlayers = playersInCatQ
     end
     
-    if numberAsked < 6 then
+    if numberAsked < 1 then
         categoryDifficulty = questionPool.travel.easy
         diff = "e"
-    elseif numberAsked < 11 then
+    elseif numberAsked < 2 then
         categoryDifficulty = questionPool.travel.normal
         diff = "n"
-    elseif numberAsked < 16 then
+    elseif numberAsked < 3 then
         categoryDifficulty = questionPool.travel.hard
         diff = "h"
     else
         for k, player in pairs(tableOfPlayers) do
             finishGame:FireClient(player)
             if category == "travel" then
-                travelQuizStarted = false
                 travelQAsked = nil travelQAsked = {}
+                questionsAsked = travelQAsked
             elseif category == "cat" then
-                catQuizStarted = false
                 catQAsked = nil catQAsked = {}
             end
         end
+        
+        Timer.After(10, function() pickRandomQuestion(questionsAsked, category) end)
         return
     end
 
@@ -241,10 +259,26 @@ function pickRandomQuestion(questionsAsked, category)
     end)
 end
 
+function playerLeftQFunc(player, quiz)
+    if quiz == "travel" then
+        playersInTravelQ[player.name] = nil
+        scorePlayer[player.name] = 0
+        if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted.value then
+            travelQuizStarted.value = false
+        end
+    elseif quiz == "cat" then
+        playersInCatQ[player.name] = nil
+        scorePlayer[player.name] = 0
+        if tableLenght(playersInTravelQ) <= 0 and catQuizStarted then
+            catQuizStarted = false
+        end
+    end
+end
+
 
 function self:ClientAwake()
     -- setting spawner points
-    spawnerPoints["travel"] = travelSpawner
+    spawnerPoints["travel"] = {travelSpawner1, travelSpawner2, travelSpawner3, travelSpawner4, travelSpawner5, travelSpawner6,travelSpawner7, travelSpawner8}
     spawnerPoints["kpop"] = kpopSpawner
     spawnerPoints["cat"] = catCoffeSpawner
 
@@ -272,10 +306,11 @@ function self:ServerAwake()
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
             scorePlayer[player.name] = 0
-            -- Change to 0 or 1 to testing without Players
-            if tableLenght(playersInTravelQ) >= minOfPlayers and not travelQuizStarted then
-                travelQuizStarted = true
-                Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
+            newPlayerEnteredQuiz:FireAllClients(player, tableLenght(playersInTravelQ))
+
+            if tableLenght(playersInTravelQ) >= minOfPlayers and not travelQuizStarted.value then
+                travelQuizStarted.value = true
+                Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
         elseif quiz == "kpop" then
             playersInKpopQ[player.name] = player
@@ -284,29 +319,29 @@ function self:ServerAwake()
             scorePlayer[player.name] = 0
             if tableLenght(playersInTravelQ) >= minOfPlayers and not catQuizStarted then
                 catQuizStarted = true
-                Timer.After(9, function() pickRandomQuestion(travelQAsked, quiz) end)
+                Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
         end
+    end)
+
+    setPlayersCurrentPos:Connect(function(player : Player, _playerPos : Vector3)
+        setPlayersCurrentPos:FireAllClients(player, _playerPos)
+    end)
+
+    hasGameStarted:Connect(function(player : Player)
+        hasGameStarted:FireClient(player, travelQuizStarted.value)
     end)
 
     playerLeftQuizz:Connect(function(player : Player, quiz : string)
-        if quiz == "travel" then
-            playersInTravelQ[player.name] = nil
-            scorePlayer[player.name] = 0
-            if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted then
-                travelQuizStarted = false
-            end
-        elseif quiz == "cat" then
-            playersInCatQ[player.name] = nil
-            scorePlayer[player.name] = 0
-            if tableLenght(playersInTravelQ) <= 0 and catQuizStarted then
-                catQuizStarted = false
-            end
-        end
+        playerLeftQFunc(player, quiz)
     end)
 
-    saveScorePlayer:Connect(function(player : Player, howLongToAnswer)
-        updateScore(player, howLongToAnswer)
+    saveScorePlayer:Connect(function(player : Player, howLongToAnswer, lost : boolean)
+        if lost == true then
+            scorePlayer[player.name] = 0
+        else
+            updateScore(player, howLongToAnswer)
+        end
     end)
 
     nextQuestion:Connect(function(player, category)
