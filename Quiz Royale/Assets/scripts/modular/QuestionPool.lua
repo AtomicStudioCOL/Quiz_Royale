@@ -4,6 +4,9 @@
             This module script will not have any logic on it. Instead, it will be treated
             as a JSON, containing categories, difficulty, questions, answers and wheter if it is or
             is not correct.
+
+            Note: as the scope of the game changed, everything will be on "travel". This will change
+            if more categories are added sometime in the future.
 --]]
 
 testCategory = {
@@ -194,6 +197,7 @@ testCategory = {
 travel = {
     easy = {
         {
+            -- travel --
             baristDialoge = "I've seen many wonders. I'd love to time travel so I could visit Ancient World ones.",
             questionTxt = "How many World Wonders are there for the Ancient World?",
             answers = {
@@ -303,8 +307,222 @@ travel = {
             },
             asked = false;
         },
+
+        -- animals
+        {
+            baristDialoge = "Kings and queens. Is it only a human thing?",
+            questionTxt = "Which animal is known as the \"King of the Jungle\"?",
+            answers = {
+                a = {txt = "Elephant", truthValue = false},
+                b = {txt = "Tiger", truthValue = false},
+                c = {txt = "Gorilla", truthValue = false},
+                d = {txt = "Lion", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "When I was a young boy my father told me hedgehogs were as fast as light. It wasn't true.",
+            questionTxt = "from the following animals, which is the fastest?",
+            answers = {
+                a = {txt = "Gazelle", truthValue = false},
+                b = {txt = "Horse", truthValue = false},
+                c = {txt = "Lion", truthValue = false},
+                d = {txt = "Cheeta", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Zecora is my favourite MLP: FIM character.",
+            questionTxt = "Which animal is famous for its black and white stripes?",
+            answers = {
+                a = {txt = "Tiger", truthValue = false},
+                b = {txt = "Panda", truthValue = false},
+                c = {txt = "Cat", truthValue = false},
+                d = {txt = "Zebra", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Have you watched The Owl House? I liked it a lot!",
+            questionTxt = "Which bird is known for its colorful plumage and ability to mimic sounds?",
+            answers = {
+                a = {txt = "Crow", truthValue = false},
+                b = {txt = "Eagle", truthValue = false},
+                c = {txt = "Owl", truthValue = false},
+                d = {txt = "Parrot", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I have a friend who loves frogs. She's obsessed with how cute they are.",
+            questionTxt = "What type of animal is a frog?",
+            answers = {
+                a = {txt = "Mammal", truthValue = false},
+                b = {txt = "Bird", truthValue = false},
+                c = {txt = "Reptile", truthValue = false},
+                d = {txt = "Amphibian", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I remember once there was a sea creature who could predict the result of soccer games.",
+            questionTxt = "Which sea creature has eight extremities?",
+            answers = {
+                a = {txt = "Jellyfish", truthValue = false},
+                b = {txt = "Starfish", truthValue = false},
+                c = {txt = "Shark", truthValue = false},
+                d = {txt = "Octopus", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I have a friend in Colombia who tried to play dead to avoid getting robbed. It didn't work.",
+            questionTxt = "Which animal is known for playing dead as a defense mechanism?",
+            answers = {
+                a = {txt = "Chameleon", truthValue = false},
+                b = {txt = "Armadillo", truthValue = false},
+                c = {txt = "Skunk", truthValue = false},
+                d = {txt = "Opossum", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Mammals are usually fluffy. My parthner loves fluffy creatures. A lot. It scares me sometimes because spiders are fluffy too.",
+            questionTxt = "Which animal is the largest mammal in the world?",
+            answers = {
+                a = {txt = "Elephant", truthValue = false},
+                b = {txt = "Giraffe", truthValue = false},
+                c = {txt = "Hippopotamus", truthValue = false},
+                d = {txt = "Blue Whale", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I still cry every time at that scene from The Lion King.",
+            questionTxt = "What is a group of lions called?",
+            answers = {
+                a = {txt = "Pack", truthValue = false},
+                b = {txt = "Herd", truthValue = false},
+                c = {txt = "Flock", truthValue = false},
+                d = {txt = "Pride", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "If I add more RGB to my pet will it run faster?",
+            questionTxt = "Which animal is known for its ability to change color?",
+            answers = {
+                a = {txt = "Iguana", truthValue = false},
+                b = {txt = "Squid", truthValue = false},
+                c = {txt = "Frog", truthValue = false},
+                d = {txt = "Chameleon", truthValue = true},
+            },
+            asked = false;
+        },
+
+        -- videogames --
+        {
+            baristDialoge = "My father told me his first videogame was ET. Second one was Super Mario Bross!",
+            questionTxt = "What is the name of the main character in the Super Mario series?",
+            answers = {
+                a = {txt = "Luigi", truthValue = false},
+                b = {txt = "Mario", truthValue = true},
+                c = {txt = "Peach", truthValue = false},
+                d = {txt = "Bowser", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Currently, there are over a thousand of different poket monsters!",
+            questionTxt = "Which Pokémon is known as the mascot of the Pokémon franchise?",
+            answers = {
+                a = {txt = "Charmander", truthValue = false},
+                b = {txt = "Bulbasaur", truthValue = false},
+                c = {txt = "Squirtle", truthValue = false},
+                d = {txt = "Pikachu", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Gotta go fast!",
+            questionTxt = "What is the name of the blue hedgehog who is the main character of a popular Sega game series?",
+            answers = {
+                a = {txt = "Tails", truthValue = false},
+                b = {txt = "Knuckles", truthValue = false},
+                c = {txt = "Sonic", truthValue = true},
+                d = {txt = "Shadow", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Even if some companies are obsessed with graphics, most selled videogame is pixelated.",
+            questionTxt = "In which game do players build and explore in a blocky, 3D, pixelated world?",
+            answers = {
+                a = {txt = "Roblox", truthValue = false},
+                b = {txt = "Terraria", truthValue = false},
+                c = {txt = "Minecraft", truthValue = true},
+                d = {txt = "Fortnite", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "What do you mean Zelda is not the protagonist?",
+            questionTxt = "What is the name of the princess whom Link often rescues in The Legend of Zelda series?",
+            answers = {
+                a = {txt = "Zelda", truthValue = true},
+                b = {txt = "Epona", truthValue = false},
+                c = {txt = "Midna", truthValue = false},
+                d = {txt = "Impa", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "It was a pizza! I swear!",
+            questionTxt = "Which classic video game involves a yellow character eating dots in a maze while avoiding ghosts?",
+            answers = {
+                a = {txt = "Pac-Man", truthValue = true},
+                b = {txt = "Donkey Kong", truthValue = false},
+                c = {txt = "Galaga", truthValue = false},
+                d = {txt = "Space Invaders", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "My parthner always beats me up in fighting games. But every time I win, victory is so sweet!",
+            questionTxt = "Which video game series features characters like Ryu, Ken, and Chun-Li?",
+            answers = {
+                a = {txt = "Tekken", truthValue = false},
+                b = {txt = "Mortal Kombat", truthValue = false},
+                c = {txt = "Street Fighter", truthValue = true},
+                d = {txt = "Soulcalibur", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "You can learn history with videogames!",
+            questionTxt = "Which video game series features a group of assassins fighting against the Templars throughout history?",
+            answers = {
+                a = {txt = "Hitman", truthValue = false},
+                b = {txt = "Dishonored", truthValue = false},
+                c = {txt = "Thief", truthValue = false},
+                d = {txt = "Assassin's Creed", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Tenis for two is considered to be the first videogame ever. But it wasn't commercial.",
+            questionTxt = "What is considered the first commercially successful video game?",
+            answers = {
+                a = {txt = "Space Invaders", truthValue = false},
+                b = {txt = "Pong", truthValue = true},
+                c = {txt = "Asteroids", truthValue = false},
+                d = {txt = "Tetris", truthValue = false},
+            },
+            asked = false;
+        },        
     },
     normal = {
+        -- travel --
         {
             baristDialoge = "I come from a kinda normal sized town. But it is bigger than some countries.",
             questionTxt = "Which is the smallest country in the world?",
@@ -437,9 +655,201 @@ travel = {
             },
             asked = false;
         },
+
+        -- animals --
+        {
+            baristDialoge = "I still dream about having my own functional wings.",
+            questionTxt = "What is the only mammal capable of true flight?",
+            answers = {
+                a = {txt = "Colugo", truthValue = false},
+                b = {txt = "Sugar glider", truthValue = false},
+                c = {txt = "Flying squirrel", truthValue = false},
+                d = {txt = "Bat", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I still dream about having my own functional wings.",
+            questionTxt = "Which animal has the largest brain in proportion to its body size?",
+            answers = {
+                a = {txt = "Ant", truthValue = false},
+                b = {txt = "Elephant", truthValue = false},
+                c = {txt = "Human", truthValue = false},
+                d = {txt = "Dolphin", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "If I speak several languages, do I have a long tongue?",
+            questionTxt = "Which animal is known for having a tongue that can be as long as its body?",
+            answers = {
+                a = {txt = "Frog", truthValue = false},
+                b = {txt = "Giraffe", truthValue = false},
+                c = {txt = "Anteater", truthValue = false},
+                d = {txt = "Chameleon", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I love ponies and penguins. Both so small and cute.",
+            questionTxt = "What is the largest species of penguin?",
+            answers = {
+                a = {txt = "King Penguin", truthValue = false},
+                b = {txt = "Gentoo Penguin", truthValue = false},
+                c = {txt = "Adelie Penguin", truthValue = false},
+                d = {txt = "Emperor Penguin", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Nine months are a lot, but some animals wait about 22 months for their births.",
+            questionTxt = "Which animal has the longest gestation period?",
+            answers = {
+                a = {txt = "Rhinoceros", truthValue = false},
+                b = {txt = "Giraffe", truthValue = false},
+                c = {txt = "Blue whale", truthValue = false},
+                d = {txt = "African Elephant", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Dragons are so cool!",
+            questionTxt = "What type of animal is a Komodo dragon?",
+            answers = {
+                a = {txt = "Snake", truthValue = false},
+                b = {txt = "Crocodile", truthValue = false},
+                c = {txt = "Turtle", truthValue = false},
+                d = {txt = "Lizard", truthValue = true},
+            },
+            asked = false;
+        },
+    },
+    {
+        baristDialoge = "Before animal rights were a thing, some instruments were made with endangered animal parts.",
+        questionTxt = "What is the main component of an elephant's tusks?",
+        answers = {
+            a = {txt = "Bone", truthValue = false},
+            b = {txt = "Keratin", truthValue = false},
+            c = {txt = "Ivory", truthValue = true},
+            d = {txt = "Calcium", truthValue = false},
+        },
+        asked = false;
+
+        -- videogames --
+        {
+            baristDialoge = "Mama mia!",
+            questionTxt = "In which game did Mario first appear?",
+            answers = {
+                a = {txt = "Super Mario Bros.", truthValue = false},
+                b = {txt = "Donkey Kong", truthValue = true},
+                c = {txt = "Mario Bros.", truthValue = false},
+                d = {txt = "The Legend of Zelda", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "How many shooters have you played? I've played the amazing quantity of 3.",
+            questionTxt = "What is the name of the protagonist in the Halo series?",
+            answers = {
+                a = {txt = "Commander Shepard", truthValue = false},
+                b = {txt = "Marcus Fenix", truthValue = false},
+                c = {txt = "Master Chief", truthValue = true},
+                d = {txt = "Gordon Freeman", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Which is the best FF? That's how you get FF fans to start a fight.",
+            questionTxt = "Which Final Fantasy game features the character Cloud Strife?",
+            answers = {
+                a = {txt = "Final Fantasy VI", truthValue = false},
+                b = {txt = "Final Fantasy VII", truthValue = true},
+                c = {txt = "Final Fantasy VIII", truthValue = false},
+                d = {txt = "Final Fantasy IX", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "People say Majora's Mask is scarier, but Ocarina of Time has some existentional drama as well.",
+            questionTxt = "In The Legend of Zelda: Ocarina of Time, what is the name of Link's fairy companion?",
+            answers = {
+                a = {txt = "Navi", truthValue = true},
+                b = {txt = "Tatl", truthValue = false},
+                c = {txt = "Midna", truthValue = false},
+                d = {txt = "Fi", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Elder Scrolls V: Skyrim is set in a vast open world.",
+            questionTxt = "Which race in The Elder Scrolls V: Skyrim is known for their stealth abilities and night vision?",
+            answers = {
+                a = {txt = "Nord", truthValue = false},
+                b = {txt = "Khajiit", truthValue = true},
+                c = {txt = "Argonian", truthValue = false},
+                d = {txt = "Dunmer (Dark Elf)", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Portal features mind-bending puzzles.",
+            questionTxt = "What is the name of the AI antagonist in Portal?",
+            answers = {
+                a = {txt = "HAL 9000", truthValue = false},
+                b = {txt = "Cortana", truthValue = false},
+                c = {txt = "GLaDOS", truthValue = true},
+                d = {txt = "SHODAN", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Mega Man has an iconic blue suit.",
+            questionTxt = "What is the name of Mega Man's robotic dog companion?",
+            answers = {
+                a = {txt = "Rush", truthValue = true},
+                b = {txt = "Roll", truthValue = false},
+                c = {txt = "Proto", truthValue = false},
+                d = {txt = "Beat", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Street Fighter has a rich variety of characters.",
+            questionTxt = "Which character in Street Fighter is known for their green skin and electric attacks?",
+            answers = {
+                a = {txt = "Ryu", truthValue = false},
+                b = {txt = "Chun-Li", truthValue = false},
+                c = {txt = "Blanka", truthValue = true},
+                d = {txt = "Guile", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "The Witcher 3 features a lot of details in its world!",
+            questionTxt = "In The Witcher series, what is the name of Geralt's horse?",
+            answers = {
+                a = {txt = "Roach", truthValue = true},
+                b = {txt = "Shadowfax", truthValue = false},
+                c = {txt = "Epona", truthValue = false},
+                d = {txt = "Agro", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Overwatch's so fun! I love the hamster!",
+            questionTxt = "Which Overwatch character says 'It's high noon'?",
+            answers = {
+                a = {txt = "Tracer", truthValue = false},
+                b = {txt = "Reaper", truthValue = false},
+                c = {txt = "McCree", truthValue = true},
+                d = {txt = "Hanzo", truthValue = false},
+            },
+            asked = false;
+        },        
     },
 
     hard = {
+        -- travel --
         {
             baristDialoge = "Did you know there was an European empire in South America?",
             questionTxt = "Which was the capital of the Empire of Brazil?",
@@ -561,6 +971,219 @@ travel = {
             },
             asked = false;
         },
+
+        -- animals --
+        {
+            baristDialoge = "Perry!",
+            questionTxt = "Which mammal lays eggs?",
+            answers = {
+                a = {txt = "Echidna", truthValue = true},
+                b = {txt = "Platypus", truthValue = true},
+                c = {txt = "Both, Echidna and Platypus.", truthValue = true},
+                d = {txt = "No mammal lays eggs.", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Axolotls are fascinating amphibians. They're so cute!",
+            questionTxt = "What type of animal is an axolotl?",
+            answers = {
+                a = {txt = "Fish", truthValue = false},
+                b = {txt = "Reptile", truthValue = false},
+                c = {txt = "Amphibian", truthValue = true},
+                d = {txt = "Mammal", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Dolphins are so cute but I SWEAR they're evil!",
+            questionTxt = "What is the largest species of dolphin?",
+            answers = {
+                a = {txt = "Bottlenose dolphin", truthValue = false},
+                b = {txt = "Orca", truthValue = true},
+                c = {txt = "Spinner dolphin", truthValue = false},
+                d = {txt = "Risso's dolphin", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Narwhals are often called the unicorns of the sea.",
+            questionTxt = "What is the primary function of a narwhal's tusk?",
+            answers = {
+                a = {txt = "Offensive organ", truthValue = false},
+                b = {txt = "Defensive organ", truthValue = false},
+                c = {txt = "Sensory organ", truthValue = true},
+                d = {txt = "Mating display", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Our lives are so short! Some animals live centuries!",
+            questionTxt = "Which animal is known to have the longest lifespan?",
+            answers = {
+                a = {txt = "Bowhead whale", truthValue = false},
+                b = {txt = "Elephant", truthValue = false},
+                c = {txt = "Greenland shark", truthValue = true},
+                d = {txt = "Galapagos tortoise", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I once tried to practice bow and arrow sport. My aim was awful!",
+            questionTxt = "Which fish is known for its ability to shoot water to knock down prey?",
+            answers = {
+                a = {txt = "Archerfish", truthValue = true},
+                b = {txt = "Pufferfish", truthValue = false},
+                c = {txt = "Lionfish", truthValue = false},
+                d = {txt = "Electric eel", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Australia once had a war against Emus. Emus won.",
+            questionTxt = "What is the world's most dangerous bird?",
+            answers = {
+                a = {txt = "Ostrich", truthValue = false},
+                b = {txt = "Cassowary", truthValue = true},
+                c = {txt = "Eagle", truthValue = false},
+                d = {txt = "Emu", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Empires had rised and fallen, and it was still young.",
+            questionTxt = "What animal is known for its apparent immortality?",
+            answers = {
+                a = {txt = "Turritopsis dohrnii", truthValue = true},
+                b = {txt = "Natator depressus", truthValue = false},
+                c = {txt = "Scyllarides latus", truthValue = false},
+                d = {txt = "Enteroctopus dofleini", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "When I was in school, a friend wanted to lift the heaviest animal in the world. She was strong but I doubt she could do it.",
+            questionTxt = "What is the heaviest animal in the world?",
+            answers = {
+                a = {txt = "African elephant", truthValue = false},
+                b = {txt = "Blue whale", truthValue = true},
+                c = {txt = "Great white shark", truthValue = false},
+                d = {txt = "Giraffe", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Intelligence is everywhere!",
+            questionTxt = "Which cephalopod is known for its ability to solve puzzles and escape enclosures?",
+            answers = {
+                a = {txt = "Squid", truthValue = false},
+                b = {txt = "Octopus", truthValue = true},
+                c = {txt = "Cuttlefish", truthValue = false},
+                d = {txt = "Nautilus", truthValue = false},
+            },
+            asked = false;
+        },
+
+        -- videogames --
+        {
+            baristDialoge = "The legend says Final Fantasy was the studio's final fantasy before closing for bankruptcy. But it was a surprising success!",
+            questionTxt = "What year was the first Final Fantasy game released?",
+            answers = {
+                a = {txt = "1985", truthValue = false},
+                b = {txt = "1987", truthValue = true},
+                c = {txt = "1990", truthValue = false},
+                d = {txt = "1992", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Dark Souls is the Dark Souls of Dark Souls saga.",
+            questionTxt = "Who is the director of the Dark Souls series?",
+            answers = {
+                a = {txt = "Hideo Kojima", truthValue = false},
+                b = {txt = "Shigeru Miyamoto", truthValue = false},
+                c = {txt = "Hidetaka Miyazaki", truthValue = true},
+                d = {txt = "Tetsuya Nomura", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "The Metal Gear series has an amazing narrative! It's almost as watching a movie!",
+            questionTxt = "What is the real name of the character Solid Snake in the Metal Gear series?",
+            answers = {
+                a = {txt = "John", truthValue = false},
+                b = {txt = "David", truthValue = true},
+                c = {txt = "Jack", truthValue = false},
+                d = {txt = "Eli", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Even if there were narrative elements in older shooters, Half-Life brought it to mainstream.",
+            questionTxt = "Which is the name of the empire which conquered Earth in Half-Life 2?",
+            answers = {
+                a = {txt = "Vortigaunts", truthValue = false},
+                b = {txt = "Combine", truthValue = true},
+                c = {txt = "Headcrabs", truthValue = false},
+                d = {txt = "Antlions", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "If you got short with The Witcher 3 main game, you can play it's expansions!",
+            questionTxt = "What is the title of the first expansion for The Witcher 3: Wild Hunt?",
+            answers = {
+                a = {txt = "Hearts of Stone", truthValue = true},
+                b = {txt = "Blood and Wine", truthValue = false},
+                c = {txt = "Wild Hunt", truthValue = false},
+                d = {txt = "Nightfall", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "BioShock explores themes of free will and utopia.",
+            questionTxt = "Who is the founder of the underwater city of Rapture in BioShock?",
+            answers = {
+                a = {txt = "Andrew Ryan", truthValue = true},
+                b = {txt = "Frank Fontaine", truthValue = false},
+                c = {txt = "Atlas", truthValue = false},
+                d = {txt = "Sander Cohen", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I saw a deeer today. It was lovely.",
+            questionTxt = "In Portal 2, who provides the voice for the character Wheatley?",
+            answers = {
+                a = {txt = "Stephen Merchant", truthValue = true},
+                b = {txt = "J.K. Simmons", truthValue = false},
+                c = {txt = "Ellen McLain", truthValue = false},
+                d = {txt = "Jonathan Coulton", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "The Mass Effect series spans galaxies.",
+            questionTxt = "What is the name of the ship commanded by Commander Shepard in the Mass Effect series?",
+            answers = {
+                a = {txt = "Normandy", truthValue = true},
+                b = {txt = "Endeavor", truthValue = false},
+                c = {txt = "Serenity", truthValue = false},
+                d = {txt = "Enterprise", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I'll let the music speak for me, my soul and everything will be okay.",
+            questionTxt = "Which Overwatch hero is a DJ who can heal teammates with music?",
+            answers = {
+                a = {txt = "Lucio", truthValue = true},
+                b = {txt = "Mercy", truthValue = false},
+                c = {txt = "Zenyatta", truthValue = false},
+                d = {txt = "Moira", truthValue = false},
+            },
+            asked = false;
+        },        
     },
 }
 
