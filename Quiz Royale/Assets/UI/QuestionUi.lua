@@ -334,15 +334,15 @@ function resetLives()
 end
 
 function finalScreen()
-    barista:ClearClassList()
-    barista:AddToClassList(baristaClass)
-    barista:SendToBack()
     _dialoguesUI.finalScreenDialogues(lives, localScoreTable)
-
+    
     if lives >= 0 then
         gameManager.saveScorePlayer:FireServer(howLongToAnswer, true)
-    end
-    Timer.After(3, function()
+    else
+        barista:ClearClassList()
+        barista:AddToClassList(baristaClass)
+        barista:SendToBack()    end
+    Timer.After(.5, function()
         lives = 3
         resetLives()
     end)
