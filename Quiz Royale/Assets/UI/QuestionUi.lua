@@ -394,6 +394,7 @@ function self:ClientAwake()
     end)
 
     gameManager.currentQuestNum:Connect(function(currentQuestNum)
+        if currentQuestNum > 15 then return end
         _questNum:SetPrelocalizedText(`{currentQuestNum} / 15`)
     end)
     

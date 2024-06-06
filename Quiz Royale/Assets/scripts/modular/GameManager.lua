@@ -219,7 +219,7 @@ function pickRandomQuestion(questionsAsked, category)
     elseif numberAsked < 11 then
         categoryDifficulty = questionPool.travel.normal
         diff = "n"
-    elseif numberAsked < 16 then
+    elseif numberAsked < 15 then
         categoryDifficulty = questionPool.travel.hard
         diff = "h"
     else
@@ -257,7 +257,7 @@ function pickRandomQuestion(questionsAsked, category)
 
     Timer.After(19, function()
         updateLeaderboards(tableOfPlayers)
-        Timer.After(2, function()
+        Timer.After(8, function()
             pickRandomQuestion(questionsAsked, category)
         end)
     end)
