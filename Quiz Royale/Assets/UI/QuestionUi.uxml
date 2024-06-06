@@ -8,13 +8,7 @@
 >
 
   <hr:UILuaView name="questionUi" class="question-Ui" picking-mode="Ignore">
-    
-    
-    <!--  
-    <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
-  -->
-
-
+  
     <!-- lives elements -->
     <hr:UIView name="infoContainer" class="infoContainer" picking-mode="Ignore">
       <hr:UIImage name="life1" class="life1"/>
@@ -40,9 +34,13 @@
 
     <!-- Question labels -->
     <hr:UILabel name="_questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
+    
     <!-- Quit button -->
-    <!-- <hr:UIButton name="quitButton" class="quitButton"/> -->
-    <!-- <hr:UILabel name="_quitLabel" class="quitLabel" picking-mode="Ignore"></hr:UILabel> -->
+    <hr:UIButton name="quitButton" class="quitButton"/>
+    <hr:UILabel name="_quitLabel" class="quitLabel" picking-mode="Ignore"></hr:UILabel>
+
+    <!-- Question Counter -->
+    <hr:UILabel name="_questNum" class="questNum" picking-mode="Ignore"></hr:UILabel>
 
   </hr:UILuaView>
 

@@ -91,13 +91,13 @@ catQAsked = {}
 travelQuizStarted = BoolValue.new("travelQuizStarted", false)
 catQuizStarted = false
 
-minOfPlayers = 2
+minOfPlayers = 1
 
 -- events --
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
 
-hasGameStarted = Event.new("hasGameStarted")
+currentQuestNum = Event.new("currentQuestNum")
 finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
 setPlayersCurrentPos = Event.new("setPlayersCurrentPos")
@@ -198,15 +198,19 @@ end
 function pickRandomQuestion(questionsAsked, category)
     local categoryDifficulty = nil
     local numberAsked = tableLenght(questionsAsked)
-    print(`asked: {numberAsked}`)
     local tableOfPlayers
     local pickedQuestion = nil
     local diff
     
     if category == "travel" then
+        if not travelQuizStarted.value then return end
         tableOfPlayers = playersInTravelQ
     elseif category == "cat" then
         tableOfPlayers = playersInCatQ
+    end
+
+    for k, v in tableOfPlayers do
+        currentQuestNum:FireClient(v, numberAsked + 1)
     end
     
     if numberAsked < 6 then
@@ -264,6 +268,7 @@ function playerLeftQFunc(player, quiz)
         playersInTravelQ[player.name] = nil
         scorePlayer[player.name] = 0
         if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted.value then
+            travelQAsked = nil travelQAsked = {}
             travelQuizStarted.value = false
         end
     elseif quiz == "cat" then
@@ -326,10 +331,6 @@ function self:ServerAwake()
 
     setPlayersCurrentPos:Connect(function(player : Player, _playerPos : Vector3)
         setPlayersCurrentPos:FireAllClients(player, _playerPos)
-    end)
-
-    hasGameStarted:Connect(function(player : Player)
-        hasGameStarted:FireClient(player, travelQuizStarted.value)
     end)
 
     playerLeftQuizz:Connect(function(player : Player, quiz : string)

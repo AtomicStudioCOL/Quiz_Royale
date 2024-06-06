@@ -36,15 +36,15 @@ function self:ClientAwake()
         _roomsUi.enabled = true
     end)
 
-    -- for i, v in pairs(tapHandlers["travelQuiz"]) do
-    --     v.Tapped:Connect(function()
-    --         _questionsUI.enabled = true
-    --         _dialoguesUI.enabled = true
-    --         _questionsUI.welcomePlayer("travel")
-    --         _dialoguesUI.welcomePlayerDialogues("travel")
-    --         gameManager.newPlayerEnteredQuiz:FireServer("travel")
-    --     end)
-    -- end
+    for i, v in pairs(tapHandlers["travelQuiz"]) do
+        v.Tapped:Connect(function()
+            _questionsUI.enabled = true
+            _dialoguesUI.enabled = true
+            _questionsUI.welcomePlayer("travel")
+            _dialoguesUI.welcomePlayerDialogues("travel")
+            gameManager.newPlayerEnteredQuiz:FireServer("travel")
+        end)
+    end
     
     -- for i, v in pairs(tapHandlers["catQuizz"]) do
     --     v.Tapped:Connect(function()

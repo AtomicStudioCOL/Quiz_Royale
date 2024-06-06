@@ -1,6 +1,5 @@
 --!Type(UI)
 
-
 --!Header("Managers")
 --!SerializeField
 local gameManagerGo : GameObject = nil
@@ -16,8 +15,10 @@ questionPool = require("QuestionPool")
 local _questionLabel : UILabel = nil
 --!Bind
 local timerLabel : UILabel = nil
--- --!Bind
--- local _quitLabel : UILabel = nil
+--!Bind
+local _questNum : UILabel = nil
+--!Bind
+local _quitLabel : UILabel = nil
 --!Bind
 local aLabel : UILabel = nil
 --!Bind
@@ -48,8 +49,8 @@ local bButton : UIButton = nil
 local cButton : UIButton = nil
 --!Bind
 local dButton : UIButton = nil
--- --!Bind
--- local quitButton : UIButton = nil
+--!Bind
+local quitButton : UIButton = nil
 
 -- Eptying and setting items --
 
@@ -60,7 +61,8 @@ function setItems()
     dLabel:SetPrelocalizedText(" ", false)
     _questionLabel:SetPrelocalizedText(" ", false)
     timerLabel:SetPrelocalizedText(" ", false)
-    -- _quitLabel:SetPrelocalizedText("X", false)
+    _questNum:SetPrelocalizedText(" ", false)
+    _quitLabel:SetPrelocalizedText("X", false)
 
     timerLabel:ClearClassList()
     aLabel:ClearClassList()
@@ -72,12 +74,13 @@ function setItems()
     bLabel:AddToClassList("inactive")
     cLabel:AddToClassList("inactive")
     dLabel:AddToClassList("inactive")
+    _questNum:AddToClassList("inactive")
     _questionLabel:AddToClassList("inactive")
 
     barista:AddToClassList("inactive")
 
     -- setting quit button label child
-    -- quitButton:Add(_quitLabel)
+    quitButton:Add(_quitLabel)
 end
 
 setItems()
@@ -105,17 +108,32 @@ local howLongToAnswer : number
 local lives = 3
 
 local randomizedAnswers
-local questionTimer : Timer
 local originalQuestionTimeValue = 15
 local questionTimeValue = originalQuestionTimeValue
+
+local questionTimer : Timer
+local _timerPlWelced : Timer
+local _timerSetQuesLT : Timer
+local _timerResLiv : Timer
 
 local localScoreTable = {}
 
 -- functions --
+local function stopTimers()
+    if questionTimer ~= nil then questionTimer:Stop() end
+    if _timerPlWelced ~= nil then _timerPlWelced:Stop() end
+    if _timerSetQuesLT ~= nil then _timerSetQuesLT:Stop() end
+    if _timerResLiv ~= nil then _timerResLiv:Stop() end
+end
+
 local function disable()
     setItems()
     enabled = false
+    playerWelcomed = false
+    timerStarted = false
     _dialoguesUI.disableDialoguesUI()
+    _dialoguesUI.stopTimers()
+    stopTimers()
     _leaderBoardsUI.disableLeadersBoardsUI()
     gameManager.playerLeftQuizz:FireServer(currentCategory)
     self.enabled = false
@@ -156,18 +174,20 @@ function welcomePlayer(category)
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
 
-    Timer.After(17, function() playerWelcomed = true end)
+    _timerPlWelced = Timer.After(17, function() playerWelcomed = true end)
 end
 
 function preQuestionDialogue(question)
     if lives == 0 then return end    
     _leaderBoardsUI.disableLeadersBoardsUI();
+    _questNum:ClearClassList()
+    _questNum:AddToClassList("questNum")
     
     barista:ClearClassList()
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
     
-    Timer.After(3, function()
+    _timerSetQuesLT = Timer.After(3, function()
         if enabled == false then return end
         setQuestionLabelsText(question)
         _dialoguesUI.showDialogueBox(false)
@@ -342,7 +362,7 @@ function finalScreen()
         barista:ClearClassList()
         barista:AddToClassList(baristaClass)
         barista:SendToBack()    end
-    Timer.After(.5, function()
+    _timerResLiv = Timer.After(.5, function()
         lives = 3
         resetLives()
     end)
@@ -350,12 +370,12 @@ end
 
 -- events
 
--- quitButton:RegisterPressCallback(function()
-    -- gameManager.playersInTravelQ[client.localPlayer.name] = nil
+quitButton:RegisterPressCallback(function()
+    gameManager.playerLeftQuizz:FireServer("travel")
 
-    -- barista:AddToClassList("inactive")
-    -- disable()
--- end)
+    barista:AddToClassList("inactive")
+    disable()
+end)
 
 function self:ClientAwake()
     gameManager = gameManagerGo:GetComponent("GameManager")
@@ -371,6 +391,10 @@ function self:ClientAwake()
 
         _dialoguesUI.preQuestionDialoguesUI(pickedQuestion)
         preQuestionDialogue(pickedQuestion)
+    end)
+
+    gameManager.currentQuestNum:Connect(function(currentQuestNum)
+        _questNum:SetPrelocalizedText(`{currentQuestNum} / 15`)
     end)
     
     gameManager.scorePlayer[namePlayer] = 0

@@ -13,6 +13,14 @@ local dialogueLabel : UILabel = nil
 local _gameManager = nil
 local _leaderBoardsUI = nil
 
+-- variables --
+local _timDial1 : Timer
+local _timDial2 : Timer
+local _timDial3 : Timer
+local _timDial4 : Timer
+local _timDial5 : Timer
+local _timDial6 : Timer
+local _canWelcome = true
 
 dialogueLabel:SetPrelocalizedText(" ", false)
 dialogueLabel:AddToClassList("inactive")
@@ -22,18 +30,30 @@ function disableDialoguesUI()
     self.enabled = false
 end
 
+function stopTimers()
+    _canWelcome = false
+    if _timDial1 == nil then return end
+    _timDial1:Stop()
+    if _timDial2 == nil then return end
+    _timDial2:Stop()
+    if _timDial3 == nil then return end
+    _timDial3:Stop()
+    if _timDial4 == nil then return end
+    _timDial4:Stop()
+    if _timDial5 == nil then return end
+    _timDial5:Stop()
+    if _timDial6 == nil then return end
+    _timDial6:Stop()
+end
+
 function welcomePlayerDialogues(category)
     local totalWaitTime
     local waitingText
     local hasGameStarted
 
-    currentCategory = category
+    _canWelcome = true
 
-    -- _gameManager.hasGameStarted:FireServer(hasGameStarted)
-    -- _gameManager.hasGameStarted:Connect(function(boolean)
-    --     print(`hasGameStarted connected, {boolean}`)
-    --     hasGameStarted = boolean
-    -- end)
+    currentCategory = category
 
     hasGameStarted = _gameManager.travelQuizStarted.value
 
@@ -46,17 +66,23 @@ function welcomePlayerDialogues(category)
     dialogueLabel:AddToClassList("dialogue")
 
     dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
-    Timer.After(2, function()
+    _timDial1 = Timer.After(2, function()
+        if not _canWelcome then return end
         dialogueLabel:SetPrelocalizedText("I'm Hugo, your barista. Nice to meet you!", false)
-        Timer.After(3, function()
+        _timDial2 = Timer.After(3, function()
+            if not _canWelcome then return end
             dialogueLabel:SetPrelocalizedText("In this café, we don't only have tasty coffees and meals,", false)
-            Timer.After(3, function()
+            _timDial3 = Timer.After(3, function()
+                if not _canWelcome then return end
                 dialogueLabel:SetPrelocalizedText("but we feed our minds with knowledge as well!", false)
-                Timer.After(3, function()
+                _timDial4 = Timer.After(3, function()
+                    if not _canWelcome then return end
                     dialogueLabel:SetPrelocalizedText("Answer right fastly and you might be the best player of the game.", false)
-                    Timer.After(3, function()
+                    _timDial5 = Timer.After(3, function()
+                        if not _canWelcome then return end
                         dialogueLabel:SetPrelocalizedText("Answer wrong three times and your score will drop to 0.", false)
-                        Timer.After(3, function()
+                        _timDial6 = Timer.After(3, function()
+                            if not _canWelcome then return end
                             dialogueLabel:SetPrelocalizedText(waitingText, false)
                         end)
                     end)
