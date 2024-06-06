@@ -60,9 +60,9 @@
 
     font-size: 100%;
     color: var(--color-background_1);
-    white-space: normal;                        -- evita que el texto se salga horizontalmente del cajón
-    -unity-text-align: middle-center;           -- controla la posición del texto
-    -unity-text-overflow-position: middle;      -- controla la posición de la siguiente línea
+    white-space: normal;                        /* evita que el texto se salga horizontalmente del cajón */
+    -unity-text-align: middle-center;           /* controla la posición del texto */
+    -unity-text-overflow-position: middle;      /* controla la posición de la siguiente línea */
 }
 
 .infoContainer{
