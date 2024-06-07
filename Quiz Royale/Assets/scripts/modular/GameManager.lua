@@ -264,7 +264,6 @@ function pickRandomQuestion(questionsAsked, category)
     questionsAsked[diff ..  `{randomNumber}`] = randomNumber 
 
     for k, player in pairs(tableOfPlayers) do
-        print(`{pickedQuestion.questionTxt}`)
         replicateChosenQuestion:FireClient(player, pickedQuestion)
     end
 

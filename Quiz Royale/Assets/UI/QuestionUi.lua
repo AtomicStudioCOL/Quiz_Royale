@@ -130,6 +130,7 @@ end
 
 local function disable()
     setItems()
+    questionTimeValue = originalQuestionTimeValue
     enabled = false
     playerWelcomed = false
     timerStarted = false
