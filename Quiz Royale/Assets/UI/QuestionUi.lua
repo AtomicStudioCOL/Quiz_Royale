@@ -70,6 +70,7 @@ function setItems()
     cLabel:ClearClassList()
     dLabel:ClearClassList()
     _questionLabel:ClearClassList()
+    
     aLabel:AddToClassList("inactive")
     bLabel:AddToClassList("inactive")
     cLabel:AddToClassList("inactive")
@@ -98,6 +99,7 @@ local playerWelcomed = false
 local isButtonSelected = false
 local timerStarted = false
 local enabled = true
+local waitingForNextQuestion = false
 
 local gameManager = nil
 local _leaderBoardsUI = nil
@@ -140,11 +142,20 @@ local function disable()
 end
 
 function welcomePlayer(category)
-
+    stopTimers()
+    _dialoguesUI.stopTimers()
     setItems()
     enabled = false
     hideAnswersButtons()
     enabled = true
+
+    hasGameStarted = gameManager.travelQuizStarted.value
+
+    if hasGameStarted then
+        waitingForNextQuestion = true
+    else
+        waitingForNextQuestion = false
+    end
 
     life1:RemoveFromClassList("life_lost")
     life2:RemoveFromClassList("life_lost")
@@ -178,7 +189,7 @@ function welcomePlayer(category)
 end
 
 function preQuestionDialogue(question)
-    if lives == 0 then return end    
+    waitingForNextQuestion = false
     _leaderBoardsUI.disableLeadersBoardsUI();
     _questNum:ClearClassList()
     _questNum:AddToClassList("questNum")
@@ -228,6 +239,16 @@ function activeAnswerButtons()               -- Assigns the callbacks and adds t
     timerStarted = true
     chosenAnswer = nil
     isButtonSelected = false
+
+    aLabel:ClearClassList()
+    bLabel:ClearClassList()
+    cLabel:ClearClassList()
+    dLabel:ClearClassList()
+
+    aLabel:AddToClassList("active")
+    bLabel:AddToClassList("active")
+    cLabel:AddToClassList("active")
+    dLabel:AddToClassList("active")
 
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
     
@@ -317,6 +338,16 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
     cLabel:SetPrelocalizedText("", false)
     dLabel:SetPrelocalizedText("", false)
 
+    aLabel:ClearClassList()
+    bLabel:ClearClassList()
+    cLabel:ClearClassList()
+    dLabel:ClearClassList()
+
+    aLabel:AddToClassList("inactive")
+    bLabel:AddToClassList("inactive")
+    cLabel:AddToClassList("inactive")
+    dLabel:AddToClassList("inactive")
+
     if enabled == false then return end
 
     if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
@@ -403,7 +434,7 @@ function self:ClientAwake()
     gameManager.updateScoreEvent:Connect(function(scoreTable)
         if not playerWelcomed then return end
 
-        _leaderBoardsUI.setLeaderboards(scoreTable)
+        if not waitingForNextQuestion then _leaderBoardsUI.setLeaderboards(scoreTable) end
         localScoreTable = scoreTable
     end)
     

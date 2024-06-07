@@ -32,18 +32,12 @@ end
 
 function stopTimers()
     _canWelcome = false
-    if _timDial1 == nil then return end
-    _timDial1:Stop()
-    if _timDial2 == nil then return end
-    _timDial2:Stop()
-    if _timDial3 == nil then return end
-    _timDial3:Stop()
-    if _timDial4 == nil then return end
-    _timDial4:Stop()
-    if _timDial5 == nil then return end
-    _timDial5:Stop()
-    if _timDial6 == nil then return end
-    _timDial6:Stop()
+    if _timDial1 ~= nil then _timDial1:Stop() end
+    if _timDial2 ~= nil then _timDial2:Stop() end
+    if _timDial3 ~= nil then _timDial3:Stop() end
+    if _timDial4 ~= nil then _timDial4:Stop() end
+    if _timDial5 ~= nil then _timDial5:Stop() end
+    if _timDial6 ~= nil then _timDial6:Stop() end
 end
 
 function welcomePlayerDialogues(category)
@@ -51,7 +45,7 @@ function welcomePlayerDialogues(category)
     local waitingText
     local hasGameStarted
 
-    _canWelcome = true
+    Timer.After(1.9, function() _canWelcome = true end)
 
     currentCategory = category
 
@@ -67,7 +61,6 @@ function welcomePlayerDialogues(category)
 
     dialogueLabel:SetPrelocalizedText("Welcome to Quiz Café!", false)
     _timDial1 = Timer.After(2, function()
-        if not _canWelcome then return end
         dialogueLabel:SetPrelocalizedText("I'm Hui Ying , your barista. Nice to meet you!", false)
         _timDial2 = Timer.After(3, function()
             if not _canWelcome then return end
@@ -75,13 +68,13 @@ function welcomePlayerDialogues(category)
             _timDial3 = Timer.After(3, function()
                 if not _canWelcome then return end
                 dialogueLabel:SetPrelocalizedText("but we feed our minds with knowledge as well!", false)
-                _timDial4 = Timer.After(3, function()
+                _timDial4 = Timer.After(4, function()
                     if not _canWelcome then return end
-                    dialogueLabel:SetPrelocalizedText("Answer right fastly and you might be the best player of the game.", false)
+                    dialogueLabel:SetPrelocalizedText("Answer questions correctly to become the best player in the game. Fastest to answer gain more points!", false)
                     _timDial5 = Timer.After(3, function()
                         if not _canWelcome then return end
                         dialogueLabel:SetPrelocalizedText("Answer wrong three times and your score will drop to 0.", false)
-                        _timDial6 = Timer.After(3, function()
+                        _timDial6 = Timer.After(2, function()
                             if not _canWelcome then return end
                             dialogueLabel:SetPrelocalizedText(waitingText, false)
                         end)

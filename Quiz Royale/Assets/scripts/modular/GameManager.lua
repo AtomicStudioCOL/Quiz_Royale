@@ -97,6 +97,7 @@ minOfPlayers = 1
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
 
+requestPlayersInQ = Event.new("requestPlayersInQ")
 currentQuestNum = Event.new("currentQuestNum")
 finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
@@ -252,6 +253,7 @@ function pickRandomQuestion(questionsAsked, category)
     questionsAsked[diff ..  `{randomNumber}`] = randomNumber 
 
     for k, player in pairs(tableOfPlayers) do
+        print(`{pickedQuestion.questionTxt}`)
         replicateChosenQuestion:FireClient(player, pickedQuestion)
     end
 
@@ -313,7 +315,7 @@ function self:ServerAwake()
             scorePlayer[player.name] = 0
             newPlayerEnteredQuiz:FireAllClients(player, tableLenght(playersInTravelQ))
 
-            if tableLenght(playersInTravelQ) >= minOfPlayers and not travelQuizStarted.value then
+            if tableLenght(playersInTravelQ) >= minOfPlayers and travelQuizStarted.value == false then
                 travelQuizStarted.value = true
                 Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
@@ -335,6 +337,10 @@ function self:ServerAwake()
 
     playerLeftQuizz:Connect(function(player : Player, quiz : string)
         playerLeftQFunc(player, quiz)
+    end)
+
+    requestPlayersInQ:Connect(function(player : Player)
+        requestPlayersInQ:FireClient(player, playersInTravelQ)
     end)
 
     saveScorePlayer:Connect(function(player : Player, howLongToAnswer, lost : boolean)

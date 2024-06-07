@@ -38,11 +38,15 @@ function self:ClientAwake()
 
     for i, v in pairs(tapHandlers["travelQuiz"]) do
         v.Tapped:Connect(function()
-            _questionsUI.enabled = true
-            _dialoguesUI.enabled = true
-            _questionsUI.welcomePlayer("travel")
-            _dialoguesUI.welcomePlayerDialogues("travel")
-            gameManager.newPlayerEnteredQuiz:FireServer("travel")
+            gameManager.requestPlayersInQ:FireServer()
+            gameManager.requestPlayersInQ:Connect(function(playersInQ)
+                if playersInQ[client.localPlayer.name] ~= nil then return end
+                _questionsUI.enabled = true
+                _dialoguesUI.enabled = true
+                _questionsUI.welcomePlayer("travel")
+                _dialoguesUI.welcomePlayerDialogues("travel")
+                gameManager.newPlayerEnteredQuiz:FireServer("travel")
+            end)
         end)
     end
     

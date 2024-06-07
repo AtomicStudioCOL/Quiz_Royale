@@ -173,13 +173,14 @@
 }
 
 .inactive{
+    height: 0%;
+    width: 0%;
     color: transparent;
     background-color: transparent;
     border-color: transparent;
 }
 
 .active{
-    
     color: var(--color-font);
     white-space: normal;
     -unity-text-align: middle-center;
