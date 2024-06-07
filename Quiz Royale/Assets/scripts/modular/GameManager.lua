@@ -88,6 +88,11 @@ travelQAsked = {}
 kpopQAsked = {}
 catQAsked = {}
 
+-- local variables --
+local timerNextQ : Timer
+local timerLeaderboards : Timer
+local timerStartTQ : Timer
+
 travelQuizStarted = BoolValue.new("travelQuizStarted", false)
 catQuizStarted = false
 
@@ -196,6 +201,12 @@ function updateLeaderboards(tableOfPlayers)
     end
 end
 
+function stopTimers()
+    if timerLeaderboards ~= nil then timerLeaderboards:Stop() end
+    if timerNextQ ~= nil then timerNextQ:Stop() end
+    if timerStartTQ ~= nil then timerStartTQ:Stop() end
+end
+
 function pickRandomQuestion(questionsAsked, category)
     local categoryDifficulty = nil
     local numberAsked = tableLenght(questionsAsked)
@@ -257,9 +268,9 @@ function pickRandomQuestion(questionsAsked, category)
         replicateChosenQuestion:FireClient(player, pickedQuestion)
     end
 
-    Timer.After(19, function()
+    timerLeaderboards = Timer.After(19, function()
         updateLeaderboards(tableOfPlayers)
-        Timer.After(8, function()
+        timerNextQ = Timer.After(8, function()
             pickRandomQuestion(questionsAsked, category)
         end)
     end)
@@ -272,6 +283,7 @@ function playerLeftQFunc(player, quiz)
         if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted.value then
             travelQAsked = nil travelQAsked = {}
             travelQuizStarted.value = false
+            stopTimers()
         end
     elseif quiz == "cat" then
         playersInCatQ[player.name] = nil
@@ -317,7 +329,7 @@ function self:ServerAwake()
 
             if tableLenght(playersInTravelQ) >= minOfPlayers and travelQuizStarted.value == false then
                 travelQuizStarted.value = true
-                Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
+                timerStartTQ = Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
         elseif quiz == "kpop" then
             playersInKpopQ[player.name] = player
