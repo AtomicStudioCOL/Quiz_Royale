@@ -29,6 +29,8 @@ local cLabel : UILabel = nil
 local dLabel : UILabel = nil
 --!Bind
 local dialogueLabel : UILabel = nil
+--!Bind
+local _reJoinILabel : UILabel = nil
 
 -- lives --
 --!Bind
@@ -53,6 +55,10 @@ local dButton : UIButton = nil
 local quitButton : UIButton = nil
 
 -- Eptying and setting items --
+
+_reJoinILabel:SetPrelocalizedText(" ", false)
+_reJoinILabel:ClearClassList()
+_reJoinILabel:AddToClassList("inactive")
 
 function setItems()
     aLabel:SetPrelocalizedText(" ", false)
@@ -128,18 +134,42 @@ local function stopTimers()
     if _timerResLiv ~= nil then _timerResLiv:Stop() end
 end
 
+local function reJoinInstructions()
+    _reJoinILabel:SetPrelocalizedText("Click on the pink chairs to rejoin!")
+    _reJoinILabel:ClearClassList()
+    _reJoinILabel:AddToClassList("active")
+    _reJoinILabel:AddToClassList("reJoinILabel")
+
+    autoTurnOffInstructions = Timer.After(4, function()
+        _reJoinILabel:SetPrelocalizedText(" ", false)
+        _reJoinILabel:ClearClassList()
+        _reJoinILabel:AddToClassList("inactive")
+
+        self.enabled = false
+        end)
+end
+
 local function disable()
-    setItems()
-    questionTimeValue = originalQuestionTimeValue
     enabled = false
     playerWelcomed = false
     timerStarted = false
+
+    questionTimeValue = originalQuestionTimeValue
+
+    gameManager.playerLeftQuizz:FireServer(currentCategory)
+
+    hideAnswersButtons()
+    setItems()
+    stopTimers()
+    reJoinInstructions()
     _dialoguesUI.disableDialoguesUI()
     _dialoguesUI.stopTimers()
-    stopTimers()
     _leaderBoardsUI.disableLeadersBoardsUI()
-    gameManager.playerLeftQuizz:FireServer(currentCategory)
-    self.enabled = false
+
+    life1:AddToClassList("inactive")
+    life2:AddToClassList("inactive")
+    life3:AddToClassList("inactive")
+
 end
 
 function welcomePlayer(category)

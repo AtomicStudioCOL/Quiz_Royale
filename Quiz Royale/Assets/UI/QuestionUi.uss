@@ -44,6 +44,15 @@
     font-size: 30px;
 }
 
+.reJoinILabel{
+    top: 40%;
+
+    font-size: 100%;
+    white-space: normal;                        /* evita que el texto se salga horizontalmente del cajón */
+    -unity-text-align: middle-center;           /* controla la posición del texto */
+    -unity-text-overflow-position: middle;      /* controla la posición de la siguiente línea */ 
+}
+
 .questNum{
     position: absolute;
     background-color: var(--color-border);
@@ -150,12 +159,18 @@
     position: absolute;
     width: 40%;
     height: 40%;
-    bottom: 4.3%;
+    bottom: 0%;
     right: 10.5%;
+    padding: 0;
+
+    border-color: rgba(100, 60, 0, 1);
+    border-width: 5px;
+    border-radius: 10%;
 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgb(250, 230, 220);
     background-image: url("../UI/VisualElements/Baristas/QuizRoyale_happy_01.png");
 }
 
@@ -163,12 +178,18 @@
     position: absolute;
     width: 40%;
     height: 40%;
-    bottom: 4.3%;
+    bottom: 0%;
     right: 10.5%;
+    padding: 0;
+
+    border-color: rgba(100, 60, 0, 1);
+    border-width: 5px;
+    border-radius: 10%;
 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgb(250, 230, 220);
     background-image: url("../UI/VisualElements/Baristas/QuizRoyale_Sad_01.png");
 }
 
