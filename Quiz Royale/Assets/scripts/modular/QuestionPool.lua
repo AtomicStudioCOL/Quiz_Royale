@@ -422,6 +422,28 @@ travel = {
 
         -- videogames --
         {
+            questionTxt = "Where comes the 'the cake is a lie' meme come from?",
+            baristDialoge = "I hope you have played a lot of videogames.",
+            answers = {
+                a = {txt = "Cooking Mama", truthValue = false},
+                b = {txt = "Portal", truthValue = true},
+                c = {txt = "League of Legends", truthValue = false},
+                d = {txt = "Overcooked", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            questionTxt = "What is the main ingredient of Toriel's pie?",
+            baristDialoge = "Have you played Undertale?",
+            answers = {
+                a = {txt = "Leamon", truthValue = false},
+                b = {txt = "Cinnamon", truthValue = true},
+                c = {txt = "Lime", truthValue = false},
+                d = {txt = "She bakes cake, not pie", truthValue = false},
+            },
+            asked = false;
+        },
+        {
             baristDialoge = "My father told me his first videogame was ET. Second one was Super Mario Bross!",
             questionTxt = "What is the name of the main character in the Super Mario series?",
             answers = {
@@ -517,6 +539,129 @@ travel = {
                 b = {txt = "Pong", truthValue = true},
                 c = {txt = "Asteroids", truthValue = false},
                 d = {txt = "Tetris", truthValue = false},
+            },
+            asked = false;
+        },
+
+        -- music --
+        {
+            baristDialoge = "Prince was a multi-talented musician and performer.",
+            questionTxt = "Which Prince album features the song 'Purple Rain'?",
+            answers = {
+                a = {txt = "1999", truthValue = false},
+                b = {txt = "Purple Rain", truthValue = true},
+                c = {txt = "Sign o' the Times", truthValue = false},
+                d = {txt = "Parade", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Why is people still obsessed with kings and queens?",
+            questionTxt = "Which artist is known as the 'King of Pop'?",
+            answers = {
+                a = {txt = "Prince", truthValue = false},
+                b = {txt = "Michael Jackson", truthValue = true},
+                c = {txt = "Elton John", truthValue = false},
+                d = {txt = "Stevie Wonder", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "What do you mean Queen isn't considered as the queen of rock?",
+            questionTxt = "Which artist is known as the 'Queen of Pop'?",
+            answers = {
+                a = {txt = "Whitney Houston", truthValue = false},
+                b = {txt = "Celine Dion", truthValue = false},
+                c = {txt = "Madonna", truthValue = true},
+                d = {txt = "Mariah Carey", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "I can get no! Dududu~",
+            questionTxt = "Which band sang 'Satisfaction' and 'Paint It Black'?",
+            answers = {
+                a = {txt = "The Who", truthValue = false},
+                b = {txt = "The Beatles", truthValue = false},
+                c = {txt = "The Rolling Stones", truthValue = true},
+                d = {txt = "Led Zeppelin", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Once a musician said that albums are like contemporany symphonies.",
+            questionTxt = "Which artist released the albums 'Fearless' and '1989'?",
+            answers = {
+                a = {txt = "Katy Perry", truthValue = false},
+                b = {txt = "Adele", truthValue = false},
+                c = {txt = "Taylor Swift", truthValue = true},
+                d = {txt = "Lady Gaga", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Naaaaa naaaa na narananaaaaaaaaa narananaaaaaaaaa Hey Jude.",
+            questionTxt = "Which band released the song 'Hey Jude'?",
+            answers = {
+                a = {txt = "The Beach Boys", truthValue = false},
+                b = {txt = "The Beatles", truthValue = true},
+                c = {txt = "The Kinks", truthValue = false},
+                d = {txt = "The Monkees", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "K-pop is a huge thing these years!",
+            questionTxt = "Which K-pop group is known for the hit songs 'Dynamite' and 'Butter'?",
+            answers = {
+                a = {txt = "EXO", truthValue = false},
+                b = {txt = "BLACKPINK", truthValue = false},
+                c = {txt = "BTS", truthValue = true},
+                d = {txt = "TWICE", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "K-pop groups are similar to 'boybands'. And the femenine equivalent.",
+            questionTxt = "Which K-pop girl group released the song 'How You Like That'?",
+            answers = {
+                a = {txt = "Red Velvet", truthValue = false},
+                b = {txt = "BLACKPINK", truthValue = true},
+                c = {txt = "GFriend", truthValue = false},
+                d = {txt = "ITZY", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "'Gangnam style' is a way to refear a lifestyle few people can afford. It takes it's name from Gangam region of Seul.",
+            questionTxt = "Which K-pop artist is famous for the song 'Gangnam Style'?",
+            answers = {
+                a = {txt = "Rain", truthValue = false},
+                b = {txt = "Taeyang", truthValue = false},
+                c = {txt = "Psy", truthValue = true},
+                d = {txt = "J-Hope", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "A friend thinks that K-pop is even more pop than pop itself. I find her opinion confusing.",
+            questionTxt = "Which K-pop group has members named Baekhyun, Chanyeol, and Kai?",
+            answers = {
+                a = {txt = "SEVENTEEN", truthValue = false},
+                b = {txt = "NCT", truthValue = false},
+                c = {txt = "EXO", truthValue = true},
+                d = {txt = "GOT7", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Something I love from K-pop are their musical videos. Singers also have amazing dance moves!",
+            questionTxt = "Which K-pop girl group released the song 'Fancy'?",
+            answers = {
+                a = {txt = "MAMAMOO", truthValue = false},
+                b = {txt = "TWICE", truthValue = true},
+                c = {txt = "Girls' Generation", truthValue = false},
+                d = {txt = "LOONA", truthValue = false},
             },
             asked = false;
         },        
@@ -723,8 +868,7 @@ travel = {
             },
             asked = false;
         },
-    },
-    {
+        {
         baristDialoge = "Before animal rights were a thing, some instruments were made with endangered animal parts.",
         questionTxt = "What is the main component of an elephant's tusks?",
         answers = {
@@ -732,8 +876,9 @@ travel = {
             b = {txt = "Keratin", truthValue = false},
             c = {txt = "Ivory", truthValue = true},
             d = {txt = "Calcium", truthValue = false},
-        },
+            },
         asked = false;
+        },
 
         -- videogames --
         {
@@ -845,7 +990,119 @@ travel = {
                 d = {txt = "Hanzo", truthValue = false},
             },
             asked = false;
-        },        
+        },
+        
+        -- music --
+        {
+            questionTxt = "Could you tell me how do you find a C note in a piano?",
+            baristDialoge = "I took leasons once, but i forgot...",
+            answers = {
+                a = {txt = "The first white key of any piano.", truthValue = false},
+                b = {txt = "The white key before a group of two black keys.", truthValue = true},
+                c = {txt = "The first black key of every piano.", truthValue = false},
+                d = {txt = "The white key before a group of three black keys.", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "If I spent my whole life painting, maybe I could still do it even after getting blind.",
+            questionTxt = "Which famous composer became deaf later in his life but continued to compose music?",
+            answers = {
+                a = {txt = "Wolfgang Amadeus Mozart", truthValue = false},
+                b = {txt = "Johann Sebastian Bach", truthValue = false},
+                c = {txt = "Ludwig van Beethoven", truthValue = true},
+                d = {txt = "Franz Schubert", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "The British Invasion must have been something for the USA. It was a huge influence for new musicians!",
+            questionTxt = "Which band is known as the 'Fab Four' and hailed from Liverpool, England?",
+            answers = {
+                a = {txt = "The Rolling Stones", truthValue = false},
+                b = {txt = "The Beatles", truthValue = true},
+                c = {txt = "The Who", truthValue = false},
+                d = {txt = "Queen", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Some people say Jazz is as complex as Classical. I think every gender can be simple or complex.",
+            questionTxt = "Which jazz musician is known for his influential album 'Kind of Blue'?",
+            answers = {
+                a = {txt = "John Coltrane", truthValue = false},
+                b = {txt = "Charlie Parker", truthValue = false},
+                c = {txt = "Miles Davis", truthValue = true},
+                d = {txt = "Louis Armstrong", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "King of Rock, king of Pop, king of Metal... King of Candies? I love candies!",
+            questionTxt = "Which artist is known as the 'King of Rock and Roll'?",
+            answers = {
+                a = {txt = "Elvis Presley", truthValue = true},
+                b = {txt = "Chuck Berry", truthValue = false},
+                c = {txt = "Little Richard", truthValue = false},
+                d = {txt = "Buddy Holly", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Writing the lyrics for a song is writting a poem with a melody.",
+            questionTxt = "Which American singer-songwriter won the Nobel Prize in Literature in 2016?",
+            answers = {
+                a = {txt = "Bruce Springsteen", truthValue = false},
+                b = {txt = "Leonard Cohen", truthValue = false},
+                c = {txt = "Paul Simon", truthValue = false},
+                d = {txt = "Bob Dylan", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "There are legendary K-pop groups!",
+            questionTxt = "Which K-pop group is known for the songs 'Fantastic Baby' and 'Bang Bang Bang'?",
+            answers = {
+                a = {txt = "SHINee", truthValue = false},
+                b = {txt = "Super Junior", truthValue = false},
+                c = {txt = "Big Bang", truthValue = true},
+                d = {txt = "2PM", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Some singers also start their own solo career!",
+            questionTxt = "Which member of Big Bang is also known for his successful solo career and fashion influence?",
+            answers = {
+                a = {txt = "Taeyang", truthValue = false},
+                b = {txt = "Seungri", truthValue = false},
+                c = {txt = "G-Dragon", truthValue = true},
+                d = {txt = "T.O.P", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Even if it is called 'K-pop', some groups are multinational!",
+            questionTxt = "How many members are there in the girl group TWICE?",
+            answers = {
+                a = {txt = "7", truthValue = false},
+                b = {txt = "8", truthValue = false},
+                c = {txt = "9", truthValue = true},
+                d = {txt = "10", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Some musical groups get so huge they start dividing by units.",
+            questionTxt = "Which K-pop boy group is known for having 13 members and being divided into three units: hip-hop, vocal, and performance?",
+            answers = {
+                a = {txt = "NCT", truthValue = false},
+                b = {txt = "SEVENTEEN", truthValue = true},
+                c = {txt = "EXO", truthValue = false},
+                d = {txt = "GOT7", truthValue = false},
+            },
+            asked = false;
+        },
     },
 
     hard = {
@@ -1181,6 +1438,173 @@ travel = {
                 b = {txt = "Mercy", truthValue = false},
                 c = {txt = "Zenyatta", truthValue = false},
                 d = {txt = "Moira", truthValue = false},
+            },
+            asked = false;
+        },
+        
+        -- music --
+        {
+            questionTxt = "What is Vylet Pony?",
+            baristDialoge = "I'd be glad if you knew this one.",
+            answers = {
+                a = {txt = "My Little Pony character", truthValue = false},
+                b = {txt = "A president's daughter pony", truthValue = false},
+                c = {txt = "A musician", truthValue = true},
+                d = {txt = "A song from the 'White Pony' album", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "So many years since, and the lyrics still hits hard...",
+            questionTxt = "Which Pink Floyd album features the song 'Money'?",
+            answers = {
+                a = {txt = "The Wall", truthValue = false},
+                b = {txt = "Wish You Were Here", truthValue = false},
+                c = {txt = "The Dark Side of the Moon", truthValue = true},
+                d = {txt = "Animals", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Bob Dylan's influence on music is profound.",
+            questionTxt = "Which Bob Dylan album is known for the song 'Like a Rolling Stone'?",
+            answers = {
+                a = {txt = "The Freewheelin' Bob Dylan", truthValue = false},
+                b = {txt = "Bringing It All Back Home", truthValue = false},
+                c = {txt = "Highway 61 Revisited", truthValue = true},
+                d = {txt = "Blonde on Blonde", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Jimi Hendrix is one of the greatest guitarists of all time.",
+            questionTxt = "Which Jimi Hendrix album features the track 'All Along the Watchtower'?",
+            answers = {
+                a = {txt = "Are You Experienced", truthValue = false},
+                b = {txt = "Axis: Bold as Love", truthValue = false},
+                c = {txt = "Electric Ladyland", truthValue = true},
+                d = {txt = "Band of Gypsys", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Sergeant Pepper's is often cited as the greatest albums of all time. I mean it is pretty good but is it THAt good?",
+            questionTxt = "Which year was The Beatles' 'Sgt. Pepper's Lonely Hearts Club Band' released?",
+            answers = {
+                a = {txt = "1965", truthValue = false},
+                b = {txt = "1967", truthValue = true},
+                c = {txt = "1968", truthValue = false},
+                d = {txt = "1969", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Some guitar stores have a strict 'no Starway to Heaven' rule. I wonder why.",
+            questionTxt = "Which Led Zeppelin album features 'Stairway to Heaven'?",
+            answers = {
+                a = {txt = "Led Zeppelin II", truthValue = false},
+                b = {txt = "Led Zeppelin III", truthValue = false},
+                c = {txt = "Led Zeppelin IV", truthValue = true},
+                d = {txt = "Houses of the Holy", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "David Bowie was a musical chameleon.",
+            questionTxt = "Which David Bowie album features the character Ziggy Stardust?",
+            answers = {
+                a = {txt = "Hunky Dory", truthValue = false},
+                b = {txt = "Diamond Dogs", truthValue = false},
+                c = {txt = "The Rise and Fall of Ziggy Stardust and the Spiders from Mars", truthValue = true},
+                d = {txt = "Aladdin Sane", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "The Rolling Stones have a vast catalog of hits.",
+            questionTxt = "Which Rolling Stones album features the song 'Gimme Shelter'?",
+            answers = {
+                a = {txt = "Let It Bleed", truthValue = true},
+                b = {txt = "Sticky Fingers", truthValue = false},
+                c = {txt = "Beggars Banquet", truthValue = false},
+                d = {txt = "Exile on Main St.", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Queen's Bohemian Rhapsody is an iconic song.",
+            questionTxt = "Who is the lead guitarist of Queen, known for his virtuosic playing and signature sound?",
+            answers = {
+                a = {txt = "Brian May", truthValue = true},
+                b = {txt = "Jimmy Page", truthValue = false},
+                c = {txt = "Eric Clapton", truthValue = false},
+                d = {txt = "Keith Richards", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "Nirvana brought grunge music to the mainstream.",
+            questionTxt = "Which Nirvana album features the song 'Smells Like Teen Spirit'?",
+            answers = {
+                a = {txt = "Bleach", truthValue = false},
+                b = {txt = "Nevermind", truthValue = true},
+                c = {txt = "In Utero", truthValue = false},
+                d = {txt = "MTV Unplugged in New York", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "BTS members have unique stage names.",
+            questionTxt = "What is the real name of BTS's RM?",
+            answers = {
+                a = {txt = "Kim Seok-jin", truthValue = false},
+                b = {txt = "Min Yoon-gi", truthValue = false},
+                c = {txt = "Jung Ho-seok", truthValue = false},
+                d = {txt = "Kim Nam-joon", truthValue = true},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "EXO has had members from different countries.",
+            questionTxt = "Which EXO member is known for his acting career and was born in Canada?",
+            answers = {
+                a = {txt = "Lay", truthValue = false},
+                b = {txt = "Chanyeol", truthValue = false},
+                c = {txt = "Kris", truthValue = true},
+                d = {txt = "Suho", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "TWICE's international appeal is vast.",
+            questionTxt = "Which member of TWICE is Japanese and known for her dancing skills?",
+            answers = {
+                a = {txt = "Jihyo", truthValue = false},
+                b = {txt = "Sana", truthValue = true},
+                c = {txt = "Tzuyu", truthValue = false},
+                d = {txt = "Nayeon", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "NCT is known for its large number of members.",
+            questionTxt = "Which sub-unit of NCT released the song 'Kick It'?",
+            answers = {
+                a = {txt = "NCT U", truthValue = false},
+                b = {txt = "NCT 127", truthValue = true},
+                c = {txt = "NCT Dream", truthValue = false},
+                d = {txt = "WayV", truthValue = false},
+            },
+            asked = false;
+        },
+        {
+            baristDialoge = "G-Dragon is a prominent solo artist.",
+            questionTxt = "Which solo album by G-Dragon includes the hit song 'Crooked'?",
+            answers = {
+                a = {txt = "Heartbreaker", truthValue = false},
+                b = {txt = "Coup d'Etat", truthValue = true},
+                c = {txt = "Kwon Ji Yong", truthValue = false},
+                d = {txt = "One of a Kind", truthValue = false},
             },
             asked = false;
         },        

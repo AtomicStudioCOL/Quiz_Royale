@@ -1694,6 +1694,7 @@ MonoBehaviour:
     rid: -2
   m_gameManagerGo: {fileID: 2053021388}
   m_uImanager: {fileID: 101016579}
+  m_AudioManager: {fileID: 309045895}
   references:
     version: 2
     RefIds:
