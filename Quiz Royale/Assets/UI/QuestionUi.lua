@@ -1,11 +1,12 @@
 --!Type(UI)
 
---!Header("Managers")
+--!Header("Game Objects")
 --!SerializeField
 local gameManagerGo : GameObject = nil
-
 --!SerializeField
 local uImanager : GameObject = nil
+--!SerializeField
+local AudioManager : GameObject = nil
 
 -- modules --
 questionPool = require("QuestionPool")
@@ -110,6 +111,7 @@ local waitingForNextQuestion = false
 local gameManager = nil
 local _leaderBoardsUI = nil
 local _dialoguesUI = nil
+local _localSounds = nil
 
 local namePlayer = client.localPlayer.name
 local howLongToAnswer : number
@@ -125,6 +127,7 @@ local _timerSetQuesLT : Timer
 local _timerResLiv : Timer
 
 local localScoreTable = {}
+
 
 -- functions --
 local function stopTimers()
@@ -146,6 +149,7 @@ local function reJoinInstructions()
         _reJoinILabel:AddToClassList("inactive")
 
         self.enabled = false
+        gameManager.playerLeftQuizz:FireServer(currentCategory)
         end)
 end
 
@@ -155,8 +159,6 @@ local function disable()
     timerStarted = false
 
     questionTimeValue = originalQuestionTimeValue
-
-    gameManager.playerLeftQuizz:FireServer(currentCategory)
 
     hideAnswersButtons()
     setItems()
@@ -333,6 +335,14 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
     chosenButton:AddToClassList("feedback")
 end
 
+function soundFeedback()
+    if chosenAnswer.truthValue == false or chosenAnswer == nil then
+        _localSounds.playSound(_localSounds.incorrectSound)
+    else
+        _localSounds.playSound(_localSounds.correctSound)
+    end
+end
+
 function setTimerLabel()
     if enabled == false then
         timerStarted = false
@@ -345,6 +355,7 @@ function setTimerLabel()
     timerLabel:SetPrelocalizedText(tostring(questionTimeValue), false)
 
     if questionTimeValue == 0 then
+        soundFeedback()
         hideAnswersButtons()
         questionTimeValue = originalQuestionTimeValue
         questionTimer:Stop()
@@ -433,18 +444,15 @@ end
 -- events
 
 quitButton:RegisterPressCallback(function()
-    gameManager.playerLeftQuizz:FireServer("travel")
-
     barista:AddToClassList("inactive")
     disable()
 end)
 
 function self:ClientAwake()
     gameManager = gameManagerGo:GetComponent("GameManager")
-    
     _leaderBoardsUI = uImanager:GetComponent("LeadersBoards")
-    
     _dialoguesUI = uImanager:GetComponent("Dialogues")
+    _localSounds = AudioManager:GetComponent("LocalSounds")
 
     gameManager.scorePlayer[namePlayer] = 0
     
@@ -474,4 +482,3 @@ function self:ClientAwake()
     end)
     
 end
-

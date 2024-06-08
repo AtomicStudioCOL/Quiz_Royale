@@ -347,6 +347,7 @@ function self:ServerAwake()
     end)
 
     playerLeftQuizz:Connect(function(player : Player, quiz : string)
+        print(`{player.name} left {quiz}`)
         playerLeftQFunc(player, quiz)
     end)
 
