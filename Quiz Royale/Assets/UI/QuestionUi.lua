@@ -182,6 +182,18 @@ function welcomePlayer(category)
     hideAnswersButtons()
     enabled = true
 
+    life1:RemoveFromClassList("inactive")
+    life2:RemoveFromClassList("inactive")
+    life3:RemoveFromClassList("inactive")
+
+    life1:AddToClassList("life_active")
+    life2:AddToClassList("life_active")
+    life3:AddToClassList("life_active")
+
+    life1:AddToClassList("life1")
+    life2:AddToClassList("life2")
+    life3:AddToClassList("life3")
+
     hasGameStarted = gameManager.travelQuizStarted.value
 
     if hasGameStarted then
@@ -336,7 +348,7 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
 end
 
 function soundFeedback()
-    if chosenAnswer.truthValue == false or chosenAnswer == nil then
+    if chosenAnswer == nil or chosenAnswer.truthValue == false then
         _localSounds.playSound(_localSounds.incorrectSound)
     else
         _localSounds.playSound(_localSounds.correctSound)
@@ -395,9 +407,11 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
     if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
         _questionLabel:SetPrelocalizedText("Correct!", false)
         barista:AddToClassList(_baristaClass_True)
+        barista:BringToFront()
     else
         _questionLabel:SetPrelocalizedText("Wrong!", false)
         barista:AddToClassList(_baristaClass_False)
+        barista:BringToFront()
         removeLife()
     end
 end

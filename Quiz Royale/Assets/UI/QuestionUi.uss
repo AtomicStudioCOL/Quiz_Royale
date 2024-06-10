@@ -157,10 +157,10 @@
 
 .baristaM-True{
     position: absolute;
-    width: 40%;
-    height: 40%;
-    bottom: 0%;
-    right: 10.5%;
+    width: 19%;
+    height: 12.5%;
+    top: 19.25%;
+    right: 8%;
     padding: 0;
 
     border-color: rgba(100, 60, 0, 1);
@@ -176,10 +176,10 @@
 
 .baristaM-False{
     position: absolute;
-    width: 40%;
-    height: 40%;
-    bottom: 0%;
-    right: 10.5%;
+    width: 19%;
+    height: 12.5%;
+    top: 19.25%;
+    right: 8%;
     padding: 0;
 
     border-color: rgba(100, 60, 0, 1);
