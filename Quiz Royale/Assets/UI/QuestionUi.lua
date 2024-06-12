@@ -230,7 +230,10 @@ function welcomePlayer(category)
     barista:AddToClassList(baristaClass)
     barista:SendToBack()
 
-    _timerPlWelced = Timer.After(17, function() playerWelcomed = true end)
+    _timerPlWelced = Timer.After(17, function()
+        playerWelcomed = true
+        gameManager.startGame:FireServer(currentCategory)
+    end)
 end
 
 function preQuestionDialogue(question)
@@ -298,6 +301,7 @@ function activeAnswerButtons()               -- Assigns the callbacks and adds t
     cLabel:AddToClassList("active")
     dLabel:AddToClassList("active")
 
+    questionTimeValue = originalQuestionTimeValue
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
     
     timerLabel:SetPrelocalizedText(questionTimeValue)
@@ -374,7 +378,6 @@ function setTimerLabel()
     if questionTimeValue <= 0 then
         soundFeedback()
         hideAnswersButtons()
-        questionTimeValue = originalQuestionTimeValue
         questionTimer:Stop()
         timerStarted = false
     end
@@ -489,7 +492,7 @@ function self:ClientAwake()
         _questNum:SetPrelocalizedText(`{currentQuestNum} / 15`)
     end)
     
-    gameManager.scorePlayer[namePlayer] = 0
+    gameManager.scorePlayer[namePlayer] = "waiting"
     
     gameManager.updateScoreEvent:Connect(function(scoreTable)
         if not playerWelcomed then return end

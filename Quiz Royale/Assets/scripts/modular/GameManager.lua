@@ -79,6 +79,9 @@ uiManager = nil
 questionPool = require("QuestionPool")
 
 scorePlayer = {}
+playersWaiting = {}
+playerRemoveWaiting = {}
+
 playersATravel = 0
 playersInTravelQ = {}
 playersInKpopQ = {}
@@ -105,6 +108,7 @@ changeRoomClient = Event.new("changeRoomClient")
 
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
 setPlayersCurrentPos = Event.new("setPlayersCurrentPos")
+startGame = Event.new("startGame")
 requestPlayersInQ = Event.new("requestPlayersInQ")
 allPlayersAnswered = Event.new("allPlayersAnswered")
 playerLeftQuizz = Event.new("playerLeftQuizz")
@@ -167,6 +171,7 @@ function updateLeaderboards(tableOfPlayers)
     local tableL = tableLenght(tableCopy)
     local iSet = 1
     local iSort = 1
+    local numOfPWaiting = 0
 
     -- setting scores array
     for k, player in pairs(tableCopy) do
@@ -178,12 +183,15 @@ function updateLeaderboards(tableOfPlayers)
     local scoresClone = table.clone(scores)
     table.clear(scores)
     for i, v in ipairs(scoresClone) do
-        if v[2] > biggestNum then
+        if type(v[2]) == "number" and v[2] > biggestNum then
             biggestNum = v[2]
             table.insert(scores, 1, v)
             iSort += 1
-        elseif v[2] < smallestNum then
+        elseif type(v[2]) == "number" and v[2] < smallestNum then
             smallestNum = v[2]
+            table.insert(scores, #scores + 1 - numOfPWaiting, v)
+        elseif type(v[2]) ~= "number" then
+            numOfPWaiting += 1
             table.insert(scores, #scores + 1, v)
         else
             table.insert(scores, iSort, v)
@@ -207,7 +215,13 @@ function stopTimers()
     if timerStartTQ ~= nil then timerStartTQ:Stop() end
 end
 
-function pickRandomQuestion(questionsAsked, category)
+function pickRandomQuestion(questionsAsked, category)    
+    for pName, player in playerRemoveWaiting do
+        scorePlayer[pName] = 0
+        playersWaiting[pName] = nil
+        playerRemoveWaiting[pName] = nil
+    end
+
     local categoryDifficulty = nil
     local numberAsked = tableLenght(questionsAsked)
     local tableOfPlayers
@@ -243,8 +257,6 @@ function pickRandomQuestion(questionsAsked, category)
             if category == "travel" then
                 travelQAsked = nil travelQAsked = {}
                 questionsAsked = travelQAsked
-            elseif category == "cat" then
-                catQAsked = nil catQAsked = {}
             end
         end
 
@@ -279,19 +291,14 @@ function pickRandomQuestion(questionsAsked, category)
 end
 
 function playerLeftQFunc(player, quiz)
+    playersWaiting[player.name] = nil
     if quiz == "travel" then
-        scorePlayer[player.name] = 0
+        scorePlayer[player.name] = "waiting"
         playersInTravelQ[player.name] = nil
         if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted.value then
             travelQAsked = nil travelQAsked = {}
             travelQuizStarted.value = false
             stopTimers()
-        end
-    elseif quiz == "cat" then
-        playersInCatQ[player.name] = nil
-        scorePlayer[player.name] = 0
-        if tableLenght(playersInTravelQ) <= 0 and catQuizStarted then
-            catQuizStarted = false
         end
     end
 end
@@ -326,21 +333,18 @@ function self:ServerAwake()
     newPlayerEnteredQuiz:Connect(function(player : Player, quiz : string)
         if quiz == "travel" then
             playersInTravelQ[player.name] = player
-            scorePlayer[player.name] = 0
+            scorePlayer[player.name] = "waiting"
+            playersWaiting[player.name] = player.name
             newPlayerEnteredQuiz:FireAllClients(player, tableLenght(playersInTravelQ))
+        end
+    end)
 
+    startGame:Connect(function(player : Player, quiz : string)
+        if quiz == "travel" then
+            playerRemoveWaiting[player.name] = player
             if tableLenght(playersInTravelQ) >= minOfPlayers and travelQuizStarted.value == false then
                 travelQuizStarted.value = true
-                timerStartTQ = Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
-            end
-        elseif quiz == "kpop" then
-            playersInKpopQ[player.name] = player
-        elseif quiz == "cat" then
-            playersInCatQ[player.name] = player
-            scorePlayer[player.name] = 0
-            if tableLenght(playersInTravelQ) >= minOfPlayers and not catQuizStarted then
-                catQuizStarted = true
-                Timer.After(20, function() pickRandomQuestion(travelQAsked, quiz) end)
+                timerStartTQ = Timer.After(4, function() pickRandomQuestion(travelQAsked, quiz) end)
             end
         end
     end)
@@ -365,9 +369,9 @@ function self:ServerAwake()
             print(`{player.name} lost`)
             scorePlayer[player.name] = 0
         end
-        if tableLenght(playersInTravelQ) == playersATravel then
+        if tableLenght(playersInTravelQ) - tableLenght(playersWaiting) == playersATravel then
             if timerLeaderboards ~= nil then timerLeaderboards:Stop() end
-            timerLeaderboards = Timer.After(1.5, function()
+            timerLeaderboards = Timer.After(1.75, function()
                 updateLeaderboards(playersInTravelQ)
                 timerNextQ = Timer.After(6, function()
                     pickRandomQuestion(travelQAsked, "travel")
