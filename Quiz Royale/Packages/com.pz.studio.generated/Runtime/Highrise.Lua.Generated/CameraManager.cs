@@ -31,7 +31,7 @@ namespace Highrise.Lua.Generated
         [Header("Defaults")]
         [SerializeField] public System.Double m_pitch = 30;
         [SerializeField] public System.Double m_yaw = 45;
-        [SerializeField] public System.Boolean m_centerOnCharacterWhenSpawned = true;
+        [SerializeField] public System.Boolean m_centerOnCharacterWhenSpawned = false;
         [Header("Camera Points")]
         [SerializeField] public UnityEngine.GameObject m_travelCamera = default;
         [SerializeField] public UnityEngine.GameObject m_kPopCamera = default;

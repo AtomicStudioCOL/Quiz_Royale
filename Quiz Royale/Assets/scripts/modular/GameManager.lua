@@ -79,6 +79,7 @@ uiManager = nil
 questionPool = require("QuestionPool")
 
 scorePlayer = {}
+playersATravel = 0
 playersInTravelQ = {}
 playersInKpopQ = {}
 playersInCatQ = {}
@@ -102,13 +103,14 @@ minOfPlayers = 1
 changeRoomServer = Event.new("changeRoomServer")
 changeRoomClient = Event.new("changeRoomClient")
 
-requestPlayersInQ = Event.new("requestPlayersInQ")
-currentQuestNum = Event.new("currentQuestNum")
-finishGame = Event.new("finishGame")
 newPlayerEnteredQuiz = Event.new("newPlayerEnteredQuiz")
 setPlayersCurrentPos = Event.new("setPlayersCurrentPos")
+requestPlayersInQ = Event.new("requestPlayersInQ")
+allPlayersAnswered = Event.new("allPlayersAnswered")
 playerLeftQuizz = Event.new("playerLeftQuizz")
+finishGame = Event.new("finishGame")
 
+currentQuestNum = Event.new("currentQuestNum")
 nextQuestion = Event.new("nextQuestion")
 replicateChosenQuestion = Event.new("replicateRandomQuestion")
 saveScorePlayer = Event.new("saveScorePlayer")
@@ -196,9 +198,7 @@ function updateLeaderboards(tableOfPlayers)
         table.insert(scores, i, `{i}. {v[1]}'s score: {v[2]}`)
     end
 
-    for k, player in pairs(tableOfPlayers) do
-        updateScoreEvent:FireClient(player, scores)
-    end
+    updateScoreEvent:FireAllClients(scores)
 end
 
 function stopTimers()
@@ -216,10 +216,13 @@ function pickRandomQuestion(questionsAsked, category)
     
     if category == "travel" then
         if not travelQuizStarted.value then return end
+        playersATravel = 0
         tableOfPlayers = playersInTravelQ
     elseif category == "cat" then
         tableOfPlayers = playersInCatQ
     end
+
+    playersAnswered = 0
 
     for k, v in tableOfPlayers do
         currentQuestNum:FireClient(v, numberAsked + 1)
@@ -277,8 +280,8 @@ end
 
 function playerLeftQFunc(player, quiz)
     if quiz == "travel" then
-        playersInTravelQ[player.name] = nil
         scorePlayer[player.name] = 0
+        playersInTravelQ[player.name] = nil
         if tableLenght(playersInTravelQ) <= 0 and travelQuizStarted.value then
             travelQAsked = nil travelQAsked = {}
             travelQuizStarted.value = false
@@ -347,7 +350,6 @@ function self:ServerAwake()
     end)
 
     playerLeftQuizz:Connect(function(player : Player, quiz : string)
-        print(`{player.name} left {quiz}`)
         playerLeftQFunc(player, quiz)
     end)
 
@@ -355,11 +357,23 @@ function self:ServerAwake()
         requestPlayersInQ:FireClient(player, playersInTravelQ)
     end)
 
-    saveScorePlayer:Connect(function(player : Player, howLongToAnswer, lost : boolean)
-        if lost == true then
-            scorePlayer[player.name] = 0
-        else
+    saveScorePlayer:Connect(function(player : Player, howLongToAnswer, truthV : boolean, lost : boolean)
+        playersATravel += 1
+        if truthV == true then
             updateScore(player, howLongToAnswer)
+        elseif lost == true then
+            print(`{player.name} lost`)
+            scorePlayer[player.name] = 0
+        end
+        if tableLenght(playersInTravelQ) == playersATravel then
+            if timerLeaderboards ~= nil then timerLeaderboards:Stop() end
+            timerLeaderboards = Timer.After(1.5, function()
+                updateLeaderboards(playersInTravelQ)
+                timerNextQ = Timer.After(6, function()
+                    pickRandomQuestion(travelQAsked, "travel")
+                end)
+            end)
+            allPlayersAnswered:FireAllClients()
         end
     end)
 
@@ -382,4 +396,3 @@ scene.PlayerJoined:Connect(function(scene, player : Player)
         playersInGame[player.name] = player.character.gameObject
      end)
 end)
-

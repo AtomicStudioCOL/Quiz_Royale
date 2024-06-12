@@ -51,8 +51,28 @@ function disableLeadersBoardsUI()
     self.enabled = false
 end
 
+function clearLeaderboards()
+    _firstLabel:AddToClassList("inactive")            
+    _firstLabel:SetPrelocalizedText(" ", false)
+    _secondLabel:AddToClassList("inactive")
+    _secondLabel:SetPrelocalizedText(" ", false)
+    _thirdLabel:AddToClassList("inactive")
+    _thirdLabel:SetPrelocalizedText(" ", false)
+    _fourthLabel:AddToClassList("inactive")
+    _fourthLabel:SetPrelocalizedText(" ", false)
+    _fifthLabel:AddToClassList("inactive")
+    _fifthLabel:SetPrelocalizedText(" ", false)
+    _sixthLabel:AddToClassList("inactive")
+    _sixthLabel:SetPrelocalizedText(" ", false)
+    _seventhLabel:AddToClassList("inactive")
+    _seventhLabel:SetPrelocalizedText(" ", false)
+    _eighthLabel:AddToClassList("inactive")
+    _eighthLabel:SetPrelocalizedText(" ", false)
+end
+
 function setLeaderboards(scoreTable)
     self.enabled = true;
+    clearLeaderboards()
 
     for i, value in pairs(scoreTable) do
         if i == 1 then

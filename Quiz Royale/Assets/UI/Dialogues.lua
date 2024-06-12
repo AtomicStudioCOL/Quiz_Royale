@@ -84,7 +84,7 @@ function welcomePlayerDialogues(category)
         end)
     end)
 end
-        
+
 function preQuestionDialoguesUI(question)
 
     _leaderBoardsUI.disableLeadersBoardsUI()
@@ -104,40 +104,36 @@ function showDialogueBox (showing : boolean)
     end
 end
 
-function finalScreenDialogues(lives, localScoreTable)
+function finalScreenDialogues(localScoreTable)
     showDialogueBox(true)
-    
-    if lives <= 0 then
-        dialogueLabel:SetPrelocalizedText(`Oh no! Your lives! Well... Recover your score!`, false)
-    else
-        _leaderBoardsUI.disableLeadersBoardsUI()
-        
-        local _top3 = localScoreTable[3] ~= nil
-        local _top2 = localScoreTable[2] ~= nil
-        local t3t = 0
-        local t2t = 0
 
-        if _top3 then
-            t3t = 2
-        end
-        if _top2 then
-            t2t = 2
-        end
-        
-        dialogueLabel:SetPrelocalizedText(`That was all for now. Best game players are:`, false)
-        Timer.After((3), function()
-            dialogueLabel:SetPrelocalizedText(`{localScoreTable[3]}.`, false)
-            Timer.After(t3t, function()
-                dialogueLabel:SetPrelocalizedText(`{localScoreTable[2]}.`, false)
-                Timer.After(t2t, function()
-                    dialogueLabel:SetPrelocalizedText(`{localScoreTable[1]}.`, false)
-                    Timer.After(3, function()
-                        dialogueLabel:SetPrelocalizedText(`Restarting game.`, false)
-                    end)
+    _leaderBoardsUI.disableLeadersBoardsUI()
+    
+    local _top3 = localScoreTable[3] ~= nil
+    local _top2 = localScoreTable[2] ~= nil
+    local t3t = 0
+    local t2t = 0
+
+    if _top3 then
+        t3t = 2
+    end
+    if _top2 then
+        t2t = 2
+    end
+    
+    dialogueLabel:SetPrelocalizedText(`That was all for now. Best game players are:`)
+    Timer.After((3), function()
+        dialogueLabel:SetPrelocalizedText(`{localScoreTable[3]}.`)
+        Timer.After(t3t, function()
+            dialogueLabel:SetPrelocalizedText(`{localScoreTable[2]}.`)
+            Timer.After(t2t, function()
+                dialogueLabel:SetPrelocalizedText(`{localScoreTable[1]}.`)
+                Timer.After(3, function()
+                    dialogueLabel:SetPrelocalizedText(`Restarting game.`)
                 end)
             end)
         end)
-    end
+    end)
 end
 
 client.PlayerConnected:Connect(function()

@@ -17,7 +17,7 @@ local pitch : number = 30
 --!SerializeField
 local yaw : number = 45
 --!SerializeField
-local centerOnCharacterWhenSpawned : boolean = true
+local centerOnCharacterWhenSpawned : boolean = false
 
 --!Header("Camera Points")
 --!SerializeField
@@ -87,134 +87,29 @@ function self.ClientAwake()
     end)
 end
 
-
--- camera default functions --
---[[
+local InertiaMinVelocity = 0.5; -- prevents the infinite slow drag at the end of inertia
+local InertiaStepDuration = 1 / 60; -- each "inertia step" is normalized to 60fps
+local MaxSwipeVelocity = 400 -- the maximum velocity of a swipe to apply inertia with
+local worldUpPlane = Plane.new(Vector3.up, Vector3.new(0,0,0)) -- cached to avoid re-generating every call
 local localCharacterInstantiatedEvent = nil
-if centerOnCharacterWhenSpawned then
-    localCharacterInstantiatedEvent = client.localPlayer.CharacterChanged:Connect(function(player, character)
-        if character then
-            OnLocalCharacter(player, character)
-        end
-    end)
 
-    function OnLocalCharacter(player, character)
-        localCharacterInstantiatedEvent:Disconnect()
-        localCharacterInstantiatedEvent = nil
-
-       local position = character.gameObject.transform.position
-       CenterOn(position)
-    end
-end
-
-Input.MouseWheel:Connect(function(evt)
-    if not IsActive() then
-        return
-    end
-    if evt.delta.y < 0.0 then
-        ZoomIn()
-    else
-        ZoomOut()
-    end
-end)
-
+--Verified if the camera is activated
 function IsActive()
     return camera ~= nil and camera.isActiveAndEnabled
 end
 
-Input.PinchOrDragBegan:Connect(function(evt)
-    if not IsActive() then
-        return
-    end
-
-    lastDirection = Vector2.zero
-    ResetZoomScale()
-    ResetInertia()
-end)
-
-Input.PinchOrDragChanged:Connect(function(evt)
-    if not IsActive() then
-        return
-    end
-    if not RotateCamera(evt) then
-        PanCamera(evt)
-
-    end
-    if evt.isPinching then
-        ZoomCamera(evt)
-    end
-
-    wasPinching = evt.isPinching
-end)
-
-Input.PinchOrDragEnded:Connect(function(evt)
-    if not IsActive() then
-        return
-    end
-    if not Input.isMouseInput then
-        ApplyInertia(CalculateWorldVelocity(evt))
-    end
-end)
-
-local worldUpPlane = Plane.new(Vector3.up, Vector3.new(0,0,0)) -- cached to avoid re-generating every call
-function ScreenPositionToWorldPoint(camera, screenPosition)
-    local ray = camera:ScreenPointToRay(screenPosition)
-
-    local success, distance = worldUpPlane:Raycast(ray)
-    if not success then
-        print("HighriseCameraController Failed to cast ray down into the world. Is the camera not looking down?")
-        return Vector3.zero
-    end
-
-    return ray:GetPoint(distance)
+-- Functionality zoom camera player
+function ZoomIn()
+    zoom = Mathf.Clamp(zoom - 1, zoomMin, zoomMax)
 end
 
-function PanCamera(evt)
-    local lastPosition = evt.position - evt.deltaPosition
-    local startPoint = ScreenPositionToWorldPoint(camera, lastPosition)
-    local endPoint = ScreenPositionToWorldPoint(camera, evt.position)
-    local dragAdjustment = -(endPoint - startPoint)
-    dragAdjustment.y = 0
-
-    target = target + dragAdjustment
+function ZoomOut()
+    zoom = Mathf.Clamp(zoom + 1, zoomMin, zoomMax)
 end
 
-function RotateCamera(evt)
-    if Input.isMouseInput then
-        if not Input.isAltPressed then
-            return false
-        end
-
-        -- Full screen width drag is 360 degrees and full screen height is the pitch range
-        local screenDelta = evt.position - (evt.position - evt.deltaPosition)
-        local xAngle = screenDelta.x / Screen.width * 360.0
-        Rotate(Vector2.new(xAngle, 0))
-    else
-        if not evt.isPinching then
-            return false
-        end
-
-        -- First frame of pinch
-        if lastDirection == Vector2.zero then
-            lastDirection = evt.direction
-        -- Subsequent frames of pinch. Use the delta direction between two fingers to rotate the camera
-        elseif evt.direction ~= Vector2.zero then
-            local deltaAngle = Vector2.SignedAngle(lastDirection, evt.direction)
-            Rotate(Vector2.new(deltaAngle, 0))
-
-            -- Update LastDirection for the next frame
-            lastDirection = evt.direction
-        end
-    end
-
-    return true
-end
-
--- Pan the camera on the X/Y plane by the given amount
-function Rotate(rotate)
-    rotation = rotation + Vector3.new(rotate.y, rotate.x, 0)
-    rotation.y = rotation.y + 3600  -- Ensure positive value
-    rotation.y = rotation.y % 360  -- Ensure value is between 0 and 360
+function ZoomScaled(baseZoom, scaleFactor)
+    local newZoom = baseZoom + (baseZoom / scaleFactor - baseZoom)
+    zoom = Mathf.Clamp(newZoom, zoomMin, zoomMax)
 end
 
 -- to make the zoom behave correctly focusPoint needs to stay in the same spot on the screen
@@ -237,22 +132,33 @@ function ZoomCamera(evt)
     lastZoomScale = scale
 end
 
+Input.MouseWheel:Connect(function(evt)
+    if not IsActive() then
+        return
+    end
+    if evt.delta.y < 0.0 then
+        ZoomIn()
+    else
+        ZoomOut()
+    end
+end)
+
+-- Functionality pan camera
+function ScreenPositionToWorldPoint(camera, screenPosition)
+    local ray = camera:ScreenPointToRay(screenPosition)
+
+    local success, distance = worldUpPlane:Raycast(ray)
+    if not success then
+        print("HighriseCameraController Failed to cast ray down into the world. Is the camera not looking down?")
+        return Vector3.zero
+    end
+
+    return ray:GetPoint(distance)
+end
+
 function ResetZoomScale(self)
     initialZoomOfPinch = zoom
     lastZoomScale = 1
-end
-
-function ZoomIn()
-    zoom = Mathf.Clamp(zoom - 1, zoomMin, zoomMax)
-end
-
-function ZoomOut()
-    zoom = Mathf.Clamp(zoom + 1, zoomMin, zoomMax)
-end
-
-function ZoomScaled(baseZoom, scaleFactor)
-    local newZoom = baseZoom + (baseZoom / scaleFactor - baseZoom)
-    zoom = Mathf.Clamp(newZoom, zoomMin, zoomMax)
 end
 
 function ResetInertia()
@@ -260,7 +166,16 @@ function ResetInertia()
     inertiaMagnitude = 0
 end
 
-local MaxSwipeVelocity = 400 -- the maximum velocity of a swipe to apply inertia with
+function PanCamera(evt)
+    local lastPosition = evt.position - evt.deltaPosition
+    local startPoint = ScreenPositionToWorldPoint(camera, lastPosition)
+    local endPoint = ScreenPositionToWorldPoint(camera, evt.position)
+    local dragAdjustment = -(endPoint - startPoint)
+    dragAdjustment.y = 0
+
+    target = target + dragAdjustment
+end
+
 function CalculateWorldVelocity(evt)
     local velocity = evt.velocity
     velocity.x = Mathf.Clamp(velocity.x, -MaxSwipeVelocity, MaxSwipeVelocity)
@@ -284,16 +199,35 @@ function ApplyInertia(worldVelocity)
     inertiaMagnitude = inertiaVelocity.magnitude
 end
 
-function CenterOn(newTarget, newZoom)
-    zoom = newZoom or zoom
+Input.PinchOrDragBegan:Connect(function(evt)
+    if not IsActive() then return end
 
-    target = newTarget
-    zoom = Mathf.Clamp(zoom, zoomMin, zoomMax)
-    offset = Vector3.new(0, 0, offset.z)
-end
+    lastDirection = Vector2.zero
+    ResetZoomScale()
+    ResetInertia()
+end)
 
-local InertiaMinVelocity = 0.5; -- prevents the infinite slow drag at the end of inertia
-local InertiaStepDuration = 1 / 60; -- each "inertia step" is normalized to 60fps
+Input.PinchOrDragChanged:Connect(function(evt)
+    if not IsActive() then return end
+
+    PanCamera(evt)
+
+    if evt.isPinching then
+        ZoomCamera(evt)
+    end
+
+    wasPinching = evt.isPinching
+end)
+
+Input.PinchOrDragEnded:Connect(function(evt)
+    if not IsActive() then return end
+    
+    if not Input.isMouseInput then
+        ApplyInertia(CalculateWorldVelocity(evt))
+    end
+end)
+
+-- Update Inertia Player translation
 function UpdateInertia()
     if not Input.isMouseInput and inertiaMagnitude > InertiaMinVelocity then
         local stepReduction = (1.0 - inertiaDampeningFactor) / (InertiaStepDuration / Time.deltaTime)
@@ -322,6 +256,7 @@ function UpdatePosition()
 
     cameraRig.position = cameraPos
     cameraRig:LookAt(target)
+    --cameraRig.position = cameraRig.position + (charPlayer.gameObject.transform.position + cameraOffset)
     cameraRig.position = cameraRig.position + cameraOffset
 end
 
@@ -333,4 +268,3 @@ function self:Update()
     UpdateInertia()
     UpdatePosition()
 end
---]]

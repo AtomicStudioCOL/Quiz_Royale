@@ -57,19 +57,19 @@ local quitButton : UIButton = nil
 
 -- Eptying and setting items --
 
-_reJoinILabel:SetPrelocalizedText(" ", false)
+_reJoinILabel:SetPrelocalizedText(" ")
 _reJoinILabel:ClearClassList()
 _reJoinILabel:AddToClassList("inactive")
 
 function setItems()
-    aLabel:SetPrelocalizedText(" ", false)
-    bLabel:SetPrelocalizedText(" ", false)
-    cLabel:SetPrelocalizedText(" ", false)
-    dLabel:SetPrelocalizedText(" ", false)
-    _questionLabel:SetPrelocalizedText(" ", false)
-    timerLabel:SetPrelocalizedText(" ", false)
-    _questNum:SetPrelocalizedText(" ", false)
-    _quitLabel:SetPrelocalizedText("X", false)
+    aLabel:SetPrelocalizedText(" ")
+    bLabel:SetPrelocalizedText(" ")
+    cLabel:SetPrelocalizedText(" ")
+    dLabel:SetPrelocalizedText(" ")
+    _questionLabel:SetPrelocalizedText(" ")
+    timerLabel:SetPrelocalizedText(" ")
+    _questNum:SetPrelocalizedText(" ")
+    _quitLabel:SetPrelocalizedText("X")
 
     timerLabel:ClearClassList()
     aLabel:ClearClassList()
@@ -144,7 +144,7 @@ local function reJoinInstructions()
     _reJoinILabel:AddToClassList("reJoinILabel")
 
     autoTurnOffInstructions = Timer.After(4, function()
-        _reJoinILabel:SetPrelocalizedText(" ", false)
+        _reJoinILabel:SetPrelocalizedText(" ")
         _reJoinILabel:ClearClassList()
         _reJoinILabel:AddToClassList("inactive")
 
@@ -235,6 +235,9 @@ end
 
 function preQuestionDialogue(question)
     waitingForNextQuestion = false
+    _questionLabel:ClearClassList()
+    _questionLabel:AddToClassList("inactive")
+
     _leaderBoardsUI.disableLeadersBoardsUI();
     _questNum:ClearClassList()
     _questNum:AddToClassList("questNum")
@@ -266,15 +269,15 @@ function setQuestionLabelsText(question)
     local answers = question.answers
 
     -- set question label
-    _questionLabel:SetPrelocalizedText(question.questionTxt, false)
+    _questionLabel:SetPrelocalizedText(question.questionTxt)
 
     randomizedAnswers = nil
     randomizedAnswers = gameManager.shuffleAnswers(answers)
 
-    aLabel:SetPrelocalizedText(randomizedAnswers.a.txt, false)
-    bLabel:SetPrelocalizedText(randomizedAnswers.b.txt, false)
-    cLabel:SetPrelocalizedText(randomizedAnswers.c.txt, false)
-    dLabel:SetPrelocalizedText(randomizedAnswers.d.txt, false)   
+    aLabel:SetPrelocalizedText(randomizedAnswers.a.txt)
+    bLabel:SetPrelocalizedText(randomizedAnswers.b.txt)
+    cLabel:SetPrelocalizedText(randomizedAnswers.c.txt)
+    dLabel:SetPrelocalizedText(randomizedAnswers.d.txt)   
     
     activeAnswerButtons()
 end
@@ -297,7 +300,7 @@ function activeAnswerButtons()               -- Assigns the callbacks and adds t
 
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
     
-    timerLabel:SetPrelocalizedText(questionTimeValue, false)
+    timerLabel:SetPrelocalizedText(questionTimeValue)
     
     aButton:RegisterPressCallback(function() deactivateAnswersButtons(aButton, questionTimeValue, "a") end)
     changeClassButtons(aButton, aLabel, "a")
@@ -339,7 +342,9 @@ function deactivateAnswersButtons(chosenButton : UIButton, timeLeft, chosenOptio
     chosenAnswer = randomizedAnswers[chosenOption]
 
     if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
-        gameManager.saveScorePlayer:FireServer(howLongToAnswer, false)
+        gameManager.saveScorePlayer:FireServer(howLongToAnswer, true, false)
+    else
+        gameManager.saveScorePlayer:FireServer(howLongToAnswer, false, false)
     end
 
     
@@ -349,9 +354,9 @@ end
 
 function soundFeedback()
     if chosenAnswer == nil or chosenAnswer.truthValue == false then
-        _localSounds.playSound(_localSounds.incorrectSound)
+        _localSounds.playSound(_localSounds.incorrectSound, 1)
     else
-        _localSounds.playSound(_localSounds.correctSound)
+        _localSounds.playSound(_localSounds.correctSound, .5)
     end
 end
 
@@ -364,9 +369,9 @@ function setTimerLabel()
     end
 
     questionTimeValue -= 1
-    timerLabel:SetPrelocalizedText(tostring(questionTimeValue), false)
+    timerLabel:SetPrelocalizedText(tostring(questionTimeValue))
 
-    if questionTimeValue == 0 then
+    if questionTimeValue <= 0 then
         soundFeedback()
         hideAnswersButtons()
         questionTimeValue = originalQuestionTimeValue
@@ -387,10 +392,10 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
     cButton:AddToClassList("inactive")
     dButton:AddToClassList("inactive")
 
-    aLabel:SetPrelocalizedText("", false)
-    bLabel:SetPrelocalizedText("", false)
-    cLabel:SetPrelocalizedText("", false)
-    dLabel:SetPrelocalizedText("", false)
+    aLabel:SetPrelocalizedText("")
+    bLabel:SetPrelocalizedText("")
+    cLabel:SetPrelocalizedText("")
+    dLabel:SetPrelocalizedText("")
 
     aLabel:ClearClassList()
     bLabel:ClearClassList()
@@ -405,11 +410,11 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
     if enabled == false then return end
 
     if chosenAnswer ~= nil and chosenAnswer.truthValue == true  then
-        _questionLabel:SetPrelocalizedText("Correct!", false)
+        _questionLabel:SetPrelocalizedText("Correct!")
         barista:AddToClassList(_baristaClass_True)
         barista:BringToFront()
     else
-        _questionLabel:SetPrelocalizedText("Wrong!", false)
+        _questionLabel:SetPrelocalizedText("Wrong!")
         barista:AddToClassList(_baristaClass_False)
         barista:BringToFront()
         removeLife()
@@ -418,17 +423,20 @@ end
 
 function removeLife()
     lives -= 1
-    if lives == 2 then
-        life3:RemoveFromClassList("life_active")
-        life3:AddToClassList("life_lost")
-    elseif lives == 1 then
-        life2:RemoveFromClassList("life_active")
-        life2:AddToClassList("life_lost")
-    elseif lives == 0 then
-        life1:RemoveFromClassList("life_active")
-        life1:AddToClassList("life_lost")
-        finalScreen()
-    end
+    Timer.After(.5, function()
+        _localSounds.playSound(_localSounds.lostLife, .25)
+        if lives == 2 then
+            life3:RemoveFromClassList("life_active")
+            life3:AddToClassList("life_lost")
+        elseif lives == 1 then
+            life2:RemoveFromClassList("life_active")
+            life2:AddToClassList("life_lost")
+        elseif lives == 0 then
+            life1:RemoveFromClassList("life_active")
+            life1:AddToClassList("life_lost")
+            finalScreen()
+        end
+    end)
 end
 
 function resetLives()
@@ -441,15 +449,14 @@ function resetLives()
 end
 
 function finalScreen()
-    _dialoguesUI.finalScreenDialogues(lives, localScoreTable)
     
-    if lives >= 0 then
-        gameManager.saveScorePlayer:FireServer(howLongToAnswer, true)
+    if lives > 0 then
+        _dialoguesUI.finalScreenDialogues(localScoreTable)
     else
-        barista:ClearClassList()
-        barista:AddToClassList(baristaClass)
-        barista:SendToBack()    end
-    _timerResLiv = Timer.After(.5, function()
+        gameManager.saveScorePlayer:FireServer(howLongToAnswer, false, true)
+        _questionLabel:SetPrelocalizedText("Oh no! Your lives! Well... Recover your score!")
+    end
+    _timerResLiv = Timer.After(1, function()
         lives = 3
         resetLives()
     end)
@@ -490,6 +497,8 @@ function self:ClientAwake()
         if not waitingForNextQuestion then _leaderBoardsUI.setLeaderboards(scoreTable) end
         localScoreTable = scoreTable
     end)
+
+    gameManager.allPlayersAnswered:Connect(function() questionTimeValue = 1 end)
     
     gameManager.finishGame:Connect(function()
         finalScreen()

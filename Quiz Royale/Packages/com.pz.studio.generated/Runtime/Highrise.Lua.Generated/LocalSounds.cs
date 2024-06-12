@@ -25,6 +25,7 @@ namespace Highrise.Lua.Generated
 
         [SerializeField] public UnityEngine.AudioClip m__correctSound = default;
         [SerializeField] public UnityEngine.AudioClip m__incorrectSound = default;
+        [SerializeField] public UnityEngine.AudioClip m__lostLife = default;
 
         protected override SerializedPropertyValue[] SerializeProperties()
         {
@@ -35,6 +36,7 @@ namespace Highrise.Lua.Generated
             {
                 CreateSerializedProperty(_script.GetPropertyAt(0), m__correctSound),
                 CreateSerializedProperty(_script.GetPropertyAt(1), m__incorrectSound),
+                CreateSerializedProperty(_script.GetPropertyAt(2), m__lostLife),
             };
         }
     }

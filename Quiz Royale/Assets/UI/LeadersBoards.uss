@@ -15,7 +15,7 @@
     background-color: var(--color-background_2);
 
     width: 80%;
-    height: 60%;
+    height: 34.5%;
     bottom: 0%;
 
     align-self: center;
@@ -30,14 +30,14 @@
 
 .leaders-boardsUI-Vertical {
     position: absolute;
-    font-size: 175%;
+    font-size: 100%;
     background-color: var(--color-background_2);
 
     width: 80%;
-    height: 40%;
+    height: 34.5%;
     bottom: 0%;
 
-    left: 10%;
+    align-self: center;
 
     border-width: 3px;
     border-color: var(--color-border);

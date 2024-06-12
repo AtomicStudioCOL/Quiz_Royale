@@ -1,0 +1,1412 @@
+fileFormatVersion: 2
+guid: 75cd6f2a4cfe33c4798e831d54f01673
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1790
+        width: 89
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5900a510aa5e5ea4092f56204031570d
+      internalID: 477065767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1790
+        width: 132
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7fd0154dd06dc4385a04a7cc6808d7
+      internalID: 116241686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_2
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1790
+        width: 57
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b6a72858da4534992402bdd951ad37
+      internalID: -1197688015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_3
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1683
+        width: 117
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bde4067a97a2741871db2f15ed9d9c
+      internalID: 1957814601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_4
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 1683
+        width: 117
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a847f0b0239ac0243a263fca0f65dfba
+      internalID: -358852409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_5
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1725
+        width: 247
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2b060f0fc34fd42b45bfa809b66fe6
+      internalID: -1965862767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_6
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 1478
+        width: 234
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb323c0461272148bc167371286c9ab
+      internalID: -1887880422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_7
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1392
+        width: 121
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da8c18432c766a4d881cb868a7385ad
+      internalID: 686305018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_8
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1381
+        width: 122
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced07cad5c6d09d469cf4a6581576518
+      internalID: 801241551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_9
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 1388
+        width: 119
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a30c7b098ad5b84bbc1228ab2283547
+      internalID: 1408339861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_10
+      rect:
+        serializedVersion: 2
+        x: 2224
+        y: 1388
+        width: 190
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e532f9e98c3da24d8b2503d0cebba67
+      internalID: -1789362323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_11
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 1773
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b50fe6aad8bbb4c86eb9102465440f
+      internalID: 523643640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1511
+        width: 230
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4b7eb962c299e4e9903d381acb89c1
+      internalID: 973530324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_13
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1512
+        width: 230
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf49bbedd6a837479a00e83cefc905b
+      internalID: -351251849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_14
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1428
+        width: 90
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4defe1bad11961a44a095e379a128d9e
+      internalID: -1697477756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_15
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1493
+        width: 90
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6668f347af8165340969220c038d6f42
+      internalID: -1342034828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1281
+        width: 229
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b34c671c5d5cb4797190cbd809e36f
+      internalID: -732937126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1279
+        width: 230
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3dd5f2bffd07f94589a8256ea8481ec
+      internalID: 965750148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_18
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 1315
+        width: 101
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388c1d8ed97d3d64981b404cbb346cec
+      internalID: -1908488828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_19
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 1316
+        width: 101
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3626081875c88614ca23c8d7470b8440
+      internalID: 350333048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_20
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 1454
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a3b8359142b3f4784c32563734f980
+      internalID: -792240944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_21
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1189
+        width: 75
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 402f407e0f4d1a8478445b1ad4e49e70
+      internalID: -1671634150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_22
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1189
+        width: 77
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42921c813ef57784781cd5b9ba3c6e93
+      internalID: -1549326601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_23
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1069
+        width: 228
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebf9d893f4188242b3bb21bd057142f
+      internalID: 1767665380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_24
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 989
+        width: 131
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09eb77beb1564df4da2de77f4714f5c1
+      internalID: -733287154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_25
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 762
+        width: 121
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71c711ea80c64d418d2c1eff24523ab
+      internalID: -1266874890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_26
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 730
+        width: 122
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c145ea44166d964f8834777fa72e256
+      internalID: 753513440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_27
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 709
+        width: 119
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40db5bc1134e3cc4f97fe33094430b8b
+      internalID: -1146406257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_28
+      rect:
+        serializedVersion: 2
+        x: 2224
+        y: 709
+        width: 120
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0e257cc8893d1488ae325c43924816
+      internalID: -2123751414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 972
+        width: 237
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d80d5e243a90fa7478269a06d4fd1774
+      internalID: 1807135884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_30
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 835
+        width: 400
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9430f146e11db1648bfa877c2108946a
+      internalID: 1606359993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_31
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 840
+        width: 229
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075758b262b2e7e42a90cc5d6cb49e8e
+      internalID: -995858742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_32
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 768
+        width: 231
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c46038c97b2bd44aa1326889c2fc57a
+      internalID: -1623702401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_33
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 640
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65cc291418d2eac428a59ffa648aa6f5
+      internalID: -780826405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_34
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 577
+        width: 90
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e43b336b41eb34db9ba0def46405a2
+      internalID: 1014360476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_35
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 557
+        width: 102
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf34a108b824b64480b611ba0438be7
+      internalID: -180163018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_36
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 386
+        width: 579
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a29c9cbf37c0b24eb3d2f4271793509
+      internalID: -1722970923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_37
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 377
+        width: 214
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a4e9027e7522f47b68d0464ecc8538
+      internalID: -1056857147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_38
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 391
+        width: 164
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fcbdaa125f41f479b28e23201eb9f1
+      internalID: -197623426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_39
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 321
+        width: 343
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533ad958017cb284da734005abab6778
+      internalID: 1593574970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_40
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 390
+        width: 90
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41c9ac21eb08c54abe84c4ddccc6515
+      internalID: -1887696496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_41
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 366
+        width: 101
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f765002a5ecbf4f905224e5e7335bd
+      internalID: 122228844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_42
+      rect:
+        serializedVersion: 2
+        x: 1988
+        y: 226
+        width: 348
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de0b33cc3849a041b7ddccfddb7521e
+      internalID: 2085866619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_43
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 157
+        width: 164
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f287047fd0701d947955f9d9219731a5
+      internalID: -760474593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_44
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 162
+        width: 164
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27968345515741746aacfe3b8ff0b613
+      internalID: 731419529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_45
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 9
+        width: 343
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed53a2434997824f8524c2f916f7b99
+      internalID: -18734761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_46
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 297
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5050e8c116744a47a71441aa8b6b3a7
+      internalID: 1857864659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_47
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 54
+        width: 394
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd017a00b214e3498c75b4366cd875e
+      internalID: 1621166046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 340
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332257703d967544da9178ce5389532b
+      internalID: -1798098896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_49
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 69
+        width: 47
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c52ea923d08ec4e868def07ab9f1bf
+      internalID: 1368981230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_50
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 25
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69be282dce0157f429f4a2ff029c652e
+      internalID: 719451480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_51
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 104
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa18a640c109dbb4697c85fbf4adaf20
+      internalID: 1237227839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_52
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 70
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a61ffb85c6dc8242b2a64c400010476
+      internalID: -1448118451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_53
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 106
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a74cd256b87944782dff816f18d907
+      internalID: -451826162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_54
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 25
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e398879706b4f5649b49859815a82c91
+      internalID: 1844152602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_55
+      rect:
+        serializedVersion: 2
+        x: 1734
+        y: 106
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db332d6be3f565438deefa15799c1e7
+      internalID: -1948249812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_56
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 49
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5257e70cd09e74f960c95406a5c4f7
+      internalID: 349708096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_57
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 48
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b52855f52fb534785f7cc32df1bd2e
+      internalID: 57363141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_QuizRoyale_04_58
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 48
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f693f04b943fd1f4e955ab399c9bbd8c
+      internalID: -1165464571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 37968665010638f41a11084b44e87382
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Tileset_QuizRoyale_04_0: 477065767
+      Tileset_QuizRoyale_04_1: 116241686
+      Tileset_QuizRoyale_04_10: -1789362323
+      Tileset_QuizRoyale_04_11: 523643640
+      Tileset_QuizRoyale_04_12: 973530324
+      Tileset_QuizRoyale_04_13: -351251849
+      Tileset_QuizRoyale_04_14: -1697477756
+      Tileset_QuizRoyale_04_15: -1342034828
+      Tileset_QuizRoyale_04_16: -732937126
+      Tileset_QuizRoyale_04_17: 965750148
+      Tileset_QuizRoyale_04_18: -1908488828
+      Tileset_QuizRoyale_04_19: 350333048
+      Tileset_QuizRoyale_04_2: -1197688015
+      Tileset_QuizRoyale_04_20: -792240944
+      Tileset_QuizRoyale_04_21: -1671634150
+      Tileset_QuizRoyale_04_22: -1549326601
+      Tileset_QuizRoyale_04_23: 1767665380
+      Tileset_QuizRoyale_04_24: -733287154
+      Tileset_QuizRoyale_04_25: -1266874890
+      Tileset_QuizRoyale_04_26: 753513440
+      Tileset_QuizRoyale_04_27: -1146406257
+      Tileset_QuizRoyale_04_28: -2123751414
+      Tileset_QuizRoyale_04_29: 1807135884
+      Tileset_QuizRoyale_04_3: 1957814601
+      Tileset_QuizRoyale_04_30: 1606359993
+      Tileset_QuizRoyale_04_31: -995858742
+      Tileset_QuizRoyale_04_32: -1623702401
+      Tileset_QuizRoyale_04_33: -780826405
+      Tileset_QuizRoyale_04_34: 1014360476
+      Tileset_QuizRoyale_04_35: -180163018
+      Tileset_QuizRoyale_04_36: -1722970923
+      Tileset_QuizRoyale_04_37: -1056857147
+      Tileset_QuizRoyale_04_38: -197623426
+      Tileset_QuizRoyale_04_39: 1593574970
+      Tileset_QuizRoyale_04_4: -358852409
+      Tileset_QuizRoyale_04_40: -1887696496
+      Tileset_QuizRoyale_04_41: 122228844
+      Tileset_QuizRoyale_04_42: 2085866619
+      Tileset_QuizRoyale_04_43: -760474593
+      Tileset_QuizRoyale_04_44: 731419529
+      Tileset_QuizRoyale_04_45: -18734761
+      Tileset_QuizRoyale_04_46: 1857864659
+      Tileset_QuizRoyale_04_47: 1621166046
+      Tileset_QuizRoyale_04_48: -1798098896
+      Tileset_QuizRoyale_04_49: 1368981230
+      Tileset_QuizRoyale_04_5: -1965862767
+      Tileset_QuizRoyale_04_50: 719451480
+      Tileset_QuizRoyale_04_51: 1237227839
+      Tileset_QuizRoyale_04_52: -1448118451
+      Tileset_QuizRoyale_04_53: -451826162
+      Tileset_QuizRoyale_04_54: 1844152602
+      Tileset_QuizRoyale_04_55: -1948249812
+      Tileset_QuizRoyale_04_56: 349708096
+      Tileset_QuizRoyale_04_57: 57363141
+      Tileset_QuizRoyale_04_58: -1165464571
+      Tileset_QuizRoyale_04_6: -1887880422
+      Tileset_QuizRoyale_04_7: 686305018
+      Tileset_QuizRoyale_04_8: 801241551
+      Tileset_QuizRoyale_04_9: 1408339861
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

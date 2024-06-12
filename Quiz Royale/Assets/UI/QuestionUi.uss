@@ -19,7 +19,7 @@
 
 .quitLabel{
     
-    color: var(--color-background_1);
+    color: rgb(255, 100, 100);
     white-space: normal;
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;
@@ -82,8 +82,8 @@
     background-position: center;
     background-image: url("../UI/VisualElements/Mobile/Box_Time_Lifes.png");
     
-    align-self: center
-    top: 0%;
+    align-self: center;
+    top: -5%;
 
     width: 35%;
     height: 16%;
@@ -159,8 +159,8 @@
     position: absolute;
     width: 19%;
     height: 12.5%;
-    top: 19.25%;
-    right: 8%;
+    top: 12.75%;
+    right: 10.5%;
     padding: 0;
 
     border-color: rgba(100, 60, 0, 1);
@@ -178,8 +178,8 @@
     position: absolute;
     width: 19%;
     height: 12.5%;
-    top: 19.25%;
-    right: 8%;
+    top: 12.75%;
+    right: 10.5%;
     padding: 0;
 
     border-color: rgba(100, 60, 0, 1);
@@ -206,6 +206,7 @@
     white-space: normal;
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;
+    font-size: 90%;
 }
 
 
@@ -213,30 +214,30 @@
 .questionsContainer{
     position: absolute;
     left: 10%;
-    top: 7.5%;
+    bottom: 10%;
     width: 80%;
     height: 70%;
     display: flex;
     flex-wrap: wrap;
     padding: 0%;
     flex: 1;
-    
-    background-color: rgba(255, 255, 255, 0);
 }
 
 .questionLabel{
+    position: absolute;
     background-color: rgba(243, 202, 93, .8);
-    width: 90%;
+    width: 85%;
     height: 15%;
-    left: 5%;
-    top: 17.5%;
-       
+    bottom: 35%;
+
+    align-self: center;
+
     border: 40px;
     border-width: 5px;
     border-radius: 10px;
     background-color: rgba(250, 230, 200, 1);
     border-color: rgba(100, 60, 0, 1);
-    font-size: 110%;
+    font-size: 100%;
     color: rgb(100, 60, 0);
 
 }
@@ -244,7 +245,7 @@
 .unChosen {
 
     height: 13%;
-    width: 100%;
+    width: 45%;
     border-width: 3px;
     border-radius: 10px;
     font-size: 110%;
@@ -255,7 +256,7 @@
 
 .chosen {
     height: 13%;
-    width: 100%;
+    width: 45%;
 
     border-width: 3px;
     border-radius: 10px;
@@ -272,7 +273,7 @@
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;
     height: 13%;
-    width: 100%;
+    width: 45%;
     
     border: 40px;
     border-width: 5px;
@@ -288,21 +289,25 @@
 .a{
     position: absolute;
     bottom: 0%;
+    right: 0%;
 }
 
 .b{
     position: absolute;
-    bottom: 16%;
+    bottom: 0%;
+    left: 0%;
 }
 
 .c{
     position: absolute;
-    bottom: 32%
+    bottom: 16%;
+    right: 0%;
 }
 
 .d{
     position: absolute;
-    bottom: 48%;
+    bottom: 16%;
+    left: 0%;
 }
 
 .baristPlaceholder {

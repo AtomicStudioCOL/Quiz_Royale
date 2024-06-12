@@ -32,7 +32,7 @@
     </hr:UIView>
 
     <!-- barista -->
-    <hr:UIImage name="barista" class="inactive"/>
+    <hr:UIImage name="barista" class="inactive" picking-mode="Ignore"/>
 
     <!-- Question labels -->
     <hr:UILabel name="_questionLabel" class="questionLabel" picking-mode="Ignore"></hr:UILabel>
