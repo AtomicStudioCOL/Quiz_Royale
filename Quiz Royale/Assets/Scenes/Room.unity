@@ -5343,9 +5343,9 @@ MonoBehaviour:
   _uiOutput: 0
   _uiOutputSettings:
     rid: -2
-  m__correctSound: {fileID: 8300000, guid: f51b8c3b535cb7b4680047132ed9b1a0, type: 3}
-  m__incorrectSound: {fileID: 8300000, guid: 8c0d650fe5a51e8489e0916b9aea3bb7, type: 3}
-  m__lostLife: {fileID: 8300000, guid: e149c0351f22f314eba052085dafefce, type: 3}
+  _correctSound: {fileID: 8300000, guid: f51b8c3b535cb7b4680047132ed9b1a0, type: 3}
+  _incorrectSound: {fileID: 8300000, guid: 8c0d650fe5a51e8489e0916b9aea3bb7, type: 3}
+  _lostLife: {fileID: 8300000, guid: e149c0351f22f314eba052085dafefce, type: 3}
   references:
     version: 2
     RefIds:
@@ -21761,7 +21761,7 @@ Transform:
   m_GameObject: {fileID: 1493661287}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -3.1, y: 0.22, z: -17.35}
+  m_LocalPosition: {x: -3.1, y: 1, z: -17.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

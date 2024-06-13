@@ -141,20 +141,6 @@
     right: 8%;
 }
 
-.baristaM{
-    position: absolute;
-    width: 100%;
-    height: 65%;
-
-    bottom: 0%;
-    right: 0%;
-
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("../UI/VisualElements/Baristas/QuizRoyale_Neutral_01.png");
-}
-
 .baristaM-True{
     position: absolute;
     width: 19%;
@@ -214,7 +200,7 @@
 .questionsContainer{
     position: absolute;
     left: 10%;
-    bottom: 10%;
+    bottom: 0%;
     width: 80%;
     height: 70%;
     display: flex;
@@ -228,7 +214,7 @@
     background-color: rgba(243, 202, 93, .8);
     width: 85%;
     height: 15%;
-    bottom: 35%;
+    bottom: 22%;
 
     align-self: center;
 
@@ -263,7 +249,6 @@
     background-color: var(--color-background_3);
     border-color: rgba(100, 60, 0, 1);
     font-size: 110%;
-    
     
 }
 

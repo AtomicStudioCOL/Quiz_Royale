@@ -10,6 +10,8 @@
   <hr:UILuaView class="dialogues" picking-mode="Ignore">
     
     <hr:UILabel name="dialogueLabel" picking-mode="Ignore"></hr:UILabel>
+    <!-- barista -->
+    <hr:UIImage name="barista" class="inactive" picking-mode="Ignore"/>
 
   </hr:UILuaView>
 

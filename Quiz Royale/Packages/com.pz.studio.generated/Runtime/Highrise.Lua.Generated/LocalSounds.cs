@@ -23,9 +23,9 @@ namespace Highrise.Lua.Generated
         private const string s_scriptGUID = "5ff18d4a94ca10e4080fe4566c0d1386";
         public override string ScriptGUID => s_scriptGUID;
 
-        [SerializeField] public UnityEngine.AudioClip m__correctSound = default;
-        [SerializeField] public UnityEngine.AudioClip m__incorrectSound = default;
-        [SerializeField] public UnityEngine.AudioClip m__lostLife = default;
+        [SerializeField] public UnityEngine.AudioClip _correctSound = default;
+        [SerializeField] public UnityEngine.AudioClip _incorrectSound = default;
+        [SerializeField] public UnityEngine.AudioClip _lostLife = default;
 
         protected override SerializedPropertyValue[] SerializeProperties()
         {
@@ -34,9 +34,9 @@ namespace Highrise.Lua.Generated
 
             return new SerializedPropertyValue[]
             {
-                CreateSerializedProperty(_script.GetPropertyAt(0), m__correctSound),
-                CreateSerializedProperty(_script.GetPropertyAt(1), m__incorrectSound),
-                CreateSerializedProperty(_script.GetPropertyAt(2), m__lostLife),
+                CreateSerializedProperty(_script.GetPropertyAt(0), _correctSound),
+                CreateSerializedProperty(_script.GetPropertyAt(1), _incorrectSound),
+                CreateSerializedProperty(_script.GetPropertyAt(2), _lostLife),
             };
         }
     }

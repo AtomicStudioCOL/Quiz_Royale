@@ -199,12 +199,14 @@ function updateLeaderboards(tableOfPlayers)
         end
     end
 
+    --[[
     -- converting values to string
     scoresClone = table.clone(scores)
     for i, v in ipairs(scoresClone) do
         table.remove(scores, i)
         table.insert(scores, i, `{i}. {v[1]}'s score: {v[2]}`)
     end
+    --]]
 
     updateScoreEvent:FireAllClients(scores)
 end

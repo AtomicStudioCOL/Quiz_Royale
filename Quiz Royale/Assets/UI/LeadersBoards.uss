@@ -7,34 +7,13 @@
     -unity-font-style: bold;
 }
 
-.leaders-boardsUI-Horizontal {
-    position: absolute;
-    font-size: 100%;   
-
-
-    background-color: var(--color-background_2);
-
-    width: 80%;
-    height: 34.5%;
-    bottom: 0%;
-
-    align-self: center;
-
-    border-width: 3px;
-    border-color: var(--color-border);
-    border-radius: 10px;
-
-    white-space: normal;
-    -unity-text-overflow-position: start;
-}
-
-.leaders-boardsUI-Vertical {
+.leadersBoards {
     position: absolute;
     font-size: 100%;
     background-color: var(--color-background_2);
 
-    width: 80%;
-    height: 34.5%;
+    width: 90%;
+    height: 21%;
     bottom: 0%;
 
     align-self: center;
@@ -45,6 +24,8 @@
 
     white-space: normal;
     -unity-text-overflow-position: start;
+    padding: 16px;
+    padding-top: 10px;
 }
 
 .active{
@@ -52,4 +33,30 @@
     white-space: normal;
     -unity-text-align: middle-center;
     -unity-text-overflow-position: middle;
+}
+
+.parent{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+}
+
+.number{
+    width: 25%;
+    align-self: flex-start;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: center;
+}
+
+.player{
+    width: 50%;
+    align-self: center;
+}
+
+.score{
+    width: 25%;
+    align-self: flex-end;
+    -unity-text-align: middle-center;
+    -unity-text-overflow-position: center;
 }

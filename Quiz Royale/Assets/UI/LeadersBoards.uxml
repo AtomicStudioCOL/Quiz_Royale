@@ -10,15 +10,47 @@
   <hr:UILuaView class="leaders-boardsUI" name="_leadersBoardsUI" picking-mode="Ignore">
     
     <!-- leaderboards labels -->
-    <hr:UIView name="leadersBoards" class="leadersBoards" picking-mode="Ignore">
-      <hr:UILabel name="_firstLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_secondLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_thirdLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_fourthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_fifthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_sixthLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_seventhLabel" picking-mode="Ignore"></hr:UILabel>
-      <hr:UILabel name="_eighthLabel" picking-mode="Ignore"></hr:UILabel>
+    <hr:UIView name="leadersBoards" picking-mode="Ignore">
+      <hr:UILabel name="_firstLabel" picking-mode="Ignore">
+        <hr:UILabel name="_firstNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_firstPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_firstScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_secondLabel" picking-mode="Ignore">
+        <hr:UILabel name="_secondNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_secondPlyr" picking-mode="Ignore"/>
+        <hr:UILabel name="_secondScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_thirdLabel" picking-mode="Ignore">
+        <hr:UILabel name="_thirdNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_thirdPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_thirdScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_fourthLabel" picking-mode="Ignore">
+        <hr:UILabel name="_fourthNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_fourthPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_fourthScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_fifthLabel" picking-mode="Ignore">
+        <hr:UILabel name="_fifthNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_fifthPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_fifthScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_sixthLabel" picking-mode="Ignore">
+        <hr:UILabel name="_sixthNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_sixthPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_sixthScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_seventhLabel" picking-mode="Ignore">
+        <hr:UILabel name="_seventhNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_seventhPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_seventhScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
+      <hr:UILabel name="_eighthLabel" picking-mode="Ignore">
+        <hr:UILabel name="_eighthNum" picking-mode="Ignore"/> 
+        <hr:UILabel name="_eighthPlyr" picking-mode="Ignore"/> 
+        <hr:UILabel name="_eighthScore" picking-mode="Ignore"/> 
+      </hr:UILabel>
     </hr:UIView>
 
   </hr:UILuaView>

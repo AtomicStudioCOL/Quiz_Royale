@@ -94,13 +94,13 @@ end
 setItems()
 
 -- variables --
-local baristaClass : string
 local _baristaClass_True : string
 local _baristaClass_False : string
 
 local chosenAnswer = nil
 
 local currentCategory : string
+local correctAnswer : string
 
 local playerWelcomed = false
 local isButtonSelected = false
@@ -221,14 +221,9 @@ function welcomePlayer(category)
 
     _dialoguesUI.welcomePlayerDialogues()
     if questionPool[currentCategory] == questionPool.travel or questionPool[currentCategory] == questionPool.cat then
-        baristaClass = "baristaM"
         _baristaClass_True = "baristaM-True"
         _baristaClass_False = "baristaM-False"    
     end
-
-    barista:ClearClassList()
-    barista:AddToClassList(baristaClass)
-    barista:SendToBack()
 
     _timerPlWelced = Timer.After(17, function()
         playerWelcomed = true
@@ -236,7 +231,10 @@ function welcomePlayer(category)
     end)
 end
 
-function preQuestionDialogue(question)
+function preQuestionDialogue(question)     
+    barista:ClearClassList()
+    barista:AddToClassList("inactive")
+
     waitingForNextQuestion = false
     _questionLabel:ClearClassList()
     _questionLabel:AddToClassList("inactive")
@@ -244,10 +242,6 @@ function preQuestionDialogue(question)
     _leaderBoardsUI.disableLeadersBoardsUI();
     _questNum:ClearClassList()
     _questNum:AddToClassList("questNum")
-    
-    barista:ClearClassList()
-    barista:AddToClassList(baristaClass)
-    barista:SendToBack()
     
     _timerSetQuesLT = Timer.After(3, function()
         if enabled == false then return end
@@ -258,9 +252,6 @@ end
 
 function setQuestionLabelsText(question)
     
-    barista:ClearClassList()
-    barista:AddToClassList("inactive")
-    
     _questionLabel:AddToClassList("active")
     _questionLabel:AddToClassList("questionLabel")
     timerLabel:AddToClassList("timerLabel")
@@ -270,6 +261,11 @@ function setQuestionLabelsText(question)
     dLabel:AddToClassList("active")
 
     local answers = question.answers
+    for answer, element in pairs(answers) do
+        if element.truthValue == true then
+            correctAnswer = element.txt
+        end
+    end
 
     -- set question label
     _questionLabel:SetPrelocalizedText(question.questionTxt)
@@ -304,7 +300,7 @@ function activeAnswerButtons()               -- Assigns the callbacks and adds t
     questionTimeValue = originalQuestionTimeValue
     questionTimer = Timer.new(1, function () setTimerLabel() end, true)
     
-    timerLabel:SetPrelocalizedText(questionTimeValue)
+    timerLabel:SetPrelocalizedText(`0:0{questionTimeValue}`)
     
     aButton:RegisterPressCallback(function() deactivateAnswersButtons(aButton, questionTimeValue, "a") end)
     changeClassButtons(aButton, aLabel, "a")
@@ -373,7 +369,11 @@ function setTimerLabel()
     end
 
     questionTimeValue -= 1
-    timerLabel:SetPrelocalizedText(tostring(questionTimeValue))
+    if questionTimeValue > 9 then
+        timerLabel:SetPrelocalizedText(`0:{questionTimeValue}`)
+    else
+        timerLabel:SetPrelocalizedText(`0:0{questionTimeValue}`)
+    end
 
     if questionTimeValue <= 0 then
         soundFeedback()
@@ -417,7 +417,7 @@ function hideAnswersButtons() -- removes the buttons from the hierarchies
         barista:AddToClassList(_baristaClass_True)
         barista:BringToFront()
     else
-        _questionLabel:SetPrelocalizedText("Wrong!")
+        _questionLabel:SetPrelocalizedText(`Wrong! The correct answer was '{correctAnswer}'.`)
         barista:AddToClassList(_baristaClass_False)
         barista:BringToFront()
         removeLife()
